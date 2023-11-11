@@ -1,0 +1,6 @@
+
+…
+java:S1598"âThis file "BoardController.java" should be located in "com\sbspro\midProject\proto\controller" directory, not in "C:\Users\gsw05\IdeaProjects\midProject\midProject\src\main\java\com\sbspro\midProject\proto\entitny\controller".(®Á…ôÿÿÿÿÿ8Ê´òö»1
+t	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(®Á…ôÿÿÿÿÿ
+d
+java:S2094"BRemove this empty class, write its code or make it an "interface".(Î©³žúÿÿÿÿ8†üñö»1
