@@ -1,9 +1,14 @@
 package com.sbspro.midProject.proto.entitny;
 
+import com.sbspro.midProject.answer.entity.Answer;
 import com.sbspro.midProject.base.entity.baseEntity;
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.OneToMany;
 import lombok.*;
+
+import java.util.List;
 
 @Entity
 @Getter
@@ -18,5 +23,8 @@ public class Board extends baseEntity {
 
     @Column(length = 20)
     private String title;
+
+    @OneToMany(mappedBy = "board", cascade = CascadeType.REMOVE)
+    private List<Answer> answerList;
 
 }

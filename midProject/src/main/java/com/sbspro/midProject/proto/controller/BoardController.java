@@ -1,7 +1,7 @@
 package com.sbspro.midProject.proto.controller;
 
 import com.sbspro.midProject.proto.entitny.Board;
-import com.sbspro.midProject.proto.repository.BoardRepository;
+import com.sbspro.midProject.proto.service.BoardService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,11 +13,11 @@ import java.util.List;
 @RequiredArgsConstructor
 public class BoardController {
 
-    private final BoardRepository boardRepository;
+    private final BoardService boardService;
 
     @GetMapping("/reply_board")
     public String board(Model model){
-        List<Board> boardList = this.boardRepository.findAll();
+        List<Board> boardList = this.boardService.getList();
         model.addAttribute("boardList", boardList);
         return "board/reply_board";
     }

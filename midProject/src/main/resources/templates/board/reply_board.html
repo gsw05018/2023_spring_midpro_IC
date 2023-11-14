@@ -22,7 +22,9 @@
                     <div th:text="${board.id}" class=" w-2/12"></div>
                     <div th:text="${board.title}" class="w-full"></div>
                     <div th:text="${#temporals.format(board.createDate, 'yy-MM-dd')}" class="text-center w-2/12"></div>
-                    <div class="  w-1/12">추천수</div>
+                    <div class="  w-1/12">추천수
+                        <span th:text="|${#lists.size(board.answerList)}|"></span>
+                    </div>
                     <div class=" w-1/12">조회수</div>
                 </div>
                 <div class="collapse-content " >
@@ -31,6 +33,15 @@
                                  <td class="w-12">내용</td>
                                 <td th:text="${board.content}" class="p-4"></td>
                             </tr>
+
+                            <ul>
+                                <li th:each="answer : ${board.answerList}" th:text="${answer.content}"></li>
+                            </ul>
+
+                            <form th:action="@{|/answer/create/${board.id}|}" method="post" >
+                                <textarea name="content" id="content" rows="15" class="border border-red-500"></textarea>
+                                <input type="submit" value="답변등록"></input>
+                            </form>
                         </table>
                 </div>
             </div>
