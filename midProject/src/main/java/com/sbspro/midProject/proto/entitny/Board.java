@@ -1,6 +1,6 @@
 package com.sbspro.midProject.proto.entitny;
 
-import com.sbspro.midProject.common.baseEntity;
+import com.sbspro.midProject.base.entity.baseEntity;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import lombok.*;
@@ -9,6 +9,7 @@ import lombok.*;
 @Getter
 @Setter
 @AllArgsConstructor
+@ToString(callSuper = true)
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Board extends baseEntity {
 

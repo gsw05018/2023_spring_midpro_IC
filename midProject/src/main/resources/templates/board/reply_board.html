@@ -1,20 +1,17 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>게시판</title>
+<html layout:decorate="~{/common/layout}">
 
-    <!-- Tailwind CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-    <!-- 데이지 UI -->
-    <link href="https://cdn.jsdelivr.net/npm/daisyui@3.7.7/dist/full.css" rel="stylesheet" type="text/css"/>
-    <!-- 폰트어썸 아이콘 -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+<head>
+    <!--  테일윈드 cdn  -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!--  데이지 UI cdn  -->
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@4.0.4/dist/full.min.css" rel="stylesheet" type="text/css" />
 
 </head>
+
 <body>
 
-<div class="join join-vertical w-full">
+<div  layout:fragment="content" class="join join-vertical w-full">
     <div class="collapse collapse-arrow join-item border border-base-300" th:each="board : ${boardList}">
 
             <input type="radio" name="my-accordion-4" checked="checked"/>

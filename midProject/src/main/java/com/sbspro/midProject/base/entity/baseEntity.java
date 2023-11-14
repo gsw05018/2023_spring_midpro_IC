@@ -1,4 +1,4 @@
-package com.sbspro.midProject.common;
+package com.sbspro.midProject.base.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
@@ -12,11 +12,11 @@ import java.time.LocalDateTime;
 @MappedSuperclass
 @Getter
 @Setter
-@AllArgsConstructor
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @EntityListeners(AuditingEntityListener.class)
 @ToString
 @SuperBuilder
+@AllArgsConstructor
 public class baseEntity {
 
     @Id

@@ -1,4 +1,4 @@
-package com.sbspro.midProject.common;
+package com.sbspro.midProject.base.controller;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -10,8 +10,10 @@ public class HomeController {
 
 
     @GetMapping("/")
-    public String home(){
-        return "redirect:/board";
+    public String root(){
+        return "home/main";
     }
+
+
 }
 

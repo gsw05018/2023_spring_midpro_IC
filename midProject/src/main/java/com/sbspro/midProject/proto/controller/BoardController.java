@@ -15,10 +15,10 @@ public class BoardController {
 
     private final BoardRepository boardRepository;
 
-    @GetMapping("board")
+    @GetMapping("/reply_board")
     public String board(Model model){
         List<Board> boardList = this.boardRepository.findAll();
         model.addAttribute("boardList", boardList);
-        return "board/board";
+        return "board/reply_board";
     }
 }
