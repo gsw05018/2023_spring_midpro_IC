@@ -4,17 +4,9 @@ G
 r
 BmidProject/src/main/java/com/sbspro/midProject/SecurityConfig.java,7\c\7cf55580e357687e5b47479d33cd19349e783d60
 w
-GmidProject/src/main/java/com/sbspro/midProject/proto/entitny/Proto.java,2\3\23cd17d19f29f1553f01b48310438341e444308d
-w
 GmidProject/src/main/java/com/sbspro/midProject/proto/entitny/Board.java,0\d\0d924fbf55b72f9b2cbc099e17bfe45275b3e881
 u
 EmidProject/src/main/java/com/sbspro/midProject/common/baseEntity.java,0\f\0f68ec88dfe72f60b3f0f3662abd0d97d9c7bcf7
-o
-?midProject/src/main/java/com/sbspro/midProject/proto/Board.java,0\6\06f6bef589bf34942104a9bbfef049bf77cfdef4
-|
-LmidProject/src/main/java/com/sbspro/midProject/proto/entitny/controller.java,1\f\1f9cbc06ae144f7d3df47b969b1e7b73059a3238
-Œ
-\midProject/src/main/java/com/sbspro/midProject/proto/entitny/controller/BoardController.java,1\9\19ad97bbe1874ddb3550ea034cd470e622f464c4
 „
 TmidProject/src/main/java/com/sbspro/midProject/proto/controller/BoardController.java,b\4\b4e50e85d49c3de099eb93b825937aedc5e0a01e
 y
