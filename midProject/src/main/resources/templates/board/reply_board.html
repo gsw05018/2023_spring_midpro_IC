@@ -2,35 +2,40 @@
 
 <head>
     <!--  테일윈드 cdn  -->
-    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@latest/dist/tailwind.min.css" rel="stylesheet"
+          type="text/css"/>
 
     <!--  데이지 UI cdn  -->
-    <link href="https://cdn.jsdelivr.net/npm/daisyui@4.0.4/dist/full.min.css" rel="stylesheet" type="text/css" />
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@4.0.4/dist/full.min.css" rel="stylesheet" type="text/css"/>
 
 </head>
 
 <body>
 
-<div  layout:fragment="content" class="join join-vertical w-full">
-    <div class="collapse collapse-arrow join-item border border-base-300" th:each="board : ${boardList}">
+<div layout:fragment="content" class="m-12">
+    <div class="m-auto container ">
+        <div class="join join-vertical  w-full">
+            <div class="collapse collapse-arrow  join-item border border-base-300"  th:each="board : ${boardList}">
 
-            <input type="radio" name="my-accordion-4" checked="checked"/>
-        <div class="collapse-title text-xl font-medium flex">
-            <div>번호</div>
-            <div>제목</div>
-            <div>작성 날짜</div>
+                <input type="radio" name="my-accordion-4" checked="checked"/>
+                <div class="collapse-title text-xl font-medium flex justify-between w-full" >
+                    <div th:text="${board.id}" class=" w-2/12"></div>
+                    <div th:text="${board.title}" class="w-full"></div>
+                    <div th:text="${#temporals.format(board.createDate, 'yy-MM-dd')}" class="text-center w-2/12"></div>
+                    <div class="  w-1/12">추천수</div>
+                    <div class=" w-1/12">조회수</div>
+                </div>
+                <div class="collapse-content " >
+                        <table class="h-full w-full ">
+                            <tr >
+                                 <td class="w-12">내용</td>
+                                <td th:text="${board.content}" class="p-4"></td>
+                            </tr>
+                        </table>
+                </div>
+            </div>
         </div>
-        <div class="collapse-content">
-                <div th:text="${board.id}"></div>
-                <div th:text="${board.title}"></div>
-                <div th:text="${board.createDate}"></div>
-        </div>
-
     </div>
-
-
-
 </div>
-
 </body>
 </html>
