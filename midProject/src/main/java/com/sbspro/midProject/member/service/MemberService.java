@@ -20,25 +20,29 @@ public class MemberService {
 
     @Transactional
     public RsData<Member> join(String username, String password, String nickname, String email, String phoneNumber) {
-        Member member = Member
-                .builder()
-                .username(username)
-                .password(passwordEncoder.encode(password))
-                .nickname(nickname)
-                .email(email)
-                .phone_number(phoneNumber)
-                .build();
+
+        if (findByUsername(username).isPresent())
+            return RsData.of("F-1", "%s(은)는 사용중인 아이디입니다.".formatted(username));
+
+            Member member = Member
+                    .builder()
+                    .username(username)
+                    .password(passwordEncoder.encode(password))
+                    .nickname(nickname)
+                    .email(email)
+                    .phone_number(phoneNumber)
+                    .build();
 
 
-        member =  memberRepositroy.save(member);
-        return RsData.of("S-1", "회원가입이 완료되었습니다", member);
+            member = memberRepositroy.save(member);
+            return RsData.of("S-1", "회원가입이 완료되었습니다", member);
+        }
+
+        public Optional<Member> findByUsername (String username){
+            return memberRepositroy.findByUsername(username);
+        }
+
+        public Optional<Member> findById (Long id){
+            return memberRepositroy.findById(id);
+        }
     }
-
-    public Optional<Member> findByUsername(String username){
-        return memberRepositroy.findByUsername(username);
-    }
-
-    public Optional<Member> findById(Long id){
-        return memberRepositroy.findById(id);
-    }
-}

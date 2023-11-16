@@ -8,21 +8,21 @@ import lombok.Getter;
 public class RsData<T> {
     private String resultCode;
     private String msg;
-    private T Data;
+    private T data;
 
-    public boolean isSuccess(){
+    public boolean isSuccess() {
         return resultCode.startsWith("S-");
     }
 
-    public boolean isFail(){
+    public boolean isFail() {
         return !isSuccess();
     }
 
-    public static <T> RsData<T> of(String resultCode, String msg, T data){
-        return  new RsData<>(resultCode,msg, data);
+    public static <T> RsData<T> of(String resultCode, String msg, T data) {
+        return new RsData<>(resultCode, msg, data);
     }
 
-    public static <T> RsData<T> of(String resultCode, String msg){
-        return of(resultCode, msg);
+    public static <T> RsData<T> of(String resultCode, String msg) {
+        return of(resultCode, msg, null);
     }
 }

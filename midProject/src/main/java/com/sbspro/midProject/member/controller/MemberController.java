@@ -1,5 +1,8 @@
 package com.sbspro.midProject.member.controller;
 
+import com.sbspro.midProject.base.rsData.RsData.RsData;
+import com.sbspro.midProject.base.util.Ut.Ut;
+import com.sbspro.midProject.member.entity.Member;
 import com.sbspro.midProject.member.service.MemberService;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotBlank;
@@ -45,9 +48,14 @@ public class MemberController {
 
     @PostMapping("/join")
     public String join(@Valid JoinForm joinForm){
-        memberService.join(joinForm.getUsername(), joinForm.getPassword(), joinForm.getNickname(), joinForm.getEmail(), joinForm.getPhone_number());
 
-        return "redirect:/";
+     RsData<Member> joinRs =  memberService.join(joinForm.getUsername(), joinForm.getPassword(), joinForm.getNickname(), joinForm.getEmail(), joinForm.getPhone_number());
+
+        if(joinRs.isFail()){
+            return "redirect:/usr/member/join?failMsg=" + Ut.url.encode(joinRs.getMsg());
+        }
+
+        return "redirect:/?msg=" + Ut.url.encode(joinRs.getMsg());
 
     }
 
