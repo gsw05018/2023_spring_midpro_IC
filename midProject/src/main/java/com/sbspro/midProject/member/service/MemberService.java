@@ -1,5 +1,6 @@
 package com.sbspro.midProject.member.service;
 
+import com.sbspro.midProject.base.rsData.RsData.RsData;
 import com.sbspro.midProject.member.entity.Member;
 import com.sbspro.midProject.member.repositroy.MemberRepositroy;
 import lombok.RequiredArgsConstructor;
@@ -18,7 +19,7 @@ public class MemberService {
 
 
     @Transactional
-    public Member join(String username, String password, String nickname, String email, String phoneNumber) {
+    public RsData<Member> join(String username, String password, String nickname, String email, String phoneNumber) {
         Member member = Member
                 .builder()
                 .username(username)
@@ -28,7 +29,9 @@ public class MemberService {
                 .phone_number(phoneNumber)
                 .build();
 
-        return memberRepositroy.save(member);
+
+        member =  memberRepositroy.save(member);
+        return RsData.of("S-1", "회원가입이 완료되었습니다", member);
     }
 
     public Optional<Member> findByUsername(String username){
