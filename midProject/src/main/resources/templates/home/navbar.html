@@ -46,7 +46,7 @@
                         <div class="toggle-menu">
                             <ul sec:authorize="isAnonymous()">
                                 <li><a class="nav-link" th:href="@{/user/login}">로그인</a></li>
-                                <li><a class="nav-link" th:href="@{/user/signup}">회원가입</a></li>
+                                <li><a class="nav-link" href="/usr/member/join">회원가입</a></li>
                             </ul>
                             <ul sec:authorize="isAuthenticated()">
                                 <li><a class="nav-link" th:href="@{/user/mypage}">마이페이지</a></li>
