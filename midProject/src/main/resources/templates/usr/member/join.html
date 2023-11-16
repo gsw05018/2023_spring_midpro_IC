@@ -8,12 +8,100 @@
 
 <div layout:fragment="content" class="container my-3">
 
+    <script>
+        let submitJoinFormDone = false;
+
+     function submitJoinForm(form) {
+         if (submitJoinFormDone) return;
+
+         form.username.value = form.username.value.trim();
+         if (form.username.value.length == 0) {
+             form.username.focus();
+             toastWarning('아이디를 입력하세요');
+             return;
+         }
+
+         form.password.value = form.password.value.trim();
+         if (form.password.value.length == 0) {
+             form.password.focus();
+             toastWarning('비밀번호를 입력하세요');
+             return;
+         }
+
+         form.password2.value = form.password2.value.trim();
+         if (form.password2.value.length == 0) {
+             form.password2.focus();
+             toastWarning('비밀번호를 입력하세요');
+             return;
+         }
+
+         if(form.password.value == form.password2.value){
+            form.password2.focus();
+            toastWarning('비밀번호가 확인이 일치하지 않습니다');
+            return;
+         }
+
+         form.email.value = form.email.value.trim();
+         if (form.email.value.length == 0) {
+             form.email.focus();
+             toastWarning('이메일을 입력하세요');
+             return;
+         }
+
+         form.name.value = form.name.value.trim();
+         if (form.name.value.length == 0) {
+             form.name.focus();
+             toastWarning('이름을 입력하세요');
+             return;
+         }
+
+         form.nickname.value = form.nickname.value.trim();
+         if (form.nickname.value.length === 0) {
+             form.nickname.focus();
+             toastWarning('닉네임을 입력하세요');
+             return;
+         }
+
+         form.birthdateInput.value = form.birthdateInput.value.trim();
+         if (form.birthdateInput.value.length == 0) {
+             form.birthdateInput.focus();
+             toastWarning('생일을 입력하세요');
+             return;
+         }
+
+         form.phone.value = form.phone.value.trim();
+         if (form.phone.value.length == 0) {
+             form.phone.focus();
+             toastWarning('통신사를 체크해주세요');
+             return;
+         }
+
+         form.phone_number.value = form.phone_number.value.trim();
+         if (form.phone_number.value.length == 0) {
+             form.phone_number.focus();
+             toastWarning('전화번호를 입력해주세요');
+             return;
+         }
+
+         var privacyCheckbox = document.getElementById("privacyCheckbox");
+
+         if (!privacyCheckbox.checked) {
+             toastWarning('개인정보를 체크해주세요');
+             return;
+         }
+
+         form.submit();
+         submitJoinFormDone = true;
+     }
+    </script>
+
+
     <!--백업용 로그인 폼(DB 연결, 수정 필요)-->
     <div class="join-box">
         <a href="/"> <p class="logo-text">뭐하지 또? 또 가지 뭐!</p></a>
         <h1>회원가입</h1>
         <!-- 회원가입 폼 -->
-        <form th:action  method="POST" onsubmit="submitJoinForm(this);  return : false;">
+        <form th:action  method="POST" onsubmit="submitJoinForm(this); return false;">
             <div class="form-box">
                 <div class="join-icon-box">
                     <i class="id fa-regular fa-user"></i>
@@ -72,175 +160,45 @@
         </form>
     </div>
 
-    <script>
-        let submitJoinFormDone = false;
-        function submitJoinForm(fomr){
-            if(submitJoinFormDone ) return;
 
-            form.username.value = form.username.value.trim();
-
-            f (form.username.value.length == 0) {
-            form.username.focus();
-                    Swal.fire({
-                        icon: 'error',
-                        title: '입력 오류',
-                        text: '아이디를 입력하세요.'
-                    });
-                    return;
-                }
-
-                    form.password.value = form.password.value.trim();
-
-                // 비밀번호 입력란 체크
-               else if (form.password.value.length == 0) {
-               form.password.focus();
-                    Swal.fire({
-                        icon: 'error',
-                        title: '입력 오류',
-                        text: '비밀번호를 입력하세요.'
-                    });
-                  return;
-                }
-
-                     form.password2.value = form.password2.value.trim();
-
-                // 비밀번호 확인 입력란 체크
-                else if (  form.password2.value.length == 0) {
-                     form.password2.focus();
-                    Swal.fire({
-                        icon: 'error',
-                        title: '입력 오류',
-                        text: '비밀번호 확인을 입력하세요.'
-                    });
-                    return;
-                }
-
-                    form.email.value = form.email.value.trim();
-
-                // 이메일 입력란 체크
-                else if (form.email.value == 0) {
-                    form.email.focus();
-                    Swal.fire({
-                        icon: 'error',
-                        title: '입력 오류',
-                        text: '이메일을 입력하세요.'
-                    });
-                    return;
-                }
-
-                 form.name.value = form.name.value.trim();
-                // 이름 입력란 체크
-                else if ( form.name.value == 0) {
-                    form.name.focus();
-                    Swal.fire({
-                        icon: 'error',
-                        title: '입력 오류',
-                        text: '이름을 입력하세요.'
-                    });
-                   return;
-                }
-
-                 form.nickname.value = form.nickname.value.trim();
-                // 닉네임 입력란 체크
-                else if (!nicknameInput.value || nicknameInput.value.trim() === "") {
-                form.nickname.focus();
-                    Swal.fire({
-                        icon: 'error',
-                        title: '입력 오류',
-                        text: '닉네임을 입력하세요.'
-                    });
-                    return;
-                }
-
-                form.birthdateInput.value = form.birthdateInput.value.trim();
-                // 생년월일 입력란 체크
-                else if ( form.birthdateInput.value  == 0) {
-                     form.birthdateInput.focus();
-                    Swal.fire({
-                        icon: 'error',
-                        title: '입력 오류',
-                        text: '생년월일을 입력하세요.'
-                    });
-                    return;
-                }
-
-                form.phone.value = form.phone.value.trim();
-                // 통신사 선택 체크
-                else if (form.phone.value == 0) {
-                    form.phone.focus();
-                    Swal.fire({
-                        icon: 'error',
-                        title: '입력 오류',
-                        text: '통신사를 선택하세요.'
-                    });
-                    return ;
-                }
-
-                form.phone_number.value = form.phone_number.value.trim();
-                // 전화번호 입력란 체크
-                else if (form.phone_number.value == 0) {
-                    form.phone_number.focus();
-                    Swal.fire({
-                        icon: 'error',
-                        title: '입력 오류',
-                        text: '전화번호를 입력하세요.'
-                    });
-                    return;
-                }
-
-                // 개인정보 수집 동의 체크
-                else if (!privacyCheckbox.checked) {
-                    Swal.fire({
-                        icon: 'error',
-                        title: '입력 오류',
-                        text: '개인정보 수집 및 이용 내용에 동의해야 회원가입이 가능합니다.'
-                    });
-                    isFormValid = false;
-                }
-
-                form.submit();
-                submitJoinFormDone = true;
-
-        }
-    </script>
 
     <!--    비밀번호 형식 확인-->
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            const password1Input = document.getElementById("password1");
-            const password2Input = document.getElementById("password2");
-            const passwordMatchError = document.getElementById("passwordMatchError");
+<!--    <script>-->
+<!--        document.addEventListener("DOMContentLoaded", function () {-->
+<!--            const password1Input = document.getElementById("password1");-->
+<!--            const password2Input = document.getElementById("password2");-->
+<!--            const passwordMatchError = document.getElementById("passwordMatchError");-->
 
-            password1Input.addEventListener("input", function () {
-                validatePassword();
-            });
+<!--            password1Input.addEventListener("input", function () {-->
+<!--                validatePassword();-->
+<!--            });-->
 
-            password2Input.addEventListener("input", function () {
-                validatePassword();
-            });
+<!--            password2Input.addEventListener("input", function () {-->
+<!--                validatePassword();-->
+<!--            });-->
 
-            function validatePassword() {
-                const password1 = password1Input.value;
-                const password2 = password2Input.value;
+<!--            function validatePassword() {-->
+<!--                const password1 = password1Input.value;-->
+<!--                const password2 = password2Input.value;-->
 
-                const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{6,}$/;
+<!--                const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{6,}$/;-->
 
-                if (!passwordRegex.test(password1)) {
-                    password1Input.setCustomValidity("영어, 특수문자, 숫자를 모두 포함시켜야 합니다.");
-                } else {
-                    password1Input.setCustomValidity("");
-                }
+<!--                if (!passwordRegex.test(password1)) {-->
+<!--                    password1Input.setCustomValidity("영어, 특수문자, 숫자를 모두 포함시켜야 합니다.");-->
+<!--                } else {-->
+<!--                    password1Input.setCustomValidity("");-->
+<!--                }-->
 
-                if (password1 !== password2) {
-                    password2Input.setCustomValidity("비밀번호가 일치하지 않습니다.");
-                    passwordMatchError.textContent = "비밀번호가 일치하지 않습니다.";
-                } else {
-                    password2Input.setCustomValidity("");
-                    passwordMatchError.textContent = "";
-                }
-            }
-        });
-    </script>
+<!--                if (password1 !== password2) {-->
+<!--                    password2Input.setCustomValidity("비밀번호가 일치하지 않습니다.");-->
+<!--                    passwordMatchError.textContent = "비밀번호가 일치하지 않습니다.";-->
+<!--                } else {-->
+<!--                    password2Input.setCustomValidity("");-->
+<!--                    passwordMatchError.textContent = "";-->
+<!--                }-->
+<!--            }-->
+<!--        });-->
+<!--    </script>-->
 
     <!-- 생년월일 캘린더 스크립트 -->
     <script>
