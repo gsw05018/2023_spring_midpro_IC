@@ -4,6 +4,7 @@ import com.sbspro.midProject.base.rsData.RsData.RsData;
 import com.sbspro.midProject.base.util.Ut.Ut;
 import com.sbspro.midProject.member.entity.Member;
 import com.sbspro.midProject.member.service.MemberService;
+import jakarta.servlet.http.HttpServletRequest;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
@@ -47,11 +48,11 @@ public class MemberController {
     }
 
     @PostMapping("/join")
-    public String join(@Valid JoinForm joinForm){
+    public String join(@Valid JoinForm joinForm, HttpServletRequest req){
 
      RsData<Member> joinRs =  memberService.join(joinForm.getUsername(), joinForm.getPassword(), joinForm.getNickname(), joinForm.getEmail(), joinForm.getPhoneNumber());
-
         if(joinRs.isFail()){
+            req.setAttribute("msg", joinRs.getMsg());
             return "common/common";
         }
 
