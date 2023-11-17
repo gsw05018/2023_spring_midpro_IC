@@ -43,13 +43,13 @@ public class MemberController {
         private String email;
 
         @NotBlank
-        private String phone_number;
+        private String phoneNumber;
     }
 
     @PostMapping("/join")
     public String join(@Valid JoinForm joinForm){
 
-     RsData<Member> joinRs =  memberService.join(joinForm.getUsername(), joinForm.getPassword(), joinForm.getNickname(), joinForm.getEmail(), joinForm.getPhone_number());
+     RsData<Member> joinRs =  memberService.join(joinForm.getUsername(), joinForm.getPassword(), joinForm.getNickname(), joinForm.getEmail(), joinForm.getPhoneNumber());
 
         if(joinRs.isFail()){
             return "redirect:/usr/member/join?failMsg=" + Ut.url.encode(joinRs.getMsg());

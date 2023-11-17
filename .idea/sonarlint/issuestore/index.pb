@@ -15,3 +15,9 @@ ImidProject/src/main/java/com/sbspro/midProject/MidProjectApplication.java,b\3\
 TmidProject/src/main/java/com/sbspro/midProject/proto/repository/BoardRepository.java,3\d\3dd2b703e25b11c1646435fc30c512f363e34ead
 y
 ImidProject/src/main/java/com/sbspro/midProject/common/HomeController.java,2\f\2fc4a89a344d6099a9b093cd45ba5ee3193562e9
+†
+VmidProject/src/main/java/com/sbspro/midProject/member/controller/MemberController.java,4\5\455562580fc918e421f5c6f9a79ae272dc04cdc5
+€
+PmidProject/src/main/java/com/sbspro/midProject/member/service/MemberService.java,7\5\753616bbc577a0a9a05c962896c9f8a8679fe659
+x
+HmidProject/src/main/java/com/sbspro/midProject/member/entity/Member.java,3\a\3a8e7da9d5eff77c944d1ad03e4311a1e3092236

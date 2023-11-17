@@ -60,7 +60,7 @@
 
                 <div class="join-icon-box">
                     <i class="name fa-solid fa-tablet-screen-button"></i>
-                    <input type="tel"  placeholder="전화번호" class="phone-box" id="phone_number" name="phone_number">
+                    <input type="tel"  placeholder="전화번호" class="phone-box" id="phoneNumber" name="phoneNumber">
                 </div>
 
                 <p class="text">
@@ -156,9 +156,9 @@
              return;
          }
 
-         form.phone_number.value = form.phone_number.value.trim();
-         if (form.phone_number.value.length == 0) {
-             form.phone_number.focus();
+         form.phoneNumber.value = form.phoneNumber.value.trim();
+         if (form.phoneNumber.value.length == 0) {
+             form.phoneNumber.focus();
              toastWarning('전화번호를 입력해주세요');
              return;
          }
