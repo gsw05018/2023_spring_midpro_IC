@@ -4,5 +4,12 @@
 
     if ( msg ) alert(msg);
 
+    const localStorageKeyAboutHistoryBackFailMsg = /*[[${localStorageKeyAboutHistoryBackFailMsg}]]*/ null;
+    const historyBackFailMsg = /*[[${historyBackFailMsg}]]*/
+
+    if(localStorageKeyAboutHistoryBackFailMsg && localStorageKeyAboutHistoryBackFailMsg.trim().length  > 0){
+        localStorage.setItem(localStorageKeyAboutHistoryBackFailMsg, historyBackFailMsg);
+    }
+
     history.back();
 </script>

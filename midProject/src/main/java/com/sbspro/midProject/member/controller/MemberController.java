@@ -1,7 +1,7 @@
 package com.sbspro.midProject.member.controller;
 
 import com.sbspro.midProject.base.rq.Rq;
-import com.sbspro.midProject.base.rsData.RsData.RsData;
+import com.sbspro.midProject.base.rsData.RsData;
 import com.sbspro.midProject.member.entity.Member;
 import com.sbspro.midProject.member.service.MemberService;
 import jakarta.validation.Valid;

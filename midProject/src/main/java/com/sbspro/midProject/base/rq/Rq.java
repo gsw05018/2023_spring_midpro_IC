@@ -165,9 +165,13 @@ public class Rq {
     }
 
     public String historyBack(String msg) {
-        req.setAttribute("msg", msg);
+       String referer = req.getHeader("referer");
+       String key = "historyBackFailMsg__" + referer;
+       req.setAttribute("localStorageKeyAboutHistoryBackFailMsg", key);
+       req.setAttribute("hjstoryBackFailMsg", msg);
+       resp.setStatus(HttpServletResponse.SC_BAD_REQUEST);
 
-        return "common/js";
+        return "common/common";
     }
 
     public String redirect(String url, String msg) {

@@ -1,4 +1,4 @@
-package com.sbspro.midProject.base.rsData.RsData;
+package com.sbspro.midProject.base.rsData;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

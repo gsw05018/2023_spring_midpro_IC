@@ -117,11 +117,11 @@
         return url.searchParams.get('failMsg');
     }
 
-    const message = getMsgFromURL();
+    const msg  = getMsgFromURL();
 
     // msg 파라미터의 값이 있으면 toatr로 알림을 표시
-    if(message){
-        toastNotice(decodeURLComponent(message));
+    if(msg ){
+        toastNotice(decodeURLComponent(msg ));
     }
 
     const failMsg  = getFailMsgFromURL();
@@ -130,6 +130,21 @@
     if(failMsg){
         toastWarning(decodeURIComponent(failMsg));
     }
+
+    // historyBack Msg
+    $(window).bind("paeshow", function(event){
+        let localStorageKeyAboutHistoryBackFailMsg = "historyBackFailMsg__" + location.href;
+
+        if(!localStorage.getItem(localStorageKeyAboutHistoryBackFailMsg)){
+            localStorageKeyAboutHistoryBackFailMsg = "historyBackFailMsg__null";
+        }
+
+        const historyBackFailMsg = localStorage.getItem(localStorageKeyAboutHistoryBackFailMsg);
+        if(historyBackMsg){
+            toastWarning(historyBackMsg);
+            localStorage.removeItem(localStorageKeyAboutHistoryBackFailMsg);
+        }
+    });
 </script>
 
 
