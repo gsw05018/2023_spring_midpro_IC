@@ -39,8 +39,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.4/toastr.min.js"></script>
     <link rel="stylesheet" href="https://jhs512.github.io/toastr/toastr.css">
 
-
-
     <style>
         @font-face {
             font-family: 'Pretendard-Regular';
@@ -105,6 +103,33 @@
         });
     });
 
+</script>
+
+<script>
+    // URL 에서 msg 파라미터의 값을 가져오는 함수
+    function getMsgFromURL(){
+        const url =  new URL(window.location.href);
+        return url.searchParams.get('msg');
+    }
+
+    function getFailMsgFromURL(){
+        const url = new URL(window.location.href);
+        return url.searchParams.get('failMsg');
+    }
+
+    const message = getMsgFromURL();
+
+    // msg 파라미터의 값이 있으면 toatr로 알림을 표시
+    if(message){
+        toastNotice(decodeURLComponent(message));
+    }
+
+    const failMsg  = getFailMsgFromURL();
+
+    // msg  파라미터의 값이 있으면 toastr로 알림을 표시
+    if(failMsg){
+        toastWarning(decodeURIComponent(failMsg));
+    }
 </script>
 
 

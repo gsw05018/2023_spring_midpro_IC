@@ -1,0 +1,10 @@
+
+{	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(ΧΏλδÿÿÿÿÿ8’ƒκη½1
+r
+java:S3655>"PCall "Optional#isPresent()" or "!Optional#isEmpty()" before accessing the value.( ®ήΠϋÿÿÿÿ8οπη½1
+d
+java:S6201#"BReplace this instanceof check and cast with 'instanceof User user'(Έκέ£ωÿÿÿÿ8οπη½1
+R
+java:S1144Y"5Remove this unused private "getSessionAsLong" method.(‡Ύγ8ÿπη½1
+Q
+java:S1144|"4Remove this unused private "getCookieAsLong" method.(Ζ¨€λ8ÿπη½1

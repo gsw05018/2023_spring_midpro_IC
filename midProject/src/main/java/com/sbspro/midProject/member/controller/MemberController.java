@@ -1,7 +1,7 @@
 package com.sbspro.midProject.member.controller;
 
+import com.sbspro.midProject.base.rq.Rq;
 import com.sbspro.midProject.base.rsData.RsData.RsData;
-import com.sbspro.midProject.base.util.Ut.Ut;
 import com.sbspro.midProject.member.entity.Member;
 import com.sbspro.midProject.member.service.MemberService;
 import jakarta.validation.Valid;
@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequiredArgsConstructor
 public class MemberController {
 
+    private final Rq rq;
     private final MemberService memberService;
 
     @GetMapping("/join")
@@ -43,20 +44,18 @@ public class MemberController {
         private String email;
 
         @NotBlank
-        private String phone_number;
+        private String phoneNumber;
     }
 
     @PostMapping("/join")
     public String join(@Valid JoinForm joinForm){
 
-     RsData<Member> joinRs =  memberService.join(joinForm.getUsername(), joinForm.getPassword(), joinForm.getNickname(), joinForm.getEmail(), joinForm.getPhone_number());
-
-        if(joinRs.isFail()){
-            return "redirect:/usr/member/join?failMsg=" + Ut.url.encode(joinRs.getMsg());
+     RsData<Member> joinRs =  memberService.join(joinForm.getUsername(), joinForm.getPassword(), joinForm.getNickname(), joinForm.getEmail(), joinForm.getPhoneNumber());
+        if (joinRs.isFail()) {
+            return rq.historyBack(joinRs.getMsg());
         }
 
-        return "redirect:/?msg=" + Ut.url.encode(joinRs.getMsg());
-
+        return rq.redirect("/", joinRs.getMsg());
     }
 
 }

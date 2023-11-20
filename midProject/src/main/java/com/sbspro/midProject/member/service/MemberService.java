@@ -30,7 +30,7 @@ public class MemberService {
                     .password(passwordEncoder.encode(password))
                     .nickname(nickname)
                     .email(email)
-                    .phone_number(phoneNumber)
+                    .phoneNumber(phoneNumber)
                     .build();
 
 

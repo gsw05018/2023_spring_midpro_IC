@@ -35,7 +35,7 @@ public class Member {
 
     private String email;
 
-    private String phone_number;
+    private String phoneNumber;
 
     public boolean isAdmin(){
         return "admin".equals(username);
