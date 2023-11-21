@@ -182,4 +182,8 @@ function toastWarning(msg) {
     }
 }
 
+function setTimeoutZero(callback){
+    setTimeout(callback);
+}
+
 
