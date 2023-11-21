@@ -16,9 +16,8 @@
             <div class="form-box">
                 <div class="join-icon-box">
                     <i class="id fa-regular fa-user"></i>
-                    <input type="text"  placeholder="아이디를 입력하세요" class="id-box" id="username" name="username" autofocus>
-                    <button id="checkUsernameBtn" class="submit" style="margin-bottom: 10px ">아이디 확인</button>
-                    <p id="usernameAvailability" class="availability-text" style="margin-bottom: 10px ; font-size: 15px ; font-weight: bold "></p>
+                    <input type="text"  placeholder="아이디를 입력하세요" class="id-box" id="username" name="username" autofocus onchange="$(this).removeClass('input-accent')">
+                    <button onclick="checkUsernameDup(this)" class="submit"  type="button"  style="margin-bottom: 10px ">아이디 확인</button>
                 </div>
                 <div class="join-icon-box">
                     <i class="ps fa-solid fa-key"></i>
@@ -71,108 +70,146 @@
         </form>
     </div>
     <script>
-        let submitJoinFormDone = false;
+        function checkUsernameDup(el) {
+               const form = $(el).closest('form')[0];
 
-     function submitJoinForm(form) {
-         if (submitJoinFormDone) return;
+               form.username.value = form.username.value.trim();
 
-         form.username.value = form.username.value.trim();
-         if (form.username.value.length == 0) {
-             form.username.focus();
-             toastWarning('아이디를 입력하세요');
-             return;
-         }
+               if ( form.username.value.length == 0 ) {
+                   form.username.focus();
+                   toastWarning('아이디를 입력해주세요.');
+                   return;
+               }
 
-         if (form.username.value.length < 4) {
-             form.username.focus();
-             toastWarning('아이디를 4자 이상 입력하세요');
-             return;
-         }
+               if ( form.username.value.length < 4 ) {
+                   form.username.focus();
+                   toastWarning('아이디를 4자 이상 입력해주세요.');
+                   return;
+               }
 
-         form.password.value = form.password.value.trim();
-         if (form.password.value.length == 0) {
-             form.password.focus();
-             toastWarning('비밀번호를 입력하세요');
-             return;
-         }
+               fetch(
+                   'checkUsernameDup?username=' + form.username.value
+               )
+                   .then(res => res.json())
+                   .then((rsData) => {
+                       if ( rsData.msg ) toastMsg(rsData.success, rsData.msg);
+                       if ( rsData.success ) {
+                           validUsername = form.username.value;
+                           $(form.username).addClass('input-accent');
+                       }
+                   });
+           }
 
-           if (form.password.value.length < 4) {
-             form.password.focus();
-             toastWarning('비밀번호를 4자 이상 입력하세요');
-             return;
-         }
 
-         form.password2.value = form.password2.value.trim();
-         if (form.password2.value.length == 0) {
-             form.password2.focus();
-             toastWarning('비밀번호를 입력하세요');
-             return;
-         }
+       let validUsername = '';
+       let submitJoinFormDone = false;
 
-         if(form.password.value != form.password2.value){
-            form.password2.focus();
-            toastWarning('비밀번호가 확인이 일치하지 않습니다');
+    function submitJoinForm(form) {
+        if (submitJoinFormDone) return;
+
+        form.username.value = form.username.value.trim();
+        if (form.username.value.length == 0) {
+            form.username.focus();
+            toastWarning('아이디를 입력하세요');
             return;
-         }
+        }
 
-         form.email.value = form.email.value.trim();
-         if (form.email.value.length == 0) {
-             form.email.focus();
-             toastWarning('이메일을 입력하세요');
-             return;
-         }
+        if (form.username.value.length < 4) {
+            form.username.focus();
+            toastWarning('아이디를 4자 이상 입력하세요');
+            return;
+        }
 
-         form.name.value = form.name.value.trim();
-         if (form.name.value.length == 0) {
-             form.name.focus();
-             toastWarning('이름을 입력하세요');
-             return;
-         }
+        if(validUsername != form.username.value){
+           $(form.username).next().focus();
+           toastWarning('아이디를 중복체크 해주세요');
+           return ;
+        }
 
-         form.nickname.value = form.nickname.value.trim();
-         if (form.nickname.value.length === 0) {
-             form.nickname.focus();
-             toastWarning('닉네임을 입력하세요');
-             return;
-         }
+        form.password.value = form.password.value.trim();
+        if (form.password.value.length == 0) {
+            form.password.focus();
+            toastWarning('비밀번호를 입력하세요');
+            return;
+        }
 
-           if (form.nickname.value.length < 2) {
-             form.nickname.focus();
-             toastWarning('닉네임을 2자 이상 입력하세요');
-             return;ul;
-         }
+          if (form.password.value.length < 4) {
+            form.password.focus();
+            toastWarning('비밀번호를 4자 이상 입력하세요');
+            return;
+        }
 
-         form.birthdateInput.value = form.birthdateInput.value.trim();
-         if (form.birthdateInput.value.length == 0) {
-             form.birthdateInput.focus();
-             toastWarning('생일을 입력하세요');
-             return;
-         }
+        form.password2.value = form.password2.value.trim();
+        if (form.password2.value.length == 0) {
+            form.password2.focus();
+            toastWarning('비밀번호를 입력하세요');
+            return;
+        }
 
-         form.phone.value = form.phone.value.trim();
-         if (form.phone.value.length == 0) {
-             form.phone.focus();
-             toastWarning('통신사를 체크해주세요');
-             return;
-         }
+        if(form.password.value != form.password2.value){
+           form.password2.focus();
+           toastWarning('비밀번호가 확인이 일치하지 않습니다');
+           return;
+        }
 
-         form.phoneNumber.value = form.phoneNumber.value.trim();
-         if (form.phoneNumber.value.length == 0) {
-             form.phoneNumber.focus();
-             toastWarning('전화번호를 입력해주세요');
-             return;
-         }
+        form.email.value = form.email.value.trim();
+        if (form.email.value.length == 0) {
+            form.email.focus();
+            toastWarning('이메일을 입력하세요');
+            return;
+        }
 
-         var privacyCheckbox = document.getElementById("privacyCheckbox");
+        form.name.value = form.name.value.trim();
+        if (form.name.value.length == 0) {
+            form.name.focus();
+            toastWarning('이름을 입력하세요');
+            return;
+        }
 
-         if (!privacyCheckbox.checked) {
-             toastWarning('개인정보를 체크해주세요');
-             return;
-         }
+        form.nickname.value = form.nickname.value.trim();
+        if (form.nickname.value.length === 0) {
+            form.nickname.focus();
+            toastWarning('닉네임을 입력하세요');
+            return;
+        }
 
-         form.submit();
-         submitJoinFormDone = true;
-     }
+          if (form.nickname.value.length < 2) {
+            form.nickname.focus();
+            toastWarning('닉네임을 2자 이상 입력하세요');
+            return;ul;
+        }
+
+        form.birthdateInput.value = form.birthdateInput.value.trim();
+        if (form.birthdateInput.value.length == 0) {
+            form.birthdateInput.focus();
+            toastWarning('생일을 입력하세요');
+            return;
+        }
+
+        form.phone.value = form.phone.value.trim();
+        if (form.phone.value.length == 0) {
+            form.phone.focus();
+            toastWarning('통신사를 체크해주세요');
+            return;
+        }
+
+        form.phoneNumber.value = form.phoneNumber.value.trim();
+        if (form.phoneNumber.value.length == 0) {
+            form.phoneNumber.focus();
+            toastWarning('전화번호를 입력해주세요');
+            return;
+        }
+
+        var privacyCheckbox = document.getElementById("privacyCheckbox");
+
+        if (!privacyCheckbox.checked) {
+            toastWarning('개인정보를 체크해주세요');
+            return;
+        }
+
+        form.submit();
+        submitJoinFormDone = true;
+    }
     </script>
 
 

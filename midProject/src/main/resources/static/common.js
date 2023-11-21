@@ -145,6 +145,15 @@ toastr.options = {
     hideMethod: "fadeOut"
 };
 
+
+function toastMsg(isNotice,msg){
+    if(isNotice){
+        toastNotice(msg);
+    } else {
+        toastWarning(msg);
+    }
+}
+
 function parseMsg(msg) {
     const [pureMsg, ttl] = msg.split(";ttl=");
 
