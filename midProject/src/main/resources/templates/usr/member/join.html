@@ -14,7 +14,8 @@
         <a href="/"><p class="logo-text">뭐하지 또? 또 가지 뭐!</p></a>
         <h1>회원가입</h1>
         <!-- 회원가입 폼 -->
-        <form th:action method="POST" name="join-form" onsubmit="submitJoinForm(this); return false;">
+        <form enctype="multipart/form-data" th:action method="POST" name="join-form"
+              onsubmit="submitJoinForm(this); return false;">
             <div class="form-box">
                 <div class="join-icon-box">
                     <i class="id fa-regular fa-user"></i>
@@ -26,7 +27,8 @@
                 </div>
                 <div class="join-icon-box">
                     <i class="ps fa-solid fa-key"></i>
-                    <input type="password" id="password" name="password" placeholder="비밀번호를 입력하세요" class="pass-box" maxlength="30">
+                    <input type="password" id="password" name="password" placeholder="비밀번호를 입력하세요" class="pass-box"
+                           maxlength="30">
                     <p class="p-text">영어, 특수문자, 숫자를 모두 포함시켜주세요</p>
                 </div>
                 <div class="join-icon-box">
@@ -68,6 +70,12 @@
                 <div class="join-icon-box">
                     <i class="name fa-solid fa-tablet-screen-button"></i>
                     <input type="tel" placeholder="전화번호" class="phone-box" id="phoneNumber" name="phoneNumber">
+                </div>
+
+                <div class="join-icon-box">
+                    <i class="name fa-solid fa-tablet-screen-button"></i>
+                    <input type="file" placeholder="프로필 이미지" class="phone-box" id="profimeImg" name="profimeImg"
+                           accept="image/jpeg, image/png, image/gif">
                 </div>
 
                 <p class="text">

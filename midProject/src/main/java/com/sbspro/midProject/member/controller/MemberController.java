@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartRequest;
 
 @Controller
 @RequestMapping("/usr/member")
@@ -46,6 +47,8 @@ public class MemberController {
 
         @NotBlank
         private String phoneNumber;
+
+        private MultipartRequest profileImg;
     }
 
     @PostMapping("/join")

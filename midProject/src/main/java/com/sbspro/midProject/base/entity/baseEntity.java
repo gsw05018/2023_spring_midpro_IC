@@ -8,6 +8,8 @@ import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import java.time.LocalDateTime;
+import java.util.LinkedHashMap;
+import java.util.Map;
 
 @MappedSuperclass
 @Getter
@@ -17,10 +19,12 @@ import java.time.LocalDateTime;
 @ToString
 @SuperBuilder
 @AllArgsConstructor
+@EqualsAndHashCode
 public class baseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @EqualsAndHashCode.Include
     private Long id;
 
     @CreatedDate
@@ -28,4 +32,9 @@ public class baseEntity {
 
     @LastModifiedDate
     private LocalDateTime modifyDate;
+
+    @Transient
+    @Builder.Default
+    private Map<String, Object> extra = new LinkedHashMap<>();
+
 }
