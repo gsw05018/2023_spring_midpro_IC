@@ -20,7 +20,9 @@
                     <i class="id fa-regular fa-user"></i>
                     <input type="text" placeholder="아이디를 입력하세요" class="id-box" id="username" name="username" autofocus
                            maxlength="30" onchange="$(this).keyup();" onpaste="setTimeoutZero(() => $(this).keyup());"
-                           onkeyup="$(this).removeClass('input-accent'); checkUsernameDupDebounce();">
+                           onkeyup="checkUsernameDupDebounce();">
+                    <div style="margin : 4px ; font-size : 14px ;">
+                    </div>
                 </div>
                 <div class="join-icon-box">
                     <i class="ps fa-solid fa-key"></i>
@@ -80,27 +82,58 @@
         function checkUsernameDup(form) {
                  form.username.value = form.username.value.trim();
 
-                 if ( form.username.value.length == 0 ) return;
+                 if ( form.username.value.length == 0 ) {
+                    clearUsernameInputMsg();
+                    return;
+                 }
 
-                 if ( form.username.value.length < 4 ) return;
+                 if ( form.username.value.length < 4 ) {
+                    clearUsernameInputMsg();
+                    return;
+                 }
+
+                 if(validUsername == form.username.value) return;
+
+                 if(lastCheckedUsername == form.username.value) return;
+
+                 lastCheckedUsername = form.username.value;
+
+                 clearUsernameInputMsg();
 
                  fetch(
                      'checkUsernameDup?username=' + form.username.value
                  )
                      .then(res => res.json())
                      .then((rsData) => {
-                         if ( rsData.msg ) toastMsg(rsData.success, rsData.msg);
                          if ( rsData.success ) {
                              validUsername = form.username.value;
-                             $(form.username).addClass('input-accent');
                          }
+                         setUsernameInputMsg(rsData.success, rsData.msg);
                      });
              }
 
-             const checkUsernameDupDebounce = _.debounce(() => checkUsernameDup(document['join-form']), 1000);
+            const joinForm = document['join-form'];
+
+            const checkUsernameDupDebounce = _.debounce(() => checkUsernameDup(joinForm), 500);
+
+             function clearUsernameInputMsg(){
+                $(joinForm.username).removeClass('input-accent input-error');
+                $(joinForm.username).next().removeClass('text-green-400 text-red-400');
+                $(joinForm.username).next().empty();
+             }
+
+             function setUsernameInputMsg(isSuccess, msg){
+                 if ( isSuccess ) $(joinForm.username).addClass('input-accent');
+                if ( !isSuccess ) $(joinForm.username).addClass('input-error');
+
+                $(joinForm.username).next().addClass(isSuccess ? 'text-green-400' : 'text-red-400');
+
+                $(joinForm.username).next().text(msg);
+             }
 
 
         let validUsername = '';
+        let lastCheckedUsername = '';
         let submitJoinFormDone = false;
 
      function submitJoinForm(form) {
