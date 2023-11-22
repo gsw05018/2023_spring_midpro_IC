@@ -91,6 +91,14 @@ public class Ut {
             return url;
 
         }
+
+        public static String encodeWithTtl(String s){
+            return withTtl(encode(s));
+        }
+
+        public static String withTtl(String msg){
+            return msg + ";ttl=" + new Date().getTime();
+        }
     }
 
     private static String deleteQueryParam(String url, String paramName){

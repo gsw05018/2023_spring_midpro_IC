@@ -9,6 +9,7 @@ import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -24,7 +25,14 @@ public class MemberController {
     private final Rq rq;
     private final MemberService memberService;
 
+    @GetMapping("/login")
+    @PreAuthorize("isAnonymous()")
+    public String showLogin(){
+        return "usr/member/login";
+    }
+
     @GetMapping("/join")
+    @PreAuthorize("isAnonymous()")
     public String showJoin(){
         return "usr/member/join";
     }

@@ -1,3 +1,11 @@
+<html layout:decorate="~{layout}">
+<head>
+    <link rel="stylesheet" href="/login.css">
+
+    <!-- SweetAlert 2 스크립트 -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+<body>
 
 <nav th:fragment="navbarFragment" class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
     <div class="wrap-box">
@@ -45,12 +53,12 @@
                    <i class="fa-solid fa-circle-user btn-i" ></i>
                         <div class="toggle-menu">
                             <ul sec:authorize="isAnonymous()">
-                                <li><a class="nav-link" th:href="@{/user/login}">로그인</a></li>
+                                <li><a class="nav-link" href="/usr/member/login">로그인</a></li>
                                 <li><a class="nav-link" href="/usr/member/join">회원가입</a></li>
                             </ul>
                             <ul sec:authorize="isAuthenticated()">
-                                <li><a class="nav-link" th:href="@{/user/mypage}">마이페이지</a></li>
-                                <li><a class="nav-link" th:href="@{/user/logout}">로그아웃</a></li>
+                                <li><a class="nav-link" href="/usr/member/mypage">마이페이지</a></li>
+                                <li><a class="nav-link" href="/usr/member/logout">로그아웃</a></li>
                             </ul>
                         </div>
                 </li>
@@ -72,3 +80,5 @@
 
 </nav>
 
+</body>
+</html>

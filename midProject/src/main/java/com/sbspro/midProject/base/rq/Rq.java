@@ -168,13 +168,13 @@ public class Rq {
        String referer = req.getHeader("referer");
        String key = "historyBackFailMsg__" + referer;
        req.setAttribute("localStorageKeyAboutHistoryBackFailMsg", key);
-       req.setAttribute("hjstoryBackFailMsg", msg);
+       req.setAttribute("hjstoryBackFailMsg", Ut.url.withTtl(msg));
        resp.setStatus(HttpServletResponse.SC_BAD_REQUEST);
 
         return "common/common";
     }
 
     public String redirect(String url, String msg) {
-        return "redirect:" + Ut.url.modifyQueryParam(url, "msg", Ut.url.encode(msg));
+        return "redirect:" + Ut.url.modifyQueryParam(url, "msg", Ut.url.encodeWithTtl(msg));
     }
 }

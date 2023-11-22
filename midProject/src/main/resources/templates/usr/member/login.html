@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html layout:decorate="~{/common/layout}">
+
+<head>
+    <link rel="stylesheet" href="/login.css">
+</head>
+
+<body>
+
+<!-- 로그인 -->
+<div layout:fragment="content" class="input-login-box">
+    <a href="/"><h1>뭐하지 또? 또가지 뭐!</h1></a>
+    <div class="login-top-box">
+        <form th:action method="post"  onsubmit="submitLoginForm(this); return false;" >
+            <div class="form-box">
+                <div class="id-icon-box icon-box">
+                    <label for="username" class="form-label"></label>
+                    <i class="fa-regular fa-user"></i>
+                    <input class="id-box" type="text" placeholder="아이디를 입력해주세요" name="username" id="username"
+                          autofocus  autocomplete="on" required>
+                </div>
+                <div class="pass-icon-box icon-box">
+                    <label for="password" class="form-label"></label>
+                    <i class="fa-solid fa-key"></i>
+                    <input class="pass-box" type="password" name="password" id="password"
+                           placeholder="비밀번호를 입력해주세요" required>
+                </div>
+
+                <button class="submit" >로그인</button>
+
+
+            </div>
+
+        </form>
+
+    </div>
+    <div class="text-box">
+        <a class="id" href="#" title="아이디 찾기"><span>아이디 찾기</span></a>
+        <a class="password" href="#" title="비밀번호 찾기"><span>비밀번호 찾기</span></a>
+        <a class="join" href="/usr/member/join" title="회원가입"><span>회원가입</span></a>
+    </div>
+
+
+    <script>
+        let submitLoginFormDone = false;
+        function submitLoginForm(form){
+            if(submitLoginFormDone){
+                return ;
+            }
+
+            form.username.value = form.username.value.trim();
+
+            if(form.username.value == 0){
+                form.username.focus();
+                toastWarning('아이디를 입력해주세요');
+                return;
+            }
+
+            if(form.username.value < 4){
+                form.username.focus();
+                toastWarning('아이디를 4자이상 입력해주세요');
+                return;
+            }
+
+            form.password.value = form.password.value.tirm();
+
+            if(form.password.value == 0){
+                form.password.focus();
+                toastWarning('비밀번호를 입력해주세요');
+                return;
+            }
+
+            if(form.password.value  < 4){
+                form.password.focus();
+                toastWarning('비밀번호를 4자이상 입력해주세요');
+                return;
+            }
+        }
+    </script>
+
+</div>
+<!-- 로그인 끝 -->
+
+</body>
+</html>
