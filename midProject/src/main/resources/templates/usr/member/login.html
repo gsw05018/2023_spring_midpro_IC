@@ -11,28 +11,21 @@
 <div layout:fragment="content" class="input-login-box">
     <a href="/"><h1>뭐하지 또? 또가지 뭐!</h1></a>
     <div class="login-top-box">
-        <form th:action method="post"  onsubmit="submitLoginForm(this); return false;" >
+        <form th:action method="POST" onsubmit="submitLoginForm(this); return false;">
             <div class="form-box">
                 <div class="id-icon-box icon-box">
-                    <label for="username" class="form-label"></label>
                     <i class="fa-regular fa-user"></i>
-                    <input class="id-box" type="text" placeholder="아이디를 입력해주세요" name="username" id="username"
-                          autofocus  autocomplete="on" required>
+                    <input type="text" placeholder="아이디를 입력하세요" class="id-box" id="username" name="username" autofocus
+                           maxlength="30">
                 </div>
                 <div class="pass-icon-box icon-box">
-                    <label for="password" class="form-label"></label>
                     <i class="fa-solid fa-key"></i>
                     <input class="pass-box" type="password" name="password" id="password"
-                           placeholder="비밀번호를 입력해주세요" required>
+                           placeholder="비밀번호를 입력해주세요" >
                 </div>
-
-                <button class="submit" >로그인</button>
-
-
+                <button class="submit">로그인</button>
             </div>
-
         </form>
-
     </div>
     <div class="text-box">
         <a class="id" href="#" title="아이디 찾기"><span>아이디 찾기</span></a>
@@ -44,40 +37,39 @@
     <script>
         let submitLoginFormDone = false;
         function submitLoginForm(form){
-            if(submitLoginFormDone){
-                return ;
-            }
+            if(submitLoginFormDone) return;
 
             form.username.value = form.username.value.trim();
+         if (form.username.value.length == 0) {
+             form.username.focus();
+             toastWarning('아이디를 입력하세요');
+             return;
+         }
 
-            if(form.username.value == 0){
-                form.username.focus();
-                toastWarning('아이디를 입력해주세요');
-                return;
-            }
+         if (form.username.value.length < 4) {
+             form.username.focus();
+             toastWarning('아이디를 4자 이상 입력하세요');
+             return;
+         }
 
-            if(form.username.value < 4){
-                form.username.focus();
-                toastWarning('아이디를 4자이상 입력해주세요');
-                return;
-            }
+             form.password.value = form.password.value.trim();
+         if (form.password.value.length == 0) {
+             form.password.focus();
+             toastWarning('비밀번호를 입력하세요');
+             return;
+         }
 
-            form.password.value = form.password.value.tirm();
-
-            if(form.password.value == 0){
-                form.password.focus();
-                toastWarning('비밀번호를 입력해주세요');
-                return;
-            }
-
-            if(form.password.value  < 4){
-                form.password.focus();
-                toastWarning('비밀번호를 4자이상 입력해주세요');
-                return;
-            }
+           if (form.password.value.length < 4) {
+             form.password.focus();
+             toastWarning('비밀번호를 4자 이상 입력하세요');
+             return;
+         }
+             form.submit();
+         submitLoginFormDone = true;
         }
-    </script>
 
+
+    </script>
 </div>
 <!-- 로그인 끝 -->
 
