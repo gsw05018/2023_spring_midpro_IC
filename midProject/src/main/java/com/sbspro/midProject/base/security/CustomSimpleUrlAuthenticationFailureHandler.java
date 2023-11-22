@@ -10,12 +10,9 @@ import org.springframework.security.web.authentication.SimpleUrlAuthenticationFa
 import java.io.IOException;
 
 public class CustomSimpleUrlAuthenticationFailureHandler extends SimpleUrlAuthenticationFailureHandler {
-
     @Override
-    public void onAuthenticationFailure(HttpServletRequest request, HttpServletResponse response, AuthenticationException exception) throws IOException, ServletException{
-
-        setDefaultFailureUrl("/usr/member/login?failMsg" + Ut.url.encodeWithTtl("올바르지 않은 회원정보 입니다"));
-        super.onAuthenticationFailure(request,response, exception);
-
+    public void onAuthenticationFailure(HttpServletRequest request, HttpServletResponse response, AuthenticationException exception) throws IOException, ServletException {
+        setDefaultFailureUrl("/usr/member/login?failMsg=" + Ut.url.encodeWithTtl("올바르지 않은 회원정보 입니다."));
+        super.onAuthenticationFailure(request, response, exception);
     }
 }

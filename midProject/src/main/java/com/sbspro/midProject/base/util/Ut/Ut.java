@@ -8,22 +8,19 @@ import java.util.Date;
 import java.util.Optional;
 
 public class Ut {
-
-    public static class date{
-        public static String getCurrentDateFormatted(String pattern){
+    public static class date {
+        public static String getCurrentDateFormatted(String pattern) {
             SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
             return simpleDateFormat.format(new Date());
         }
     }
 
-    public static class file{
-
-        public static String getExt(String filename){
+    public static class file {
+        public static String getExt(String filename) {
             return Optional.ofNullable(filename)
-                    .filter(f ->f.contains("."))
-                    .map(f->f.substring(filename.lastIndexOf(".") + 1).toLowerCase())
+                    .filter(f -> f.contains("."))
+                    .map(f -> f.substring(filename.lastIndexOf(".") + 1).toLowerCase())
                     .orElse("");
-
         }
 
         public static String getFileExtTypeCodeFromFileExt(String ext) {
@@ -40,23 +37,23 @@ public class Ut {
                 case "mp3":
                     return "audio";
             }
+
             return "etc";
         }
 
-        public static String getFileExtType2CodeFromFileExt(String ext){
-            switch (ext){
+        public static String getFileExtType2CodeFromFileExt(String ext) {
+
+            switch (ext) {
                 case "jpeg":
                 case "jpg":
-                    return "jgp";
+                    return "jpg";
                 case "gif", "png", "mp4", "mov", "avi", "mp3":
                     return ext;
             }
+
             return "etc";
         }
-
-
     }
-
 
     public static class url {
 
@@ -68,53 +65,48 @@ public class Ut {
             }
         }
 
-        public static String modifyQueryParam(String url, String paramName, String paramvalue) {
+        public static String modifyQueryParam(String url, String paramName, String paramValue) {
             url = deleteQueryParam(url, paramName);
-            url = addQueryParam(url, paramName, paramvalue);
+            url = addQueryParam(url, paramName, paramValue);
 
             return url;
         }
 
-        public static String addQueryParam(String url, String paramName, String paramvalue){
-
-            if(!url.contains("?")){
-
+        public static String addQueryParam(String url, String paramName, String paramValue) {
+            if (!url.contains("?")) {
                 url += "?";
             }
 
-            if(!url.endsWith("?") && !url.endsWith("&")){
+            if (!url.endsWith("?") && !url.endsWith("&")) {
                 url += "&";
             }
 
-            url += paramName + "=" + paramvalue;
+            url += paramName + "=" + paramValue;
 
             return url;
-
         }
 
-        public static String encodeWithTtl(String s){
+        private static String deleteQueryParam(String url, String paramName) {
+            int startPoint = url.indexOf(paramName + "=");
+            if (startPoint == -1) return url;
+
+            int endPoint = url.substring(startPoint).indexOf("&");
+
+            if (endPoint == -1) {
+                return url.substring(0, startPoint - 1);
+            }
+
+            String urlAfter = url.substring(startPoint + endPoint + 1);
+
+            return url.substring(0, startPoint) + urlAfter;
+        }
+
+        public static String encodeWithTtl(String s) {
             return withTtl(encode(s));
         }
 
-        public static String withTtl(String msg){
+        public static String withTtl(String msg) {
             return msg + ";ttl=" + new Date().getTime();
         }
-    }
-
-    private static String deleteQueryParam(String url, String paramName){
-        int startPoint = url.indexOf(paramName + "=");
-        if(startPoint == -1){
-            return url;
-        }
-
-        int endPonit = url.substring(startPoint).indexOf("&");
-
-        if(endPonit == -1){
-            return url.substring(0, startPoint -1);
-        }
-
-        String urlAfter = url.substring(startPoint + endPonit + 1);
-
-        return url.substring(0, startPoint) + urlAfter;
     }
 }

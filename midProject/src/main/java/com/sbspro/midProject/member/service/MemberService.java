@@ -3,7 +3,7 @@ package com.sbspro.midProject.member.service;
 import com.sbspro.midProject.base.rsData.RsData;
 import com.sbspro.midProject.domain.genFile.service.GenFileService;
 import com.sbspro.midProject.member.entity.Member;
-import com.sbspro.midProject.member.repositroy.MemberRepositroy;
+import com.sbspro.midProject.member.repositroy.MemberRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -16,7 +16,7 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class MemberService {
 
-    private final MemberRepositroy memberRepositroy;
+    private final MemberRepository memberRepositroy;
     private final PasswordEncoder passwordEncoder;
     private final GenFileService genFileService;
 
