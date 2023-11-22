@@ -37,4 +37,8 @@ public class baseEntity {
     @Builder.Default
     private Map<String, Object> extra = new LinkedHashMap<>();
 
+    public String getModelName() {
+        String simpleName = this.getClass().getSimpleName();
+        return Character.toLowerCase(simpleName.charAt(0)) + simpleName.substring(1);
+    }
 }
