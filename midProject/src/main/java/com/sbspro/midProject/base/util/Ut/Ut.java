@@ -67,5 +67,46 @@ public class Ut {
                 return null;
             }
         }
+
+        public static String modifyQueryParam(String url, String paramName, String paramvalue) {
+            url = deleteQueryParam(url, paramName);
+            url = addQueryParam(url, paramName, paramvalue);
+
+            return url;
+        }
+
+        public static String addQueryParam(String url, String paramName, String paramvalue){
+
+            if(!url.contains("?")){
+
+                url += "?";
+            }
+
+            if(!url.endsWith("?") && !url.endsWith("&")){
+                url += "&";
+            }
+
+            url += paramName + "=" + paramvalue;
+
+            return url;
+
+        }
+    }
+
+    private static String deleteQueryParam(String url, String paramName){
+        int startPoint = url.indexOf(paramName + "=");
+        if(startPoint == -1){
+            return url;
+        }
+
+        int endPonit = url.substring(startPoint).indexOf("&");
+
+        if(endPonit == -1){
+            return url.substring(0, startPoint -1);
+        }
+
+        String urlAfter = url.substring(startPoint + endPonit + 1);
+
+        return url.substring(0, startPoint) + urlAfter;
     }
 }
