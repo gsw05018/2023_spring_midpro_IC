@@ -53,21 +53,17 @@
                    <i class="fa-solid fa-circle-user btn-i" ></i>
                         <div class="toggle-menu">
                             <ul sec:authorize="isAnonymous()">
-                                <li><a class="nav-link" href="/usr/member/login">로그인</a></li>
-                                <li><a class="nav-link" href="/usr/member/join">회원가입</a></li>
+                                <li th:if="${@rq.logout}"><a class="nav-link" href="/usr/member/login">로그인</a></li>
+                                <li th:if="${@rq.logout}"><a class="nav-link" href="/usr/member/join">회원가입</a></li>
                             </ul>
                             <ul sec:authorize="isAuthenticated()">
-                                <li><a class="nav-link" href="/usr/member/mypage">마이페이지</a></li>
-                                <li><a class="nav-link" href="/usr/member/logout">로그아웃</a></li>
+                                <li th:if="${@rq.login}"><a class="nav-link" href="/usr/member/mypage">마이페이지</a></li>
+                                <li th:if="${@rq.login}"><a class="nav-link" href="/usr/member/logout">로그아웃</a></li>
                             </ul>
                         </div>
                 </li>
-
-
             </ul>
-
         </div>
-
     </div>
 
     <script>
