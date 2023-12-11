@@ -1,6 +1,7 @@
 package com.sbspro.midProject.domain.genFile.entity;
 
-import com.sbspro.midProject.base.entity.baseEntity;
+import com.sbspro.midProject.base.app.AppConfig;
+import com.sbspro.midProject.base.entity.BaseEntity;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Index;
 import jakarta.persistence.Table;
@@ -19,9 +20,9 @@ import static lombok.AccessLevel.PROTECTED;
 @SuperBuilder
 @ToString(callSuper = true)
 @Table(indexes = {
-        @Index(name = "idx1", columnList = "relId,relTypeCode, typeCode, type2Code")
+        @Index(name = "idx1", columnList = "relId,relTypeCode,typeCode,type2Code")
 })
-public class GenFile extends baseEntity {
+public class GenFile extends BaseEntity {
     private String relTypeCode;
     private long relId;
     private String typeCode;
@@ -33,4 +34,20 @@ public class GenFile extends baseEntity {
     private String fileExt;
     private String fileDir;
     private String originFileName;
+
+    public String getFileName() {
+        return getId() + "." + getFileExt();
+    }
+
+    public String getUrl() {
+        return "/gen/" + getFileDir() + "/" + getFileName();
+    }
+
+    public String getDownloadUrl() {
+        return "/download/gen/" + getId();
+    }
+
+    public String getFilePath() {
+        return AppConfig.getGenFileDirPath() + "/" + getFileDir() + "/" + getFileName();
+    }
 }

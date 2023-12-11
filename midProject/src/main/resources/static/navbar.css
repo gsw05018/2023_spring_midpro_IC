@@ -88,6 +88,13 @@ input {
 
 }
 
+.wrap-box > .top-bar-box > .login-box li  .profile_box {
+  position: absolute;
+  right: 60px;
+  bottom: 20px;
+}
+
+
 .wrap-box > .top-bar-box > .login-box div > .se-icon {
   position: absolute;
   bottom: 10px;

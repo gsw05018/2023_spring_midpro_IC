@@ -1,7 +1,7 @@
 package com.sbspro.midProject.proto.entitny;
 
 import com.sbspro.midProject.answer.entity.Answer;
-import com.sbspro.midProject.base.entity.baseEntity;
+import com.sbspro.midProject.base.entity.BaseEntity;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -16,7 +16,7 @@ import java.util.List;
 @AllArgsConstructor
 @ToString(callSuper = true)
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class Board extends baseEntity {
+public class Board extends BaseEntity {
 
     @Column(columnDefinition = "Text")
     private String content;

@@ -20,7 +20,7 @@ import java.util.Map;
 @SuperBuilder
 @AllArgsConstructor
 @EqualsAndHashCode
-public class baseEntity {
+public class BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

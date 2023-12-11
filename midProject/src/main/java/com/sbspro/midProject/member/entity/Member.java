@@ -1,6 +1,6 @@
 package com.sbspro.midProject.member.entity;
 
-import com.sbspro.midProject.base.entity.baseEntity;
+import com.sbspro.midProject.base.entity.BaseEntity;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import lombok.*;
@@ -20,7 +20,7 @@ import static lombok.AccessLevel.PROTECTED;
 @NoArgsConstructor(access = PROTECTED)
 @SuperBuilder
 @ToString(callSuper = true)
-public class Member extends baseEntity {
+public class Member extends BaseEntity {
     @Column(unique = true)
     private String username;
 

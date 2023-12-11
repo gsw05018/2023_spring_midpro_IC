@@ -1,22 +1,25 @@
 package com.sbspro.midProject.domain.genFile.service;
 
-import com.sbspro.midProject.base.util.Ut.Ut;
+import com.sbspro.midProject.base.util.Ut;
 import com.sbspro.midProject.domain.genFile.entity.GenFile;
-import com.sbspro.midProject.domain.genFile.repositroy.GenFileRepositroy;
+import com.sbspro.midProject.domain.genFile.repositroy.GenFileRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.io.File;
+import java.io.IOException;
+import java.util.Optional;
+
 @Service
 @RequiredArgsConstructor
 @Transactional(readOnly = true)
 public class GenFileService {
-    private final GenFileRepositroy genFileRepositroy;
+    private final GenFileRepository genFileRepository;
 
     @Transactional
-    public GenFile save(String relTypeCode, Long relId, String typeCode, String type2Code, int fileNo, MultipartFile multipartFile){
-
+    public GenFile save(String relTypeCode, Long relId, String typeCode, String type2Code, int fileNo, MultipartFile multipartFile) {
         String originFileName = multipartFile.getOriginalFilename();
         String fileExt = Ut.file.getExt(originFileName);
         String fileExtTypeCode = Ut.file.getFileExtTypeCodeFromFileExt(fileExt);
@@ -38,15 +41,26 @@ public class GenFileService {
                 .fileDir(fileDir)
                 .build();
 
-        genFileRepositroy.save(genFile);
+        genFileRepository.save(genFile);
+
+        File file = new File(genFile.getFilePath());
+
+        file.getParentFile().mkdirs();
+
+        try {
+            multipartFile.transferTo(file);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
 
         return genFile;
-
     }
 
     private String getCurrentDirName(String relTypeCode) {
         return relTypeCode + "/" + Ut.date.getCurrentDateFormatted("yyyy_MM_dd");
     }
 
-
+    public Optional<GenFile> findGenFileBy(String relTypeCode, Long relId, String typeCode, String type2Code, int fileNo) {
+        return genFileRepository.findByRelTypeCodeAndRelIdAndTypeCodeAndType2CodeAndFileNo(relTypeCode, relId, typeCode, type2Code, fileNo);
+    }
 }

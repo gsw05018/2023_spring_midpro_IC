@@ -1,6 +1,6 @@
 package com.sbspro.midProject.base.security;
 
-import com.sbspro.midProject.base.util.Ut.Ut;
+import com.sbspro.midProject.base.util.Ut;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;

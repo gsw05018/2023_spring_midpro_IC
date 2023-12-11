@@ -1,4 +1,4 @@
-package com.sbspro.midProject.base.util.Ut;
+package com.sbspro.midProject.base.util;
 
 
 import java.io.UnsupportedEncodingException;

@@ -48,9 +48,11 @@
                     </div>
                 </a>
                 </li>
-
                  <li class="lo-box" style=" cursor : pointer;">
-                   <i class="fa-solid fa-circle-user btn-i" ></i>
+                     <i th:if="${@rq.logout}" class="fa-solid fa-circle-user btn-i" ></i>
+                     <a class="profile_box" th:if="${@rq.login}" href="#" >
+                         <img th:src="${@rq.profileImgUrl}" alt="프로필 이미지" style="object-fit: cover; width : 35px  ; height: 35px ; border-radius: 9999px;">
+                     </a>
                         <div class="toggle-menu">
                             <ul sec:authorize="isAnonymous()">
                                 <li th:if="${@rq.logout}"><a class="nav-link" href="/usr/member/login">로그인</a></li>

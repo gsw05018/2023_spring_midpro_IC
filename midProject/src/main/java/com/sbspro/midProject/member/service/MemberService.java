@@ -1,6 +1,7 @@
 package com.sbspro.midProject.member.service;
 
 import com.sbspro.midProject.base.rsData.RsData;
+import com.sbspro.midProject.domain.genFile.entity.GenFile;
 import com.sbspro.midProject.domain.genFile.service.GenFileService;
 import com.sbspro.midProject.member.entity.Member;
 import com.sbspro.midProject.member.repositroy.MemberRepository;
@@ -19,7 +20,6 @@ public class MemberService {
     private final MemberRepository memberRepositroy;
     private final PasswordEncoder passwordEncoder;
     private final GenFileService genFileService;
-
 
     @Transactional
     public RsData<Member> join(String username, String password, String nickname, String email, String phoneNumber, MultipartFile profileImg) {
@@ -58,4 +58,12 @@ public class MemberService {
 
         return RsData.of("S-1", "%s는 사용 가능한 아이디입니다.".formatted(username));
     }
+
+    public Optional<String> findProfileImgUrl(Member member){
+        return genFileService.findGenFileBy(
+                member.getModelName(), member.getId(), "common", "profileImg", 0
+        )
+                .map(GenFile::getUrl);
+    }
+
 }
