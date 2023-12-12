@@ -127,7 +127,6 @@
 
         let validUsername = '';
         let lastCheckedUsername = '';
-        let submitJoinFormDone = false;
         // username 중복 체크 끝
 
     // email 중복 체크 시작
@@ -184,10 +183,12 @@
     // email 중복 체크 끝
 
     // joinForm 유효성 검사 시작
+     let submitJoinFormDone = false;
      function submitJoinForm(form) {
          if (submitJoinFormDone) return;
 
          form.username.value = form.username.value.trim();
+
          if (form.username.value.length == 0) {
              form.username.focus();
              toastWarning('아이디를 입력하세요');
@@ -198,13 +199,6 @@
              form.username.focus();
              toastWarning('아이디를 4자 이상 입력하세요');
              return;
-         }
-
-
-         if(validUsername != form.username.value){
-            $(form.username).next().focus();
-            toastWarning('아이디를 중복체크 해주세요');
-            return ;
          }
 
          form.password.value = form.password.value.trim();
@@ -246,12 +240,6 @@
              return;
          }
 
-         if(validEmail != form.email.value){
-            $(form.email).next().focus();
-            toastWarning('이메일 중복체크를 해주세요');
-            return;
-         }
-
          form.name.value = form.name.value.trim();
          if (form.name.value.length == 0) {
              form.name.focus();
@@ -279,13 +267,24 @@
              return;
          }
 
-         var privacyCheckbox = document.getElementById("privacyCheckbox");
+         let privacyCheckbox = document.getElementById("privacyCheckbox");
 
          if (!privacyCheckbox.checked) {
              toastWarning('개인정보를 체크해주세요');
              return;
          }
 
+         if ( validUsername != form.username.value ) {
+             $(form.username).next().focus();
+             toastWarning('아이디 중복 체크(를) 해주세요.');
+             return;
+        }
+
+         if ( validEmail != form.email.value ) {
+               $(form.email).next().focus();
+               toastWarning('이메일 중복 체크을(를) 해주세요.');
+               return;
+         }
 
          form.submit();
          submitJoinFormDone = true;
