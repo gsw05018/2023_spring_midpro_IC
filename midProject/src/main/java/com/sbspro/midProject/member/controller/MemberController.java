@@ -53,16 +53,13 @@ public class MemberController {
         @NotBlank
         private String email;
 
-        @NotBlank
-        private String phoneNumber;
-
         private MultipartFile profileImg;
     }
 
     @PostMapping("/join")
     public String join(@Valid JoinForm joinForm){
 
-     RsData<Member> joinRs =  memberService.join(joinForm.getUsername(), joinForm.getPassword(), joinForm.getNickname(), joinForm.getEmail(), joinForm.getPhoneNumber(),joinForm.getProfileImg());
+     RsData<Member> joinRs =  memberService.join(joinForm.getUsername(), joinForm.getPassword(), joinForm.getNickname(), joinForm.getEmail(), joinForm.getProfileImg());
         if (joinRs.isFail()) {
             return rq.historyBack(joinRs.getMsg());
         }

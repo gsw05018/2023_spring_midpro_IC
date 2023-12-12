@@ -30,10 +30,6 @@ public class Member extends BaseEntity {
 
     private String email;
 
-    private String phoneNumber;
-
-
-
     public boolean isAdmin(){
         return "admin".equals(username);
     }

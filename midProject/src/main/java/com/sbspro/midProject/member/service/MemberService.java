@@ -22,7 +22,7 @@ public class MemberService {
     private final GenFileService genFileService;
 
     @Transactional
-    public RsData<Member> join(String username, String password, String nickname, String email, String phoneNumber, MultipartFile profileImg) {
+    public RsData<Member> join(String username, String password, String nickname, String email,  MultipartFile profileImg) {
 
         if (findByUsername(username).isPresent())
             return RsData.of("F-1", "%s(은)는 사용중인 아이디입니다.".formatted(username));
@@ -33,7 +33,6 @@ public class MemberService {
                     .password(passwordEncoder.encode(password))
                     .nickname(nickname)
                     .email(email)
-                    .phoneNumber(phoneNumber)
                     .build();
 
             member = memberRepositroy.save(member);

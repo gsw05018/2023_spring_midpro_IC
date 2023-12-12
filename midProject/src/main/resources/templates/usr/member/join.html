@@ -58,26 +58,10 @@
                            name="birthdateInput">
                 </div>
                 <div class="join-icon-box">
-                    <i class="name fa-solid fa-phone-volume"></i>
-                    <select name="phone" id="phone">
-                        <option value="" selected>통신사 선택</option>
-                        <option value="KT">KT</option>
-                        <option value="LGU+">LGU+</option>
-                        <option value="SKT">SKT</option>
-                    </select>
-                </div>
-
-                <div class="join-icon-box">
-                    <i class="name fa-solid fa-tablet-screen-button"></i>
-                    <input type="tel" placeholder="전화번호" class="phone-box" id="phoneNumber" name="phoneNumber">
-                </div>
-
-                <div class="join-icon-box">
                     <i class="name fa-solid fa-tablet-screen-button"></i>
                     <input type="file" placeholder="프로필 이미지" class="phone-box" id="profileImg" name="profileImg"
                            accept="image/jpeg, image/png, image/gif">
                 </div>
-
                 <p class="text">
                     <input type="checkbox" class="agree-box" name="privacyCheckbox" id="privacyCheckbox"> 개인정보 수집 및 이용
                     내용을 확인하였으며, 동의합니다.
@@ -226,20 +210,6 @@
              return;
          }
 
-         form.phone.value = form.phone.value.trim();
-         if (form.phone.value.length == 0) {
-             form.phone.focus();
-             toastWarning('통신사를 체크해주세요');
-             return;
-         }
-
-         form.phoneNumber.value = form.phoneNumber.value.trim();
-         if (form.phoneNumber.value.length == 0) {
-             form.phoneNumber.focus();
-             toastWarning('전화번호를 입력해주세요');
-             return;
-         }
-
          var privacyCheckbox = document.getElementById("privacyCheckbox");
 
          if (!privacyCheckbox.checked) {
@@ -322,32 +292,6 @@
             });
         });
     </script>
-
-    <!-- 전화번호 입력 포맷팅 스크립트 -->
-    <script>
-        // 전화번호 입력을 자동으로 포맷팅하는 함수
-        function formatPhoneNumber(input) {
-            // 숫자만 추출하고, 11자리까지만 허용
-            const phoneNumber = input.value.replace(/\D/g, '').slice(0, 11);
-
-            // 전화번호 형식에 따라 포맷팅
-            if (phoneNumber.length <= 3) {
-                input.value = phoneNumber;
-            } else if (phoneNumber.length <= 7) {
-                input.value = `${phoneNumber.slice(0, 3)}-${phoneNumber.slice(3)}`;
-            } else {
-                input.value = `${phoneNumber.slice(0, 3)}-${phoneNumber.slice(3, 7)}-${phoneNumber.slice(7)}`;
-            }
-        }
-
-        // 전화번호 입력 필드에 이벤트 리스너 추가
-        const phoneInput = document.querySelector(".phone-box"); // 전화번호 입력 필드의 클래스에 맞게 수정
-        phoneInput.addEventListener("input", function () {
-            formatPhoneNumber(this);
-        });
-    </script>
-
 </div>
-
 </body>
 </html>
