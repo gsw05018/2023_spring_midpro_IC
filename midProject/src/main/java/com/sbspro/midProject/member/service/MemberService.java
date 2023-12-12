@@ -27,7 +27,10 @@ public class MemberService {
         if (findByUsername(username).isPresent())
             return RsData.of("F-1", "%s(은)는 사용중인 아이디입니다.".formatted(username));
 
-            Member member = Member
+        if (findByEmail(email).isPresent())
+            return RsData.of("F-2", "%s(은)는 사용중인 이메일입니다.".formatted(email));
+
+        Member member = Member
                     .builder()
                     .username(username)
                     .password(passwordEncoder.encode(password))
@@ -44,11 +47,15 @@ public class MemberService {
             return RsData.of("S-1", "회원가입이 완료되었습니다", member);
         }
 
-        public Optional<Member> findByUsername (String username){
+    public Optional<Member> findByUsername (String username){
             return memberRepositroy.findByUsername(username);
         }
 
-        public Optional<Member> findById (Long id){
+    public Optional<Member> findByEmail (String email){
+        return memberRepositroy.findByEmail(email);
+    }
+
+    public Optional<Member> findById (Long id){
             return memberRepositroy.findById(id);
         }
 
@@ -56,6 +63,12 @@ public class MemberService {
         if(findByUsername(username).isPresent()) return RsData.of("F-1", "%s는 사용중인 아이디입니다.".formatted(username));
 
         return RsData.of("S-1", "%s는 사용 가능한 아이디입니다.".formatted(username));
+    }
+
+    public RsData<String> checkEmailDup(String email) {
+        if(findByEmail(email).isPresent()) return RsData.of("F-1", "%s는 사용중인 이메일입니다.".formatted(email));
+
+        return RsData.of("S-1", "%s는 사용 가능한 이메일입니다.".formatted(email));
     }
 
     public Optional<String> findProfileImgUrl(Member member){

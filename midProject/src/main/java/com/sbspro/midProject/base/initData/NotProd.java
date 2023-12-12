@@ -17,7 +17,7 @@ public class NotProd {
             memberService.join("admin", "1234", "admin", "admin1234@naver.com",  null);
 
             IntStream.rangeClosed(1, 3).forEach(i -> {
-                memberService.join("user" + i, "1234", "user" + i, "user@naver.com", null);
+                memberService.join("user" + i, "1234", "user" + i, "user" + i + "@naver.com", null);
             });
         };
     }

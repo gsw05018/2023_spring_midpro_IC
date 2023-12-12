@@ -22,7 +22,7 @@
                     <input type="text" placeholder="아이디를 입력하세요" class="id-box" id="username" name="username" autofocus
                            maxlength="30" onchange="$(this).keyup();" onpaste="setTimeoutZero(() => $(this).keyup());"
                            onkeyup="checkUsernameDupDebounce();">
-                    <div style="margin : 4px ; font-size : 14px ;">
+                    <div class="p-text">
                     </div>
                 </div>
                 <div class="join-icon-box">
@@ -36,13 +36,15 @@
                     <input type="password" id="password2" name="password2" placeholder="비밀번호를 다시 입력하세요"
                            class="pass-box" maxlength="30">
                     <p class="p-text">영어, 특수문자, 숫자를 모두 포함시켜주세요</p>
-                    <!--                    <button class="submit" style="margin-bottom: 10px ">비밀번호 확인</button>-->
                     <p id="passwordMatchError" class="error-text"
                        style="margin-bottom: 10px ; font-size: 15px ; font-weight: bold "></p>
                 </div>
                 <div class="join-icon-box">
                     <i class="name fa-solid fa-envelope"></i>
-                    <input type="email" placeholder="이메일을 입력하세요" class="niname-box" id="email" name="email">
+                    <input type="email" placeholder="이메일을 입력하세요" class="niname-box" id="email" name="email"
+                    maxlength="30" onchange="$(this).keyup();" onpaste="setTimeoutZero(() => $(this).keyup());"
+                    onkeyup="checkEmailDupDebounce();">
+                    <div class="p-text"></div>
                 </div>
                 <div class="join-icon-box">
                     <i class="name fa-regular fa-user"></i>
@@ -71,6 +73,9 @@
         </form>
     </div>
     <script>
+        // username 중복 체크 시작
+        const joinForm = document['join-form'];
+
         function checkUsernameDup(form) {
                  form.username.value = form.username.value.trim();
 
@@ -98,13 +103,11 @@
                      .then(res => res.json())
                      .then((rsData) => {
                          if ( rsData.success ) {
-                             validUsername = form.username.value;
+                             validUsername = rsData.data;
                          }
                          setUsernameInputMsg(rsData.success, rsData.msg);
                      });
              }
-
-            const joinForm = document['join-form'];
 
             const checkUsernameDupDebounce = _.debounce(() => checkUsernameDup(joinForm), 500);
 
@@ -127,7 +130,64 @@
         let validUsername = '';
         let lastCheckedUsername = '';
         let submitJoinFormDone = false;
+        // username 중복 체크 끝
 
+    // email 중복 체크 시작
+    function checkEmailDup(form){
+        form.email.value = form.email.value.trim();
+
+        if(form.email.value.length == 0){
+            clearEmailInputMsg();
+            return;
+        }
+
+        if(form.email.value.length < 4){
+            clearEmailInputMsg();
+            return;
+        }
+
+        if( validEmail == form.email.value ) return;
+
+        if( lastCheckedEmail == form.email.value) return;
+
+        lastCheckedEmail = form.email.value;
+
+        clearEmailInputMsg();
+
+        fetch(
+            'checkEmailDup?email=' + form.email.value
+        )
+            .then(res => res.json())
+            .then((rsData) => {
+                if(rsData.success){
+                    validEmail = rsData.data;
+                }
+                setEmailInputMsg(rsData.success, rsData.msg);
+            });
+    }
+
+    const checkEmailDupDebounce = _.debounce(() => checkEmailDup(joinForm), 500);
+
+    function clearEmailInputMsg(){
+        $(joinForm.email).removeClass('input-accent input-error');
+        $(joinForm.email).next().removeClass('text-green-400 text-red-400');
+        $(joinForm.email).next().empty();
+    }
+
+    function setEmailInputMsg(isSuccess, msg){
+        if( isSuccess ) $(joinForm.email).addClass('input-accent');
+        if( !isSuccess ) $(joinForm.email).addClass('input-error');
+
+        $(joinForm.email).next().addClass(isSuccess ? 'text-green-400' : 'text-red-400');
+
+        $(joinForm.email).next().text(msg);
+    }
+
+    let validEmail = '';
+    let lastCheckedEmail = '';
+    // email 중복 체크 끝
+
+    // joinForm 유효성 검사 시작
      function submitJoinForm(form) {
          if (submitJoinFormDone) return;
 
@@ -143,6 +203,7 @@
              toastWarning('아이디를 4자 이상 입력하세요');
              return;
          }
+
 
          if(validUsername != form.username.value){
             $(form.username).next().focus();
@@ -183,6 +244,18 @@
              return;
          }
 
+          if (form.email.value.length < 4) {
+             form.email.focus();
+             toastWarning('이메일을 4자 이상 입력하세요');
+             return;
+         }
+
+         if(validEmail != form.email.value){
+            $(form.email).next().focus();
+            toastWarning('이메일 중복체크를 해주세요');
+            return;
+         }
+
          form.name.value = form.name.value.trim();
          if (form.name.value.length == 0) {
              form.name.focus();
@@ -217,9 +290,11 @@
              return;
          }
 
+
          form.submit();
          submitJoinFormDone = true;
      }
+    // joinForm 유효성 검사 끝
     </script>
 
 

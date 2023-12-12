@@ -69,9 +69,16 @@ public class MemberController {
 
     @GetMapping("/checkUsernameDup")
     @ResponseBody
-    public RsData checkUsernameDup(String username){
+    public RsData<String> checkUsernameDup(String username){
         return memberService.checkUsernameDup(username);
 
     }
+
+    @GetMapping("/checkEmailDup")
+    @ResponseBody
+    public RsData<String> checkEmailDup(String email){
+        return memberService.checkEmailDup(email);
+    }
+
 
 }
