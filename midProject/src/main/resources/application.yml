@@ -14,9 +14,6 @@ spring:
           auth: ture
           starttls:
             enable: true
-  thymeleaf:
-    cache: false
-    prefix: file:src/main/resources/templates/
   output:
     ansi:
       enabled: always
