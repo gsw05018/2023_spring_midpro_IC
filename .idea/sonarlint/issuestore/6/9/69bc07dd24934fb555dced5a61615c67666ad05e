@@ -1,0 +1,24 @@
+
+Y
+java:S6208"CMerge the previous cases into this one using comma-separated label.(±¼Ì»
+Y
+java:S6208#"CMerge the previous cases into this one using comma-separated label.(ÛñìÙ
+^
+java:S62080"CMerge the previous cases into this one using comma-separated label.(ÙŸ¢Úøÿÿÿÿ
+g	java:S101"MRename this class name to match the regular expression '^[A-Z][a-zA-Z0-9]*$'.(Ö¬ºêùÿÿÿÿ
+g	java:S101"MRename this class name to match the regular expression '^[A-Z][a-zA-Z0-9]*$'.(Ô¥Û£øÿÿÿÿ
+b	java:S101:"MRename this class name to match the regular expression '^[A-Z][a-zA-Z0-9]*$'.(…Ò“Â
+o	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(óíèµ
+P
+java:S1118
+":Add a private constructor to hide the implicit public one.(öÎØ„
+U
+java:S1118":Add a private constructor to hide the implicit public one.(Ö¬ºêùÿÿÿÿ
+U
+java:S1118":Add a private constructor to hide the implicit public one.(Ô¥Û£øÿÿÿÿ
+<	java:S131""Add a default case to this switch.(´¶€Ñüÿÿÿÿ
+<	java:S131.""Add a default case to this switch.(´¶€Ñüÿÿÿÿ
+P
+java:S1118:":Add a private constructor to hide the implicit public one.(…Ò“Â
+[
+java:S4635]"EReplace "indexOf" with the overload that accepts an offset parameter.(™¨ï

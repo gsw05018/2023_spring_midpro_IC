@@ -11,7 +11,7 @@ spring:
     properties:
       mail:
         smtp:
-          auth: ture
+          auth: true
           starttls:
             enable: true
   output:

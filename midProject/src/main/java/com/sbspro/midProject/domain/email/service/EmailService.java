@@ -14,18 +14,18 @@ import org.springframework.transaction.annotation.Transactional;
 public class EmailService {
     private final JavaMailSender mailSender;
 
-    public void send(String to, String subject, String body){
-        if(to.endsWith("@test.com")) return;
+    public void send(String to, String subject, String body) {
+        if (to.endsWith("@test.com")) return;
 
         MimeMessage mimeMessage = mailSender.createMimeMessage();
 
-        try{
+        try {
             MimeMessageHelper mimeMessageHelper = new MimeMessageHelper(mimeMessage, false, "UTF-8");
-            mimeMessageHelper.setTo(to);
-            mimeMessageHelper.setSubject(subject);
-            mimeMessageHelper.setText(body);
+            mimeMessageHelper.setTo(to); // 메일 수신자
+            mimeMessageHelper.setSubject(subject); // 메일 제목
+            mimeMessageHelper.setText(body, true); // 메일 본문 내용, HTML 여부
             mailSender.send(mimeMessage);
-        } catch (MessagingException e){
+        } catch (MessagingException e) {
             throw new RuntimeException(e);
         }
     }

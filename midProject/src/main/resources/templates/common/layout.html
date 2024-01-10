@@ -32,9 +32,6 @@
     <!-- slick Carousel CDN -->
     <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery.slick/1.5.7/slick.min.js"></script>
 
-    <!-- SweetAlert 2 스크립트 -->
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
     <!-- toastr 불러오기 -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.4/toastr.min.js"></script>
     <link rel="stylesheet" href="https://jhs512.github.io/toastr/toastr.css">
@@ -123,7 +120,7 @@
 
     // msg 파라미터의 값이 있으면 toatr로 알림을 표시
     if(msg ){
-        toastNotice(decodeURLComponent(msg ));
+        toastNotice(decodeURIComponent(msg ));
     }
 
     const failMsg  = getFailMsgFromURL();
