@@ -1,7 +1,9 @@
 package com.sbspro.midProject.member.service;
 
 import com.sbspro.midProject.base.rsData.RsData;
+import com.sbspro.midProject.domain.attr.service.AttrService;
 import com.sbspro.midProject.domain.email.service.EmailService;
+import com.sbspro.midProject.domain.emailVerification.service.EmailVerificationService;
 import com.sbspro.midProject.domain.genFile.entity.GenFile;
 import com.sbspro.midProject.domain.genFile.service.GenFileService;
 import com.sbspro.midProject.member.entity.Member;
@@ -21,10 +23,12 @@ import java.util.concurrent.CompletableFuture;
 @Slf4j
 public class MemberService {
 
-    private final MemberRepository memberRepositroy;
+    private final MemberRepository memberRepository;
     private final PasswordEncoder passwordEncoder;
     private final GenFileService genFileService;
     private final EmailService emailService;
+    private final EmailVerificationService emailVerificationService;
+    private final AttrService attrService;
 
 
     @Transactional
@@ -44,27 +48,28 @@ public class MemberService {
                     .email(email)
                     .build();
 
-            member = memberRepositroy.save(member);
+            member = memberRepository.save(member);
 
         if(profileImg != null){
             genFileService.save(member.getModelName(), member.getId(), "common", "profileImg", 0, profileImg);
         }
 
-        sendJoinCompleteMail(member);
+        sendJoinCompleteEmail(member);
+        sendVerificationEmail(member);
 
             return RsData.of("S-1", "회원가입이 완료되었습니다", member);
         }
 
     public Optional<Member> findByUsername (String username){
-            return memberRepositroy.findByUsername(username);
+            return memberRepository.findByUsername(username);
         }
 
     public Optional<Member> findByEmail (String email){
-        return memberRepositroy.findByEmail(email);
+        return memberRepository.findByEmail(email);
     }
 
     public Optional<Member> findById (Long id){
-            return memberRepositroy.findById(id);
+            return memberRepository.findById(id);
         }
 
     public RsData checkUsernameDup(String username) {
@@ -73,18 +78,22 @@ public class MemberService {
         return RsData.of("S-1", "%s는 사용 가능한 아이디입니다.".formatted(username));
     }
 
-    private void sendJoinCompleteMail(Member member) {
+    private void sendJoinCompleteEmail(Member member) {
         CompletableFuture<RsData> sendRsFuture = emailService.send(member.getEmail(), "회원가입이 완료되었습니다.", "회원가입이 완료되었습니다. 환영합니다.");
 
         final String email = member.getEmail();
 
         sendRsFuture.whenComplete((rs, throwable) -> {
             if(rs.isFail()){
-                log.info("메일 발송 실패 : " + email);
+                log.info("sendJoinCompleteEmail 메일 발송 실패 : " + email);
                 return;
             }
-            log.info("메일 발송 성공 : " + email);
+            log.info("sendJoinCompleteEmail 메일 발송 성공 : " + email);
         });
+    }
+
+    public void sendVerificationEmail(Member member){
+        emailVerificationService.send(member);
     }
 
     public RsData<String> checkEmailDup(String email) {
@@ -98,6 +107,25 @@ public class MemberService {
                 member.getModelName(), member.getId(), "common", "profileImg", 0
         )
                 .map(GenFile::getUrl);
+    }
+
+    @Transactional
+    public RsData verifyEmail(long id, String verificationCode){
+        RsData verifyVerificationCodeRs = emailVerificationService.verifyVerificationCode(id, verificationCode);
+
+        if(verifyVerificationCodeRs.isSuccess() == false){
+            return verifyVerificationCodeRs;
+        }
+
+        Member member = memberRepository.findById(id).get();
+
+        setEmailVerified(member);
+
+        return RsData.of("S-1", "이메일 인증이 완료 되었습니다.");
+    }
+
+    private void setEmailVerified(Member member){
+        attrService.set("member__%d__extra__emailVerified".formatted(member.getId()), true);
     }
 
 }
