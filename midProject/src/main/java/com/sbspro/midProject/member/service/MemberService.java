@@ -7,15 +7,18 @@ import com.sbspro.midProject.domain.genFile.service.GenFileService;
 import com.sbspro.midProject.member.entity.Member;
 import com.sbspro.midProject.member.repositroy.MemberRepository;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.util.Optional;
+import java.util.concurrent.CompletableFuture;
 
 @Service
 @RequiredArgsConstructor
+@Slf4j
 public class MemberService {
 
     private final MemberRepository memberRepositroy;
@@ -71,7 +74,17 @@ public class MemberService {
     }
 
     private void sendJoinCompleteMail(Member member) {
-        emailService.send(member.getEmail(),"회원가입이 완료되었습니다.", "회원가입이 완료되었습니다.");
+        CompletableFuture<RsData> sendRsFuture = emailService.send(member.getEmail(), "회원가입이 완료되었습니다.", "회원가입이 완료되었습니다. 환영합니다.");
+
+        final String email = member.getEmail();
+
+        sendRsFuture.whenComplete((rs, throwable) -> {
+            if(rs.isFail()){
+                log.info("메일 발송 실패 : " + email);
+                return;
+            }
+            log.info("메일 발송 성공 : " + email);
+        });
     }
 
     public RsData<String> checkEmailDup(String email) {
