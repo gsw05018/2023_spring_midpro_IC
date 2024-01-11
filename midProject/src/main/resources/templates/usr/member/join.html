@@ -2,12 +2,9 @@
 
 <head>
     <link rel="stylesheet" href="/join.css">
-
-
 </head>
 
 <body>
-
 <div layout:fragment="content" class="container my-3">
     <!--백업용 로그인 폼(DB 연결, 수정 필요)-->
     <div class="join-box">
@@ -75,101 +72,116 @@
     <script>
         // username 중복 체크 시작
         const joinForm = document['join-form'];
+        // join-form이라는 이름의 폼을 joinForm 변수에 할당
 
-        function checkUsernameDup(form) {
+        function checkUsernameDup(form) { // 사용자 이름 중복 검사 함수
                  form.username.value = form.username.value.trim();
+                 // 사용자 이름 필드의 값을 공백제거후 설정
 
-                 if ( form.username.value.length == 0 ) {
-                    clearUsernameInputMsg();
-                    return;
+                 if ( form.username.value.length == 0 ) { // 사용자 이름 필드가 공백이면
+                    clearUsernameInputMsg(); // 사용자 이름 관련 메시지 클리어
+                    return; // 함수 종료
                  }
 
-                 if ( form.username.value.length < 4 ) {
-                    clearUsernameInputMsg();
-                    return;
+                 if ( form.username.value.length < 4 ) { // 사용자 이름 필드 길이가 4미만ㅇㅌ치면
+                    `clearUsernameInputMsg`(); // 사용자 이름 관련 메시지 클리어
+                    return; // 함수 종료
                  }
 
                  if(lastCheckedUsername == form.username.value) return;
+                // 마지막으로 체크한 사용자이름과 입력한 이름이 같으면 함수 종료
 
                  lastCheckedUsername = form.username.value;
+                 // 마지막으로 체크한 사용자 이름을 현재 값으로 업데이트
 
                  clearUsernameInputMsg();
+                 // 메시지 클리어
 
+                // 서버에 사용자 이름 중복 검사 요청
                  fetch(
                      'checkUsernameDup?username=' + form.username.value
                  )
-                     .then(res => res.json())
-                     .then((rsData) => {
-                         if ( rsData.success ) {
-                             validUsername = rsData.data;
+                     .then(res => res.json()) // 응답을 json 으로 변환
+                     .then((rsData) => { // json 처리
+                         if ( rsData.success ) { // 성공적으로 처리가 되면
+                             validUsername = form.username.value; // validUsername 응답 데이터로 설정
                          }
-                         setUsernameInputMsg(rsData.success, rsData.msg);
+                         setUsernameInputMsg(rsData.success, rsData.msg); // 사용자 이름 입력 메시지 설정
                      });
              }
 
             const checkUsernameDupDebounce = _.debounce(() => checkUsernameDup(joinForm), 500);
+            // debounce함수로 중복검사를 5초 지연
 
-             function clearUsernameInputMsg(){
-                $(joinForm.username).removeClass('input-accent input-error');
-                $(joinForm.username).next().removeClass('text-green-400 text-red-400');
-                $(joinForm.username).next().empty();
+             function clearUsernameInputMsg(){ // 사용자 이름 입력 메시지 클리어 함수
+                $(joinForm.username).removeClass('input-accent input-error'); // css 클래스 제거
+                $(joinForm.username).next().removeClass('text-green-400 text-red-400'); // 다음 요소의 css 클래스 제거
+                $(joinForm.username).next().empty(); // 다음 요소의 내용을 비움
              }
 
-             function setUsernameInputMsg(isSuccess, msg){
-                 if ( isSuccess ) $(joinForm.username).addClass('input-accent');
-                if ( !isSuccess ) $(joinForm.username).addClass('input-error');
+             function setUsernameInputMsg(isSuccess, msg){ // 사용자 이름 입력 메시지 설정 함수
+                if ( isSuccess ) $(joinForm.username).addClass('input-accent'); // 성공시 css 클래스 추가
+                if ( !isSuccess ) $(joinForm.username).addClass('input-error'); // 실패시 다른 css 클래스 추가
 
                 $(joinForm.username).next().addClass(isSuccess ? 'text-green-400' : 'text-red-400');
+                // 다음 요소에 클래스 추가
 
                 $(joinForm.username).next().text(msg);
+                // 다음 요소에 메시지 표시
              }
 
 
-        let validUsername = '';
-        let lastCheckedUsername = '';
+        let validUsername = ''; // 유효한 사용자 이름을 저장할 변수
+        let lastCheckedUsername = ''; // 마지막으로 확인한 사용자 이름을 저장할 변수
         // username 중복 체크 끝
 
     // email 중복 체크 시작
     function checkEmailDup(form){
         form.email.value = form.email.value.trim();
+        // 이메일 필드를 공백 제거후 설정
 
         if(form.email.value.length == 0){
             clearEmailInputMsg();
             return;
-        }
+        } // 이메일 입력 필드에 길이가 0이면 클리어 함수 적용 후 함수 종료
 
         if(form.email.value.length < 4){
             clearEmailInputMsg();
             return;
-        }
+        } // 이메일 입력 필드에 길이가 4 미만인 경우 클리어 함수 적용 후 함수 종료
 
         if( lastCheckedEmail == form.email.value) return;
+        // 마지막으로 체크한 이메일필드와 입력한 이메일 필드가 같으면 함수 종료
 
         lastCheckedEmail = form.email.value;
+        // 마지막으로 체크한 이메일을 현재 값으로 설정
 
         clearEmailInputMsg();
+        // 메시지 클리어
 
+        // 서버에 이메일 중복 검사 요청
         fetch(
             'checkEmailDup?email=' + form.email.value
         )
             .then(res => res.json())
             .then((rsData) => {
                 if(rsData.success){
-                    validEmail = rsData.data;
+                    validEmail = form.email.value;
                 }
                 setEmailInputMsg(rsData.success, rsData.msg);
             });
     }
 
     const checkEmailDupDebounce = _.debounce(() => checkEmailDup(joinForm), 500);
+    // debounce 함수를 활용해 이메일 중복 필드 5초 지연
 
-    function clearEmailInputMsg(){
+    function clearEmailInputMsg(){ // 이메일 입력 메시지 클리어 함수
         $(joinForm.email).removeClass('input-accent input-error');
         $(joinForm.email).next().removeClass('text-green-400 text-red-400');
         $(joinForm.email).next().empty();
     }
 
-    function setEmailInputMsg(isSuccess, msg){
+    function setEmailInputMsg(isSuccess, msg){ // 이메일 입력 메시지 설정 함수
         if( isSuccess ) $(joinForm.email).addClass('input-accent');
         if( !isSuccess ) $(joinForm.email).addClass('input-error');
 
@@ -178,8 +190,8 @@
         $(joinForm.email).next().text(msg);
     }
 
-    let validEmail = '';
-    let lastCheckedEmail = '';
+    let validEmail = ''; // 유요한 이메일을 저장할 변수
+    let lastCheckedEmail = ''; // 마지막으로 확인한 이메일을 저장할 변수
     // email 중복 체크 끝
 
     // joinForm 유효성 검사 시작
@@ -276,7 +288,7 @@
 
          if ( validUsername != form.username.value ) {
              $(form.username).next().focus();
-             toastWarning('아이디 중복 체크(를) 해주세요.');
+             toastWarning('아이디 중복 체크을(를) 해주세요.');
              return;
         }
 
@@ -291,45 +303,6 @@
      }
     // joinForm 유효성 검사 끝
     </script>
-
-
-    <!--    비밀번호 형식 확인-->
-    <!--    <script>-->
-    <!--        document.addEventListener("DOMContentLoaded", function () {-->
-    <!--            const password1Input = document.getElementById("password1");-->
-    <!--            const password2Input = document.getElementById("password2");-->
-    <!--            const passwordMatchError = document.getElementById("passwordMatchError");-->
-
-    <!--            password1Input.addEventListener("input", function () {-->
-    <!--                validatePassword();-->
-    <!--            });-->
-
-    <!--            password2Input.addEventListener("input", function () {-->
-    <!--                validatePassword();-->
-    <!--            });-->
-
-    <!--            function validatePassword() {-->
-    <!--                const password1 = password1Input.value;-->
-    <!--                const password2 = password2Input.value;-->
-
-    <!--                const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{6,}$/;-->
-
-    <!--                if (!passwordRegex.test(password1)) {-->
-    <!--                    password1Input.setCustomValidity("영어, 특수문자, 숫자를 모두 포함시켜야 합니다.");-->
-    <!--                } else {-->
-    <!--                    password1Input.setCustomValidity("");-->
-    <!--                }-->
-
-    <!--                if (password1 !== password2) {-->
-    <!--                    password2Input.setCustomValidity("비밀번호가 일치하지 않습니다.");-->
-    <!--                    passwordMatchError.textContent = "비밀번호가 일치하지 않습니다.";-->
-    <!--                } else {-->
-    <!--                    password2Input.setCustomValidity("");-->
-    <!--                    passwordMatchError.textContent = "";-->
-    <!--                }-->
-    <!--            }-->
-    <!--        });-->
-    <!--    </script>-->
 
     <!-- 생년월일 캘린더 스크립트 -->
     <script>
