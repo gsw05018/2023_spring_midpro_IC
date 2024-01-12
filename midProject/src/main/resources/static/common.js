@@ -1,6 +1,3 @@
-
-
-
 // 로딩 팝업 창
 window.onload = function () {
     var modal = document.getElementById("imageModal");
@@ -72,7 +69,6 @@ $(".hover").mouseleave(function () {
 
 
 //   하단 배너 슬릭 슬라이드
-
 $(document).ready(function () {
     $(".slider-wrap-2").slick({
         autoplay: true, // 자동 슬라이드
@@ -87,10 +83,7 @@ $(document).ready(function () {
         draggable: false //드래그 가능 여부
     });
 });
-
-
 //   하단 배너 슬릭 슬라이드 끝
-
 
 // 억새축제 슬라이드
 $(document).ready(function () {
@@ -101,11 +94,8 @@ $(document).ready(function () {
         autoplaySpeed: 2000, // 자동 재생 속도 (2초마다 변경)
         infinite : true,
         speed : 200,
-
-
     });
 });
-
 // 억새축제 슬라이드 끝
 
 // 올림버튼
@@ -123,11 +113,9 @@ $(document).ready(function () {
         $("html, body").animate({ scrollTop: 0 });
     });
 });
-
 // 올림버튼 끝
 
 // toastr 옵션
-
  toastr.options = {
      closeButton: true,
      debug: false,
