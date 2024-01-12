@@ -3,38 +3,42 @@
 <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+          name="viewport">
+    <meta content="ie=edge" http-equiv="X-UA-Compatible">
+
+    <title layout:title-pattern="$CONTENT_TITLE | $LAYOUT_TITLE" th:text="'뭐 하지 또? 또 가지 뭐!'"></title>
 
     <!-- 제이쿼리 -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 
     <!-- 폰트어썸 -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    <link  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
           integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA=="
-          crossorigin="anonymous" referrerpolicy="no-referrer"/>
+          crossorigin="anonymous" referrerpolicy="no-referrer" rel="stylesheet"/>
 
     <!-- nav CSS 파일 -->
-    <link rel="stylesheet" type="text/css" th:href="@{/navbar.css}">
+    <link  type="text/css" th:href="@{/navbar.css}" rel="stylesheet">
 
     <!-- footer CSS 파일 -->
-    <link rel="stylesheet" type="text/css" th:href="@{/footer.css}">
+    <link  type="text/css" th:href="@{/footer.css}" rel="stylesheet">
 
     <!--  main css  -->
-    <link rel="stylesheet" type="text/css" th:href="@{/main.css}">
+    <link  type="text/css" th:href="@{/main.css}" rel="stylesheet">
 
     <!--  common js  -->
     <script th:src="@{/common.js}"></script>
 
     <!--slick slider css-->
-    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
-    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.5.8/slick-theme.min.css">
+    <link type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" rel="stylesheet"  />
+    <link  type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.5.8/slick-theme.min.css" rel="stylesheet">
 
     <!-- slick Carousel CDN -->
     <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery.slick/1.5.7/slick.min.js"></script>
 
     <!-- toastr 불러오기 -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.4/toastr.min.js"></script>
-    <link rel="stylesheet" href="https://jhs512.github.io/toastr/toastr.css">
+    <link  href="https://jhs512.github.io/toastr/toastr.css" rel="stylesheet">
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.21/lodash.min.js"></script>
 

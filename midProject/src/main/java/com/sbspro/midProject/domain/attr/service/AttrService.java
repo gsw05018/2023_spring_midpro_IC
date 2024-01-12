@@ -18,6 +18,70 @@ import java.time.format.DateTimeFormatter;
 public class AttrService {
     private final AttrRepository attrRepository;
 
+    //  조회
+     public String get(String varName, String defaultValue){
+         Attr attr = findAttr(varName);
+
+         if (attr == null){
+             return defaultValue;
+         }
+
+         if (attr.getExpireDate() != null && attr.getExpireDate().compareTo(LocalDateTime.now() ) < 0){
+             return defaultValue;
+         }
+
+         return attr.getVal();
+     }
+
+    private Attr findAttr(String relTypeCode, Long relId, String typeCode, String type2Code){
+        return attrRepository.findByRelTypeCodeAndRelIdAndTypeCodeAndType2Code(relTypeCode, relId, typeCode, type2Code).orElse(null);
+    }
+
+    private Attr findAttr(String varName){
+        String[] varNameBits = varName.split("__");
+        String relTypeCode = varNameBits[0];
+        long relId = Integer.parseInt(varNameBits[1]);
+        String typeCode = varNameBits[2];
+        String type2Code = varNameBits[3];
+
+        return findAttr(relTypeCode, relId, typeCode, type2Code);
+    }
+
+    public long getAsLong(String varName, long defaultValue) {
+        String value = get(varName, "");
+
+        if (value.isBlank()) {
+            return defaultValue;
+        }
+
+        return Long.parseLong(value);
+    }
+
+    public boolean getAsBoolean(String varName, boolean defaultValue) {
+        String value = get(varName, "");
+
+        if (value.isBlank()) {
+            return defaultValue;
+        }
+
+        if (value.equals("true")) {
+            return true;
+        } else return value.equals("1");
+    }
+
+    public LocalDateTime getAsLocalDateTime(String varName, LocalDateTime defaultValue){
+
+        String value = get(varName, "");
+
+        if(value.isBlank()){
+            return defaultValue;
+        }
+
+        return LocalDateTime.parse(value, DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss.SSSSSS"));
+    }
+
+    // 명령
+
     @Transactional
     public void set(String varName, String value){
         set(varName, value, null);
@@ -78,68 +142,5 @@ public class AttrService {
         attr.setExpireDate(expireDate);
 
         attrRepository.save(attr);
-    }
-
-    public Attr findAttr(String relTypeCode, Long relId, String typeCode, String type2Code){
-        return attrRepository.findByRelTypeCodeAndRelIdAndTypeCodeAndType2Code(relTypeCode, relId, typeCode, type2Code).orElse(null);
-    }
-
-    public Attr findAttr(String varName){
-        String[] varNameBits = varName.split("__");
-        String relTypeCode = varNameBits[0];
-        long relId = Integer.parseInt(varNameBits[1]);
-        String typeCode = varNameBits[2];
-        String type2Code = varNameBits[3];
-
-        return findAttr(relTypeCode, relId, typeCode, type2Code);
-    }
-
-    public String get(String varName, String defaultValue){
-        Attr  attr = findAttr(varName);
-
-        if(attr == null){
-            return defaultValue;
-        }
-
-        if(attr.getExpireDate() != null && attr.getExpireDate().compareTo(LocalDateTime.now()) < 0){
-            return defaultValue;
-        }
-
-        return attr.getVal();
-
-    }
-
-    public long getAsLong(String varName, long defaultValue) {
-        String value = get(varName, "");
-
-        if (value.equals("")) {
-            return defaultValue;
-        }
-
-        return Long.parseLong(value);
-    }
-
-    public boolean getAsBoolean(String varName, boolean defaultValue) {
-        String value = get(varName, "");
-
-        if (value.equals("")) {
-            return defaultValue;
-        }
-
-        if (value.equals("true")) {
-            return true;
-        } else return value.equals("1");
-    }
-
-    public LocalDateTime getAsLocalDateTime(String relTypeCode, Long relId, String typeCode, String type2Code, LocalDateTime defaultValue){
-        String varName = "%s__%d__%s__%s".formatted(relTypeCode, relId, typeCode, type2Code);
-
-        String value = get(varName, "");
-
-        if(value.isBlank()){
-            return defaultValue;
-        }
-
-        return LocalDateTime.parse(value, DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss.SSSSSS"));
     }
 }

@@ -1,5 +1,6 @@
 package com.sbspro.midProject.base.rq;
 
+import com.sbspro.midProject.base.rsData.RsData;
 import com.sbspro.midProject.base.util.Ut;
 import com.sbspro.midProject.member.entity.Member;
 import com.sbspro.midProject.member.service.MemberService;
@@ -183,6 +184,10 @@ public class Rq {
         return sb.toString(); // 생성된 문자열 반환
     }
 
+    public String historyBack(RsData rs){
+        return historyBack(rs.getMsg());
+    }
+
     // 이전 페이지로 돌아가는 JS코드를 반환하고, 오류 메시지를 session에 저장
     public String historyBack(String msg) {
         String referer = req.getHeader("referer"); // 이전 페이지의 URL 가져옴
@@ -192,6 +197,10 @@ public class Rq {
         resp.setStatus(HttpServletResponse.SC_BAD_REQUEST); // 200 이 아니라 400 으로 응답코드가 지정되도록
 
         return "common/js";
+    }
+
+    public String redirect(String url, RsData rs){
+        return redirect(url, rs.getMsg());
     }
 
     // 특정 URL로 redirect하고 메시지 전달

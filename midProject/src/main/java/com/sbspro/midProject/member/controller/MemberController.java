@@ -37,6 +37,37 @@ public class MemberController {
         return "usr/member/join";
     }
 
+    @PostMapping("/join")
+    @PreAuthorize("isAnonymous()")
+    public String join(@Valid JoinForm joinForm){
+
+     RsData<Member> joinRs =  memberService.join(
+             joinForm.getUsername(),
+             joinForm.getPassword(),
+             joinForm.getNickname(),
+             joinForm.getEmail(),
+             joinForm.getProfileImg());
+
+        if (joinRs.isFail()) return rq.historyBack(joinRs.getMsg());
+
+        return rq.redirect("/", joinRs);
+    }
+
+    @GetMapping("/checkUsernameDup")
+    @ResponseBody
+    @PreAuthorize("isAnonymous()")
+    public RsData<String> checkUsernameDup(String username){
+        return memberService.checkUsernameDup(username);
+
+    }
+
+    @GetMapping("/checkEmailDup")
+    @ResponseBody
+    @PreAuthorize("isAnonymous()")
+    public RsData<String> checkEmailDup(String email){
+        return memberService.checkEmailDup(email);
+    }
+
     @AllArgsConstructor
     @Getter
     public static class JoinForm{
@@ -55,30 +86,4 @@ public class MemberController {
 
         private MultipartFile profileImg;
     }
-
-    @PostMapping("/join")
-    public String join(@Valid JoinForm joinForm){
-
-     RsData<Member> joinRs =  memberService.join(joinForm.getUsername(), joinForm.getPassword(), joinForm.getNickname(), joinForm.getEmail(), joinForm.getProfileImg());
-        if (joinRs.isFail()) {
-            return rq.historyBack(joinRs.getMsg());
-        }
-
-        return rq.redirect("/", joinRs.getMsg());
-    }
-
-    @GetMapping("/checkUsernameDup")
-    @ResponseBody
-    public RsData<String> checkUsernameDup(String username){
-        return memberService.checkUsernameDup(username);
-
-    }
-
-    @GetMapping("/checkEmailDup")
-    @ResponseBody
-    public RsData<String> checkEmailDup(String email){
-        return memberService.checkEmailDup(email);
-    }
-
-
 }
