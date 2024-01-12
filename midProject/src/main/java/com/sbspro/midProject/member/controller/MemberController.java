@@ -50,7 +50,7 @@ public class MemberController {
 
         if (joinRs.isFail()) return rq.historyBack(joinRs.getMsg());
 
-        return rq.redirect("/", joinRs);
+        return rq.redirectOrBack("/", joinRs);
     }
 
     @GetMapping("/checkUsernameDup")

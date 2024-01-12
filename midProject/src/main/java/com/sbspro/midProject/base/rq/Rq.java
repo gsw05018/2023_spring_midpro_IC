@@ -208,6 +208,13 @@ public class Rq {
         return "redirect:" + Ut.url.modifyQueryParam(url, "msg", Ut.url.encodeWithTtl(msg));
     }
 
+    public String redirectOrBack(String url, RsData rs){
+        if(rs.isFail()) return historyBack(rs);
+
+        return redirect(url, rs);
+    }
+
+
     // 현재 로그인한 사용자의 프로필 이미지 URL 반환
     public String getProfileImgUrl() {
         return Optional.ofNullable(getMember()) // 현재 로그인한 사용자의 Member 객체를 Optional로 변환
