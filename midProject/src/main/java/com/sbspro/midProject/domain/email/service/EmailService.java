@@ -21,11 +21,11 @@ import java.util.concurrent.CompletableFuture;
 @Transactional(readOnly = true)
 public class EmailService {
 
-    private final SendEmailLogRepository emailLogRepository;
-    private final JavaMailSender mailSender;
     @Autowired
     @Lazy
     private EmailService self;
+    private final SendEmailLogRepository emailLogRepository;
+    private final JavaMailSender mailSender;
 
     // 명령
     @Async

@@ -26,13 +26,16 @@ public class EmailVerificationService {
     private MemberService memberService;
     private final AttrService attrService;
 
+    // 조회
+
+    // 명령
+    @Transactional
     public CompletableFuture<RsData> send(Member member) {
         String subject = "[%s 이메일인증] 안녕하세요 %s님. 링크를 클릭하여 회원가입을 완료해주세요."
-
                 .formatted(
-                        AppConfig.getSiteName(), member.getUsername()
+                        AppConfig.getSiteName(),
+                        member.getUsername()
                 );
-
         String body = genEmailVerificationUrl(member);
 
         return emailService.send(member.getEmail(), subject, body);
@@ -50,38 +53,31 @@ public class EmailVerificationService {
 
     private String genEmailVerificationCode(long memberId) {
         String code = UUID.randomUUID().toString();
-        attrService.set("member__%d__extra__emailVerificationCode".formatted(memberId), code, LocalDateTime.now().plusSeconds(60 * 60 ));
+        attrService.set("member__%d__extra__emailVerificationCode".formatted(memberId), code, LocalDateTime.now().plusSeconds(60 * 60));
 
         return code;
     }
 
     @Transactional
     public RsData verify(long memberId, String code) {
+        RsData checkVerificationCodeValidRs = checkVerificationCodeValid(memberId, code);
 
-        RsData checkVerificationCodeVailRs = checkVerificationCodeVaild(memberId, code);
-
-        if(!checkVerificationCodeVailRs.isSuccess()) return checkVerificationCodeVailRs;
+        if (!checkVerificationCodeValidRs.isSuccess()) return checkVerificationCodeValidRs;
 
         setEmailVerified(memberId);
 
-        return RsData.of("S-1", "이메일 인증이 완료되었습니다.");
-
+        return RsData.of("S-1", "이메일인증이 완료되었습니다.");
     }
 
-    private RsData checkVerificationCodeVaild(long memberId, String code){
-
+    private RsData checkVerificationCodeValid(long memberId, String code) {
         String foundCode = attrService.get("member__%d__extra__emailVerificationCode".formatted(memberId), "");
 
         if (!foundCode.equals(code)) return RsData.of("F-1", "만료 되었거나 유효하지 않은 코드입니다.");
 
         return RsData.of("S-1", "인증된 코드 입니다.");
-
     }
 
-    private void setEmailVerified(long memberId){
-
+    private void setEmailVerified(long memberId) {
         memberService.setEmailVerified(memberId);
-
     }
-
 }

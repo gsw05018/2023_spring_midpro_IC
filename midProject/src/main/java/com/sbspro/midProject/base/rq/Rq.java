@@ -67,7 +67,6 @@ public class Rq {
             return null;
         }
 
-        // member가 null일 경우 데이터베이스에서 사용자 정보를 조회하여 member에 할당
         if (member == null) {
             member = memberService.findByUsername(getLoginedMemberUsername()).get();
         }
