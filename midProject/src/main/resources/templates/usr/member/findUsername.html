@@ -1,0 +1,57 @@
+<html layout:decorate = "~{/common/layout}">
+
+<head>
+    <title>아이디 찾기</title>
+    <link rel = "stylesheet" href = "/login.css">
+</head>
+
+<body>
+<div layout:fragment="content" class = "input-login-box">
+    <a href = "/"><h1>뭐하지 또? 또가지 뭐!</h1></a>
+    <div class = "login-top-box">
+        <form method="POST" onsubmit="submitFindUsernameForm(this); return false;"
+              th:action>
+            <div class = "form-box">
+                <div class = "id-icon-box icon-box">
+                    <i class="name fa-solid fa-envelope"></i>
+                    <input type = "email" placeholder = "이메일을 입력해주세요" class = "id-box" id = "email" name = "email"
+                           autofocus maxlength = "80">
+                </div>
+                <button class = "submit">아이디 찾기</button>
+            </div>
+        </form>
+    </div>
+    <div class = "text-box">
+        <a class = "id" href = "/usr/member/join" title = "회원가입"><span>회원가입</span></a>
+        <a class = "password" href = "/usr/member/login" title = "로그인"><span>로그인</span></a>
+        <a class = "join" href = "/usr/member/findPassword" title = "비밀번호 찾기"><span>비밀번호 찾기</span></a>
+    </div>
+
+    <script>
+        let submitFindUsernameFormDone = false;
+
+        function submitFindUsernameForm(form){
+            if( submitFindUsernameFormDone ) return ;
+
+            form.email.value = form.email.value.trim();
+
+            if( form.email.value.length == 0){
+            form.email.focus();
+            toastWarning("이메일을 입력해주세요");
+            return;
+            }
+
+            if( form.email.value < 4 ){
+                form.email.focus();
+                toastWarning("이메일을 4자 이상 입력해주세요");
+                return;
+            }
+
+            form.submit();
+            submitFindUsernameFormDone = true;
+        }
+    </script>
+
+</div>
+</body>
+</html>

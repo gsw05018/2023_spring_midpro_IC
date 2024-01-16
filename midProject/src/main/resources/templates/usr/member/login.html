@@ -16,19 +16,21 @@
                 <div class="id-icon-box icon-box">
                     <i class="fa-regular fa-user"></i>
                     <input type="text" placeholder="아이디를 입력하세요" class="id-box" id="username" name="username" autofocus
-                           maxlength="30">
+                           maxlength="30" th:autofocus="${UtThy.inputAttributeAutofocus(param.lastUsername)}"
+                           th:value="${UtThy.value(param.lastUsername)}">
                 </div>
                 <div class="pass-icon-box icon-box">
                     <i class="fa-solid fa-key"></i>
                     <input class="pass-box" type="password" name="password" id="password"
-                           placeholder="비밀번호를 입력해주세요" >
+                           placeholder="비밀번호를 입력해주세요"
+                           th:autofocus="${!UtThy.inputAttributeAutofocus(param.lastUsername)}">
                 </div>
                 <button class="submit">로그인</button>
             </div>
         </form>
     </div>
     <div class="text-box">
-        <a class="id" href="#" title="아이디 찾기"><span>아이디 찾기</span></a>
+        <a class="id" href="/usr/member/findUsername" title="아이디 찾기"><span>아이디 찾기</span></a>
         <a class="password" href="#" title="비밀번호 찾기"><span>비밀번호 찾기</span></a>
         <a class="join" href="/usr/member/join" title="회원가입"><span>회원가입</span></a>
     </div>

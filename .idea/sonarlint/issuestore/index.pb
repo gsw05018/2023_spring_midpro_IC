@@ -53,3 +53,5 @@ mmidProject/src/main/java/com/sbspro/midProject/domain/emailVerification/service
 VmidProject/src/main/java/com/sbspro/midProject/member/repositroy/MemberRepository.java,1\a\1a5be2281aafd1f9d0b2eebc6554acd442b21656
 z
 JmidProject/src/main/java/com/sbspro/midProject/base/entity/BaseEntity.java,8\e\8e1f9fbe67087d187b6154a7b64decd03792c70b
+p
+@midProject/src/main/java/com/sbspro/midProject/base/util/Ut.java,4\8\48c1c34482581cd265e44ee6b614025f3e37b4c3
