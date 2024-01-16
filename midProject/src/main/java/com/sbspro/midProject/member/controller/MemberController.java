@@ -90,17 +90,16 @@ public class MemberController {
 
     @PreAuthorize("isAnonymous()")
     @PostMapping("/findUsername")
-    public String findUsername(String email){
+    public String findUsername(String email) {
         return memberService.findByEmail(email)
                 .map(member ->
                         rq.redirect(
                                 "/usr/member/login?lastUsername=%s".formatted(member.getUsername()),
-                                        "해당 회원의 아이디는 `%s` 입니다.".formatted(member.getUsername())
-                                )
+                                "해당 회원의 아이디는 `%s` 입니다.".formatted(member.getUsername())
                         )
+                )
                 .orElse(rq.historyBack("`%s` (은)는 존재하지 않은 회원 이메일 입니다."));
     }
-
 
     @AllArgsConstructor
     @Getter

@@ -9,7 +9,7 @@ n	java:S101"MRename this class name to match the regular expression '^[A-Z][a
 n	java:S101"MRename this class name to match the regular expression '^[A-Z][a-zA-Z0-9]*$'.(Ô¥Û£øÿÿÿÿ8Ñ ÿ‰Ñ1
 i	java:S101;"MRename this class name to match the regular expression '^[A-Z][a-zA-Z0-9]*$'.(…Ò“Â8Ñ ÿ‰Ñ1
 i	java:S101r"MRename this class name to match the regular expression '^[A-Z][a-zA-Z0-9]*$'.(¾ŞÔš8Ñ ÿ‰Ñ1
-n	java:S101x"MRename this class name to match the regular expression '^[A-Z][a-zA-Z0-9]*$'.(„²õÚúÿÿÿÿ8Ñ ÿ‰Ñ1
+n	java:S101x"MRename this class name to match the regular expression '^[A-Z][a-zA-Z0-9]*$'.(„²õÚúÿÿÿÿ8ÎÀåÑ1
 u	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(ÈÔÇ98Ò ÿ‰Ñ1
 W
 java:S1118":Add a private constructor to hide the implicit public one.(öÎØ„8Ş ÿ‰Ñ1
@@ -26,6 +26,6 @@ java:S4635^"EReplace "indexOf" with the overload that accepts an offset paramet
 W
 java:S1118r":Add a private constructor to hide the implicit public one.(¾ŞÔš8å ÿ‰Ñ1
 \
-java:S1118x":Add a private constructor to hide the implicit public one.(„²õÚúÿÿÿÿ8æ ÿ‰Ñ1
+java:S1118x":Add a private constructor to hide the implicit public one.(„²õÚúÿÿÿÿ8àÀåÑ1
 e
-java:S5361|"HReplace this call to "replaceAll()" by a call to the "replace()" method.(Ê¦ìı8æ ÿ‰Ñ1
+java:S5361|"HReplace this call to "replaceAll()" by a call to the "replace()" method.(Ê¦ìı8àÀåÑ1

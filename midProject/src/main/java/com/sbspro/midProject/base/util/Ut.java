@@ -117,18 +117,19 @@ public class Ut {
         }
     }
 
-    public static class thy{
-        private static String getFirstStrOrEmpty(List<String> requestParameterValues){
+    public static class thy {
+        private static String getFirstStrOrEmpty(List<String> requestParameterValues) {
             return Optional.ofNullable(requestParameterValues)
                     .filter(values -> !values.isEmpty())
-                    .map(values -> values.get(0).replaceAll("%20","").trim())
+                    .map(values -> values.get(0).replaceAll("%20", "").trim())
                     .orElse("");
         }
-        public static boolean inputAttributeAutofocus(List<String> requestParameterValues){
+
+        public static boolean inputAttributeAutofocus(List<String> requestParameterValues) {
             return !str.hasLength(getFirstStrOrEmpty(requestParameterValues));
         }
 
-        public static String value(List<String> requestParameterValues){
+        public static String value(List<String> requestParameterValues) {
             return getFirstStrOrEmpty(requestParameterValues);
         }
     }
