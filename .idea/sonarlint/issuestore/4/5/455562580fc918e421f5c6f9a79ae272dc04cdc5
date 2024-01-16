@@ -1,6 +1,4 @@
 
-Q
-java:S3740L"/Provide the parametrized type for this generic.(¼æÒòùÿÿÿÿ8À‹ÃæÄ1
 v	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(œ‰©ô8…Ïÿç½1
 ‡
-java:S6833"eReplace the "@Controller" annotation by "@RestController" and remove all "@ResponseBody" annotations.(íœ¡ñùÿÿÿÿ8Ð‹ÃæÄ1
+java:S6833"eReplace the "@Controller" annotation by "@RestController" and remove all "@ResponseBody" annotations.(íœ¡ñùÿÿÿÿ8Ð‹ÃæÄ1

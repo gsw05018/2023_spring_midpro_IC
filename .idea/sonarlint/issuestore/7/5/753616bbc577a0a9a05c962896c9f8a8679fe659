@@ -1,14 +1,6 @@
 
 Q
-java:S3740K"/Provide the parametrized type for this generic.(¼æÒòùÿÿÿÿ8çÜóÆÏ1
+java:S3740/"/Provide the parametrized type for this generic.(¼æÒòùÿÿÿÿ8‚Âƒ‰Ñ1
 L
-java:S3740R"/Provide the parametrized type for this generic.(½İ¾8çÜóÆÏ1
-Q
-java:S3740q"/Provide the parametrized type for this generic.(ŠÎŠàúÿÿÿÿ8çÜóÆÏ1
-L
-java:S3740r"/Provide the parametrized type for this generic.(ó ØŠ8çÜóÆÏ1
-v	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(à¥œ 8éÜóÆÏ1
-r
-java:S3655x"PCall "Optional#isPresent()" or "!Optional#isEmpty()" before accessing the value.(ä‡„ˆûÿÿÿÿ8ÁÓ÷ÆÏ1
-I
-java:S1125t"'Remove the unnecessary boolean literal.(ğÀû–ÿÿÿÿÿ8şÜóÆÏ1
+java:S3740e"/Provide the parametrized type for this generic.(¤Ù­8‚Âƒ‰Ñ1
+v	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(à¥œ 8„Âƒ‰Ñ1

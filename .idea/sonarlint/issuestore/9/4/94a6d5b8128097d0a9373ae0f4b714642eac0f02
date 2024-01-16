@@ -1,10 +1,14 @@
 
-{	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(×¿ëäÿÿÿÿÿ8’ƒêç½1
-r
-java:S3655>"PCall "Optional#isPresent()" or "!Optional#isEmpty()" before accessing the value.( ®ŞĞûÿÿÿÿ8ïœğç½1
-d
-java:S6201#"BReplace this instanceof check and cast with 'instanceof User user'(¸êİ£ùÿÿÿÿ8ïœğç½1
+M
+java:S3740º"/Provide the parametrized type for this generic.(ô§¦8„¹âˆÑ1
 R
-java:S1144Y"5Remove this unused private "getSessionAsLong" method.(‡¾ã8ÿœğç½1
-Q
-java:S1144|"4Remove this unused private "getCookieAsLong" method.(Æ¨€ë8ÿœğç½1
+java:S3740É"/Provide the parametrized type for this generic.(Ö¨Ô×ÿÿÿÿÿ8†¹âˆÑ1
+L
+java:S3740Ò"/Provide the parametrized type for this generic.(ã„©8‡¹âˆÑ1
+{	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(×¿ëäÿÿÿÿÿ8‹¹âˆÑ1
+d
+java:S6201("BReplace this instanceof check and cast with 'instanceof User user'(¸êİ£ùÿÿÿÿ8­¹âˆÑ1
+R
+java:S1144e"5Remove this unused private "getSessionAsLong" method.(‡¾ã8¹¹âˆÑ1
+R
+java:S1144‹"4Remove this unused private "getCookieAsLong" method.(Æ¨€ë8¹¹âˆÑ1

@@ -1,4 +1,8 @@
 
 Q
-java:S3740"/Provide the parametrized type for this generic.(ÌÊìŸÿÿÿÿÿ8ÏÑ¬ÆÏ1
+java:S3740"/Provide the parametrized type for this generic.(÷„ºÆüÿÿÿÿ8µŠºˆÑ1
 v	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(æÖñÖ8ÐÑ¬ÆÏ1
+`
+java:S1854"CRemove this useless assignment to local variable "afterSuccessUrl".(ÎÞüƒ8»ŠºˆÑ1
+Q
+java:S1481"4Remove this unused "afterSuccessUrl" local variable.(ÎÞüƒ8½ŠºˆÑ1

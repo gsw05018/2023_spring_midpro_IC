@@ -1,10 +1,14 @@
 
 Q
-java:S3740"/Provide the parametrized type for this generic.(ÀìâÂùÿÿÿÿ8À·×ÆÏ1
+java:S3740!"/Provide the parametrized type for this generic.(ÀìâÂùÿÿÿÿ8âŠºˆÑ1
 L
-java:S3740/"/Provide the parametrized type for this generic.(‰ı”8˜Å™ÇÏ1
-h
-java:S2184*"FCast one of the operands of this multiplication operation to a "long".(™®Ãƒúÿÿÿÿ8šÅ™ÇÏ1
+java:S3740>"/Provide the parametrized type for this generic.(Ã”ç8ãŠºˆÑ1
+Q
+java:S3740?"/Provide the parametrized type for this generic.(¯¹¤Íùÿÿÿÿ8ãŠºˆÑ1
+K
+java:S3740H"/Provide the parametrized type for this generic.( ü8ãŠºˆÑ1
+c
+java:S21848"FCast one of the operands of this multiplication operation to a "long".(ÓÊâÂ8äŠºˆÑ1
 {	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(àÕÓúÿÿÿÿ8Â·×ÆÏ1
-I
-java:S11252"'Remove the unnecessary boolean literal.(ø´­‹şÿÿÿÿ8§Å™ÇÏ1
+_
+java:S6813"BRemove this field injection and use constructor injection instead.(êæÄŞ8òŠºˆÑ1

@@ -68,7 +68,7 @@ public class Rq {
         }
 
         if (member == null) {
-            member = memberService.findByUsername(getLoginedMemberUsername()).get();
+            member = memberService.findByUsername(getLoginedMemberUsername()).orElse(null);
         }
 
         return member;

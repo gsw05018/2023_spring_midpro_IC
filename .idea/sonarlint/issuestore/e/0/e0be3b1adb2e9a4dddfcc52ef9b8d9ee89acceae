@@ -1,4 +1,16 @@
 
 L
-java:S3740"/Provide the parametrized type for this generic.(™øè½8İ¾ÃÏ1
+java:S3740!"/Provide the parametrized type for this generic.(™øè½8…ŠºˆÑ1
+Q
+java:S3740&"/Provide the parametrized type for this generic.(Ğ±«Ïùÿÿÿÿ8†ŠºˆÑ1
+Q
+java:S37405"/Provide the parametrized type for this generic.( —¢«ûÿÿÿÿ8†ŠºˆÑ1
+L
+java:S3740<"/Provide the parametrized type for this generic.(ÆğŸÛ8†ŠºˆÑ1
+Q
+java:S3740G"/Provide the parametrized type for this generic.(¯‚¸µÿÿÿÿÿ8†ŠºˆÑ1
 v	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(şŸ8Ş¾ÃÏ1
+_
+java:S6813"BRemove this field injection and use constructor injection instead.(êæÄŞ8ŠºˆÑ1
+f
+java:S2230G"DMake this method "public" or remove the "@Transactional" annotation.(¯‚¸µÿÿÿÿÿ8—ŠºˆÑ1

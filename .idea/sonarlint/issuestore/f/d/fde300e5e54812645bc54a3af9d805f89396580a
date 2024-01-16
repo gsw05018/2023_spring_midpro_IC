@@ -1,14 +1,14 @@
 
 V
-java:S1444"4Make this "public static genFileDirPath" field final(˜ÓÁİûÿÿÿÿ8Üº¨ÄÏ1
+java:S1444"4Make this "public static genFileDirPath" field final(Ä—³ÿÿÿÿÿ8×‹ºˆÑ1
 P
-java:S1444".Make this "public static siteName" field final(ÔÂµàıÿÿÿÿ8Üº¨ÄÏ1
+java:S1444".Make this "public static siteName" field final(¼†Ùúúÿÿÿÿ8×‹ºˆÑ1
 N
-java:S1444"1Make this "public static siteBaseUrl" field final( ÌÀ8Üº¨ÄÏ1
+java:S1444"1Make this "public static siteBaseUrl" field final(óÂşô8×‹ºˆÑ1
 v	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(Æç•Ï8İº¨ÄÏ1
 X
-java:S2696"6Make the enclosing method "static" or remove this set.(ı‡ºúÿÿÿÿ8âº¨ÄÏ1
+java:S2696"6Make the enclosing method "static" or remove this set.(ı‡ºúÿÿÿÿ8İ‹ºˆÑ1
 X
-java:S2696"6Make the enclosing method "static" or remove this set.(Ö¬üÿÿÿÿ8âº¨ÄÏ1
+java:S2696"6Make the enclosing method "static" or remove this set.(Ö¬üÿÿÿÿ8İ‹ºˆÑ1
 S
-java:S2696"6Make the enclosing method "static" or remove this set.(””×Ù8ãº¨ÄÏ1
+java:S2696!"6Make the enclosing method "static" or remove this set.(””×Ù8Ş‹ºˆÑ1
