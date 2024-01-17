@@ -10,6 +10,7 @@ import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
+import lombok.ToString;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -121,8 +122,15 @@ public class MemberController {
                         }).orElseGet(() -> rq.historyBack("일치하는 회원이 존재하지 않습니다."));
     }
 
+    @PreAuthorize("isAuthenticated()")
+    @GetMapping("/mypage")
+    public String showMe(){
+        return "usr/member/me";
+    }
+
     @AllArgsConstructor
     @Getter
+    @ToString
     public static class JoinForm{
 
         @NotBlank

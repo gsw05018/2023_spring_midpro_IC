@@ -1,8 +1,8 @@
 
-Q
-java:S37400"/Provide the parametrized type for this generic.(¼æÒòùÿÿÿÿ8“¥Ğ±Ñ1
 L
-java:S3740h"/Provide the parametrized type for this generic.(¤Ù­8“¥Ğ±Ñ1
+java:S3740h"/Provide the parametrized type for this generic.(¤Ù­8Òëì¶Ñ1
 M
-java:S3740’"/Provide the parametrized type for this generic.(¤Ù­8“¥Ğ±Ñ1
-v	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(à¥œ 8•¥Ğ±Ñ1
+java:S3740—"/Provide the parametrized type for this generic.(¤Ù­8‰ğ¶Ñ1
+v	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(à¥œ 8Ôëì¶Ñ1
+s
+java:S6809…"UCall transactional methods via an injected dependency instead of directly via 'this'.(³û¶ì8éëì¶Ñ1

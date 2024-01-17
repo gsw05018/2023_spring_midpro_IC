@@ -1,0 +1,93 @@
+<html layout:decorate = "~{/common/layout}">
+
+<head>
+    <!-- CSS 불러오기 -->
+    <link rel = "stylesheet" type = "text/css " href = "/mypage.css">
+    <style>
+        .infor-box{
+            margin-bottom: 10px ;
+            display: flex;
+        }
+
+      .join-box  p{
+            margin-left: 190px ;
+            margin-bottom: 10px ;
+        }
+
+        input{
+            width: 600px;
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- 마이페이지 -->
+<div class = "my-wrap" layout:fragment = "content">
+    <div class = "id-section">
+        <p class = "logo-text">
+            <a href = "/" style = "width: 200px;">뭐하지 또? 또 가지 뭐! </a>
+        </p>
+
+        <h1>MY PAGE</h1>
+
+        <!--     이미지    -->
+        <div class = "avatar">
+            <div class = "img-box">
+                <img th:src="${@rq.profileImgUrl}" alt = "프로필 이미지">
+                <label for = "profileImageInput" class = "change-profile-button"><span>변경</span></label>
+                <input type = "file" id = "profileImageInput" style = "display: none;">
+            </div>
+        </div>
+
+        <!--   사용자이름  -->
+        <h2 th:text="${@rq.member.nickname}"></h2>
+        <h4 style = "margin-top: 10px " th:text="${@rq.member.email}"></h4>
+
+        <!--    메뉴   -->
+        <ul >
+            <li><a href = "#">정보 수정</a></li>
+        </ul>
+
+    </div>
+
+    <div class = "ch-section">
+        <!--   정보수정 폼   -->
+        <div class = "join-box">
+            <h2 style = "text-align: center; margin-bottom: 50px; font-size: 35px;">회원 정보 수정</h2>
+            <form id = "userProfileForm">
+                <div class = "infor-box ">
+                    <!-- 닉네임 입력 -->
+                    <label for = "newNickname"
+                           style = "padding: 10px 20px; font-size: 20px; font-weight: 500; width: 150px;">닉네임</label>
+                    <input type = "text" id = "newNickname" name = "newNickname" maxlength = "50"
+                           placeholder = "변경하실 닉네임을 입력해주세요"
+                           style = " height: 50px; box-shadow: 0 2px 6px 0 rgba(68, 68, 68, 0.08); border: 1px solid #dadada; border-radius: 5px; padding-left: 15px;">
+                </div>
+                <p id = "nicknameError" style = "color: red;"></p>
+
+                <!-- 이메일 입력 -->
+                <div class = "infor-box">
+                    <label for = "newEmail"
+                           style = "padding: 10px 20px; font-size: 20px; font-weight: 500; width: 150px;">이메일</label>
+                    <input type = "text" id = "newEmail" name = "newEmail" placeholder = "변경하실 이메일을 입력해주세요"
+                           style = "height: 50px; box-shadow: 0 2px 6px 0 rgba(68, 68, 68, 0.08); border: 1px solid #dadada; border-radius: 5px; padding-left: 15px;">
+                </div>
+                <p id = "emailError" style = "color: red;"></p>
+
+                <div style = "display: flex">
+                    <button type = "button" id = "updateProfileButton"
+                            style = "margin-right: 20px; width: 100%; height: 50px; box-shadow: 0 2px 6px 0 rgba(68, 68, 68, 0.08); border: 1px solid #dadada; border-radius: 10px; background-color: #fff; cursor: pointer; margin-top: 30px;">
+                        수정하기
+                    </button>
+                    <button type = "button" onclick = "window.location.href='/user/mypage'"
+                            style = "width: 100%; height: 50px; box-shadow: 0 2px 6px 0 rgba(68, 68, 68, 0.08); border: 1px solid #dadada; border-radius: 10px; background-color: #fff; cursor: pointer; margin-top: 30px;">
+                        취소
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>

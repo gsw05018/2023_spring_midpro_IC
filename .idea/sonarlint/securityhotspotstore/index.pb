@@ -55,3 +55,5 @@ z
 JmidProject/src/main/java/com/sbspro/midProject/base/entity/BaseEntity.java,8\e\8e1f9fbe67087d187b6154a7b64decd03792c70b
 p
 @midProject/src/main/java/com/sbspro/midProject/base/util/Ut.java,4\8\48c1c34482581cd265e44ee6b614025f3e37b4c3
+y
+ImidProject/src/main/java/com/sbspro/midProject/base/initData/NotProd.java,d\5\d5f27226dde3df51b3b11fe67ddce381067c2048
