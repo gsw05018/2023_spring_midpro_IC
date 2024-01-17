@@ -195,7 +195,7 @@ public class Rq {
         req.setAttribute("historyBackFailMsg", Ut.url.withTtl(msg)); // 요청에 메시지 설정
         resp.setStatus(HttpServletResponse.SC_BAD_REQUEST); // 200 이 아니라 400 으로 응답코드가 지정되도록
 
-        return "common/common";
+        return "common/js";
     }
 
     public String redirect(String url, RsData rs){

@@ -2,6 +2,7 @@ package com.sbspro.midProject.member.service;
 
 import com.sbspro.midProject.base.app.AppConfig;
 import com.sbspro.midProject.base.rsData.RsData;
+import com.sbspro.midProject.base.util.Ut;
 import com.sbspro.midProject.domain.attr.service.AttrService;
 import com.sbspro.midProject.domain.email.service.EmailService;
 import com.sbspro.midProject.domain.emailVerification.service.EmailVerificationService;
@@ -98,12 +99,12 @@ public class MemberService {
     }
 
     private void sendJoinCompleteEmail(Member member) {
+        final String email = member.getEmail();
+
         CompletableFuture<RsData> sendRsFuture = emailService.send(
-                member.getEmail(),
+                email,
                 "[%s 가입축하 ] 회원가입이 완료되었습니다.".formatted(AppConfig.getSiteName()),
                 "많은 이용 바랍니다.");
-
-        final String email = member.getEmail();
 
         sendRsFuture.whenComplete((rs, throwable) -> {
             if(rs.isFail()){
@@ -118,8 +119,6 @@ public class MemberService {
         emailVerificationService.send(member);
     }
 
-
-
     @Transactional
     public void setEmailVerified(Long memberId){
         attrService.set("member__%d__extra__emailVerified".formatted(memberId), true);
@@ -133,4 +132,30 @@ public class MemberService {
         return attrService.getAsBoolean("member__%d__extra__emailVerified".formatted(member.getId()), false);
     }
 
+    public Optional<Member> findByUsernameAndEmail(String username, String email) {
+        return memberRepository.findByUsernameAndEmail(username, email);
+    }
+
+    @Transactional
+    public void sendTempPasswordToEmail(Member member) {
+        final String tempPassword = Ut.str.tempPassword(6);
+        member.setPassword(passwordEncoder.encode(tempPassword));
+
+        final String email = member.getEmail();
+
+        CompletableFuture<RsData> sendRsFuture = emailService.send(
+                email, "[%s 임시비밀번호] 임시 비밀번호 입니다.".formatted(
+                        AppConfig.getSiteName()
+                ),
+            tempPassword
+        );
+
+        sendRsFuture.whenComplete((rs, throwable) -> {
+            if (rs.isFail()){
+                log.info("sendTempPasswordToEmail, 메일 발송 실패 : " + email);
+                return ;
+            }
+            log.info("senaTempPasswordToEmail, 메일 발송 성공 : " +  email);
+        });
+    }
 }
