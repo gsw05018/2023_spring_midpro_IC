@@ -73,7 +73,8 @@ public class MemberController {
     }
 
     public boolean assertCurrentMemberVerified() {
-        if (!memberService.isEmailVerified(rq.getMember()))
+        Member currentMember = rq.getMember();
+        if (currentMember == null || !memberService.isEmailVerified(currentMember))
             throw new EmailNotVerifiedAccessDeniedException("이메일 인증 후 이용해주세요");
         return true;
     }
@@ -176,7 +177,7 @@ public class MemberController {
         if(!memberService.isSamePassword(rq.getMember(), password))
             return rq.historyBack("비밀번호가 일치하지 않습니다");
 
-        String code =memberService.getCheckPasswordAuthCode(rq.getMember());
+        String code =memberService.genCheckPasswordAuthCode(rq.getMember());
 
         redirectUrl = Ut.url.modifyQueryParam(redirectUrl, "checkPasswordAuthCode", code);
 

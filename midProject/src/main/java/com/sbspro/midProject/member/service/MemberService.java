@@ -1,7 +1,6 @@
 package com.sbspro.midProject.member.service;
 
 import com.sbspro.midProject.base.app.AppConfig;
-import com.sbspro.midProject.base.rq.Rq;
 import com.sbspro.midProject.base.rsData.RsData;
 import com.sbspro.midProject.base.util.Ut;
 import com.sbspro.midProject.domain.attr.service.AttrService;
@@ -23,6 +22,7 @@ import java.util.Optional;
 import java.util.UUID;
 import java.util.concurrent.CompletableFuture;
 
+
 @Service
 @RequiredArgsConstructor
 @Transactional(readOnly = true)
@@ -32,7 +32,7 @@ public class MemberService {
     private final EmailService emailService;
     private final EmailVerificationService emailVerificationService;
     private final AttrService attrService;
-    private final Rq rq;
+
     private final MemberRepository memberRepository;
 
     private final PasswordEncoder passwordEncoder;
@@ -97,6 +97,8 @@ public class MemberService {
     }
 
     private void saveProfileImg(Member member, MultipartFile profileImg) {
+        if (profileImg.isEmpty()) return;
+
         genFileService.save(member.getModelName(), member.getId(), "common", "profileImg", 1, profileImg);
     }
 
@@ -169,22 +171,23 @@ public class MemberService {
     }
 
     @Transactional
-    public RsData<Member> modify(long memberId, String password, String nickname, MultipartFile profileImg){
+    public RsData<Member> modify(long memberId, String password, String nickname, MultipartFile profileImg) {
         Member member = findById(memberId).get();
 
-        if(password != null) member.setPassword(passwordEncoder.encode(password));
-        if(nickname != null) member.setNickname(nickname);
-        if(profileImg != null) saveProfileImg(member, profileImg);
+        if (password != null) member.setPassword(passwordEncoder.encode(password));
+        if (nickname != null) member.setNickname(nickname);
+
+        if (profileImg != null) saveProfileImg(member, profileImg);
 
         return RsData.of("S-1", "회원정보가 수정되었습니다.", member);
     }
 
-    public boolean isSamePassword(Member member, String oldPassword){
+    public boolean isSamePassword(Member member, String oldPassword) {
         return passwordEncoder.matches(oldPassword, member.getPassword());
     }
 
     @Transactional
-    public String getCheckPasswordAuthCode(Member member){
+    public String genCheckPasswordAuthCode(Member member) {
         String code = UUID.randomUUID().toString();
 
         attrService.set("member__%d__extra__checkPasswordAuthCode".formatted(member.getId()), code, LocalDateTime.now().plusSeconds(60 * 30));
@@ -192,11 +195,12 @@ public class MemberService {
         return code;
     }
 
-    public RsData<?> checkCheckPasswordAuthCode(Member member, String checkPasswordAuthCode){
-        if(checkPasswordAuthCode == null) return RsData.of("F-1", "checkPasswordAuthCode를 입력해주세요");
+    public RsData<?> checkCheckPasswordAuthCode(Member member, String checkPasswordAuthCode) {
+        if (checkPasswordAuthCode == null) return RsData.of("F-1", "checkPasswordAuthCode를 입력해주세요.");
 
-        if(attrService.get("member__%d__extra__checkPasswordAuthCode".formatted(member.getId()), "").equals(checkPasswordAuthCode)) return RsData.of("S-1", "유효한 코드입니다.");
+        if (attrService.get("member__%d__extra__checkPasswordAuthCode".formatted(member.getId()), "").equals(checkPasswordAuthCode))
+            return RsData.of("S-1", "유효한 코드입니다.");
 
-         return RsData.of("F-2", "유효하지 않은 코드입니다.");
+        return RsData.of("F-2", "유효하지 않은 코드입니다.");
     }
 }

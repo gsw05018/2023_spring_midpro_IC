@@ -1,4 +1,6 @@
 
 t	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(µˆžîþÿÿÿÿ
+H
+java:S2160"+Override the "equals" method in this class.(¼´Íÿ8‚‡ñäÑ1
 <
-java:S1452,"&Remove usage of generic wildcard type.(ÒŠÒ‡
+java:S1452%"&Remove usage of generic wildcard type.(ÒŠÒ‡
