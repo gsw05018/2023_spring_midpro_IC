@@ -3,6 +3,8 @@ package com.sbspro.midProject.base.rsData;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
+import java.util.Optional;
+
 @Getter
 @AllArgsConstructor
 public class RsData<T> { // API 응답을 위한 일반적인 포맷을 제공하는 제네릭 클래스
@@ -31,6 +33,10 @@ public class RsData<T> { // API 응답을 위한 일반적인 포맷을 제공�
         return !isSuccess(); // 성공이 아니면 실패로 간주
     }
     // RsData 객체를 생성하는 정적 메서드, data가 없는 경우
+
+    public Optional<RsData<T>> optional(){
+        return Optional.of(this);
+    }
 
 
     // of 메서드는 팩토리 메서드
