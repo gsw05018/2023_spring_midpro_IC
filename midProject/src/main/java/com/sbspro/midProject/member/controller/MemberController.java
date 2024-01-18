@@ -5,7 +5,6 @@ import com.sbspro.midProject.base.rsData.RsData;
 import com.sbspro.midProject.member.entity.Member;
 import com.sbspro.midProject.member.exception.EmailNotVerifiedAccessDeniedException;
 import com.sbspro.midProject.member.service.MemberService;
-import jakarta.servlet.http.HttpServletResponse;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
@@ -131,7 +130,7 @@ public class MemberController {
 
     @PreAuthorize("isAuthenticated()")
     @GetMapping("/modify")
-    public String showModify(HttpServletResponse response){
+    public String showModify(){
         return "usr/member/mypage_modify";
     }
 
@@ -150,6 +149,23 @@ public class MemberController {
                 modifyForm.getProfileImg()
         );
         return rq.redirectOrBack("/usr/member/me", modifyRs);
+    }
+
+    @PreAuthorize("isAuthenticated()")
+    @GetMapping("/checkPassword")
+    public String showCheckPassword(){
+        return "usr/member/checkPassword";
+    }
+
+    @PreAuthorize("isAuthenticated()")
+    @PostMapping("/checkPassword")
+    public String checkPassword(String password, String redirectUrl){
+        if(!memberService.isSamePassword(rq.getMember(), password))
+            return rq.historyBack("비밀번호가 일치하지 않습니다");
+
+        System.out.println("redirectUrl : " + redirectUrl);
+
+        return rq.redirect(redirectUrl);
     }
 
     @AllArgsConstructor
