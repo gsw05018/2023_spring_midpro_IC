@@ -23,8 +23,8 @@ public class Rq {
     private final HttpServletRequest req;
     private final HttpServletResponse resp;
     private final HttpSession session;
-    private Member member = null; // 로그인한 회원 정보 저장, 초기에는 null로 저장
     private final User user; // Spring Security의 User 객체 지정
+    private Member member = null; // 로그인한 회원 정보 저장, 초기에는 null로 저장
 
     // 생성자를 통해 의존성 주입을 수행하고, 로그인한 사용자 정보 초기화
     public Rq(MemberService memberService, HttpServletRequest req, HttpServletResponse resp, HttpSession session) {
@@ -183,7 +183,7 @@ public class Rq {
         return sb.toString(); // 생성된 문자열 반환
     }
 
-    public String historyBack(RsData rs){
+    public String historyBack(RsData rs) {
         return historyBack(rs.getMsg());
     }
 
@@ -198,7 +198,7 @@ public class Rq {
         return "common/js";
     }
 
-    public String redirect(String url, RsData rs){
+    public String redirect(String url, RsData rs) {
         return redirect(url, rs.getMsg());
     }
 
@@ -207,8 +207,8 @@ public class Rq {
         return "redirect:" + Ut.url.modifyQueryParam(url, "msg", Ut.url.encodeWithTtl(msg));
     }
 
-    public String redirectOrBack(String url, RsData rs){
-        if(rs.isFail()) return historyBack(rs);
+    public String redirectOrBack(String url, RsData rs) {
+        if (rs.isFail()) return historyBack(rs);
 
         return redirect(url, rs);
     }

@@ -1,33 +1,36 @@
 
 `
-java:S6208 "CMerge the previous cases into this one using comma-separated label.(±¼Ì»8„¦Ş±Ñ1
+java:S6208!"CMerge the previous cases into this one using comma-separated label.(±¼Ì»8¾öİÑ1
 `
-java:S6208$"CMerge the previous cases into this one using comma-separated label.(ÛñìÙ8„¦Ş±Ñ1
+java:S6208%"CMerge the previous cases into this one using comma-separated label.(ÛñìÙ8¾öİÑ1
 e
-java:S62081"CMerge the previous cases into this one using comma-separated label.(ÙŸ¢Úøÿÿÿÿ8„¦Ş±Ñ1
-n	java:S101"MRename this class name to match the regular expression '^[A-Z][a-zA-Z0-9]*$'.(Ö¬ºêùÿÿÿÿ8…¦Ş±Ñ1
-n	java:S101"MRename this class name to match the regular expression '^[A-Z][a-zA-Z0-9]*$'.(Ô¥Û£øÿÿÿÿ8…¦Ş±Ñ1
-i	java:S101;"MRename this class name to match the regular expression '^[A-Z][a-zA-Z0-9]*$'.(…Ò“Â8…¦Ş±Ñ1
-i	java:S101s"MRename this class name to match the regular expression '^[A-Z][a-zA-Z0-9]*$'.(¾ŞÔš8…¦Ş±Ñ1
-o	java:S101…"MRename this class name to match the regular expression '^[A-Z][a-zA-Z0-9]*$'.(„²õÚúÿÿÿÿ8…¦Ş±Ñ1
-u	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(ÈÔÇ98†¦Ş±Ñ1
+java:S62082"CMerge the previous cases into this one using comma-separated label.(ÙŸ¢Úøÿÿÿÿ8¾öİÑ1
+n	java:S101"MRename this class name to match the regular expression '^[A-Z][a-zA-Z0-9]*$'.(Ö¬ºêùÿÿÿÿ8¿öİÑ1
+n	java:S101"MRename this class name to match the regular expression '^[A-Z][a-zA-Z0-9]*$'.(Ô¥Û£øÿÿÿÿ8¿öİÑ1
+i	java:S101D"MRename this class name to match the regular expression '^[A-Z][a-zA-Z0-9]*$'.(…Ò“Â8¿öİÑ1
+i	java:S101|"MRename this class name to match the regular expression '^[A-Z][a-zA-Z0-9]*$'.(¾ŞÔš8¿öİÑ1
+o	java:S101"MRename this class name to match the regular expression '^[A-Z][a-zA-Z0-9]*$'.(„²õÚúÿÿÿÿ8¿öİÑ1
+u	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(ÈÔÇ98ÀöİÑ1
 W
-java:S1118":Add a private constructor to hide the implicit public one.(öÎØ„8—¦Ş±Ñ1
+java:S1118":Add a private constructor to hide the implicit public one.(öÎØ„8ÏöİÑ1
 \
-java:S1118":Add a private constructor to hide the implicit public one.(Ö¬ºêùÿÿÿÿ8—¦Ş±Ñ1
+java:S1118":Add a private constructor to hide the implicit public one.(Ö¬ºêùÿÿÿÿ8ÏöİÑ1
 \
-java:S1118":Add a private constructor to hide the implicit public one.(Ô¥Û£øÿÿÿÿ8š¦Ş±Ñ1
-C	java:S131""Add a default case to this switch.(´¶€Ñüÿÿÿÿ8›¦Ş±Ñ1
-C	java:S131/""Add a default case to this switch.(´¶€Ñüÿÿÿÿ8›¦Ş±Ñ1
+java:S1118":Add a private constructor to hide the implicit public one.(Ô¥Û£øÿÿÿÿ8ÑöİÑ1
+C	java:S131""Add a default case to this switch.(´¶€Ñüÿÿÿÿ8ÒöİÑ1
+C	java:S1310""Add a default case to this switch.(´¶€Ñüÿÿÿÿ8ÓöİÑ1
+\	java:S899>";Do something with the "boolean" value returned by "delete".(²Œ­ûÿÿÿÿ8ÔöİÑ1
+p
+java:S4042>"NUse "java.nio.file.Files#delete" here for better messages on error conditions.(²Œ­ûÿÿÿÿ8ÔöİÑ1
 W
-java:S1118;":Add a private constructor to hide the implicit public one.(…Ò“Â8œ¦Ş±Ñ1
+java:S1118D":Add a private constructor to hide the implicit public one.(…Ò“Â8ÕöİÑ1
 b
-java:S4635^"EReplace "indexOf" with the overload that accepts an offset parameter.(™¨ï8¦Ş±Ñ1
+java:S4635g"EReplace "indexOf" with the overload that accepts an offset parameter.(™¨ï8×öİÑ1
 W
-java:S1118s":Add a private constructor to hide the implicit public one.(¾ŞÔš8Ÿ¦Ş±Ñ1
-K
-java:S2140}")Use "java.util.Random.nextInt()" instead.(ÄÊíüÿÿÿÿ8£Øá±Ñ1
+java:S1118|":Add a private constructor to hide the implicit public one.(¾ŞÔš8ØöİÑ1
+L
+java:S2140†")Use "java.util.Random.nextInt()" instead.(ÄÊíüÿÿÿÿ8ÙöİÑ1
 ]
-java:S1118…":Add a private constructor to hide the implicit public one.(„²õÚúÿÿÿÿ8¤¦Ş±Ñ1
+java:S1118":Add a private constructor to hide the implicit public one.(„²õÚúÿÿÿÿ8ÙöİÑ1
 f
-java:S5361‰"HReplace this call to "replaceAll()" by a call to the "replace()" method.(Ê¦ìı8¥¦Ş±Ñ1
+java:S5361’"HReplace this call to "replaceAll()" by a call to the "replace()" method.(Ê¦ìı8ÚöİÑ1

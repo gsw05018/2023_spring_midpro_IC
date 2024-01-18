@@ -24,10 +24,9 @@ public class BoardService {
         }
     }
 
-    public List<Board> getList(){
+    public List<Board> getList() {
         return this.boardRepository.findAll();
     }
-
 
 
 }

@@ -30,16 +30,16 @@ public class Member extends BaseEntity {
 
     private String email;
 
-    public boolean isAdmin(){
+    public boolean isAdmin() {
         return "admin".equals(username);
     }
 
-    public List<? extends GrantedAuthority> getGrantedAuthorities(){
+    public List<? extends GrantedAuthority> getGrantedAuthorities() {
         List<GrantedAuthority> grantedAuthorities = new ArrayList<>();
 
         grantedAuthorities.add(new SimpleGrantedAuthority("member"));
 
-        if(isAdmin()){
+        if (isAdmin()) {
             grantedAuthorities.add(new SimpleGrantedAuthority("admine"));
         }
 

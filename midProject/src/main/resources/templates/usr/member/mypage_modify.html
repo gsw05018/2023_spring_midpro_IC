@@ -1,0 +1,175 @@
+<html layout:decorate = "~{/common/layout}">
+
+<head>
+    <title>회원정보수정</title>
+    <link href = "/mypage.css" rel = "stylesheet" type = "text/css ">
+    <script src = "https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.21/lodash.min.js"></script>
+    <style>
+        .infor-box {
+          margin-bottom: 10px;
+          display: flex;
+        }
+
+        .join-box p {
+          margin-left: 190px;
+          margin-bottom: 10px;
+        }
+
+        input {
+          width: 600px;
+        }
+    </style>
+</head>
+
+<body>
+<!-- 마이페이지 -->
+<div class = "my-wrap" layout:fragment = "content">
+    <div class = "id-section">
+        <p class = "logo-text">
+            <a href = "/" style = "width: 200px;">뭐하지 또? 또 가지 뭐! </a>
+        </p>
+
+        <h1>MY PAGE</h1>
+
+        <!--     이미지    -->
+        <div class = "avatar">
+            <div class = "img-box">
+                <img alt = "프로필 이미지" th:src = "${@rq.profileImgUrl}">
+            </div>
+        </div>
+
+        <!--   사용자이름  -->
+        <h2 th:text = "${@rq.member.nickname}"></h2>
+
+        <!--    메뉴   -->
+        <ul>
+            <li><a href = "/usr/member/mypage">내 정보</a></li>
+            <li><a href = "/usr/member/modify">정보 수정</a></li>
+            <li><a href = "/usr/member/withdrawal">회원 탈퇴</a></li>
+        </ul>
+
+    </div>
+
+    <div class = "ch-section">
+        <!--   정보수정 폼   -->
+        <form enctype="multipart/form-data" method="POST" name="modify-form" class = "join-box"
+        onsubmit="submitModifyForm(this); return false;" th:action>
+            <h2 style = "text-align: center; margin-bottom: 50px; font-size: 35px;">내 정보 수정</h2>
+                <div class = "infor-box ">
+                    <!-- 이미지 -->
+                    <label style = "padding: 10px 20px; font-size: 20px; font-weight: 500; width: 150px;">프로필
+                                                                                                          이미지</label>
+                    <input type = "file" accept="image/jpeg, image/png, image/gif" name="profileImg"
+                           style = " height: 50px; box-shadow: 0 2px 6px 0 rgba(68, 68, 68, 0.08); border: 1px solid #dadada; border-radius: 5px; line-height: 50px ; padding-left: 15px; width: 600px ;"></input>
+                </div>
+
+                <!-- 별명 -->
+                <div class = "infor-box">
+                    <label style = "padding: 10px 20px; font-size: 20px; font-weight: 500; width: 150px;">별명</label>
+                    <input type = "text" placeholder = "변경하실 별명 입력해주세요" maxlength="30" name="nickname" th:valeu="${@rq.member.nickname}"
+                           style = " height: 50px; box-shadow: 0 2px 6px 0 rgba(68, 68, 68, 0.08); border: 1px solid #dadada; border-radius: 5px; line-height: 50px ; padding-left: 15px; width: 600px ;"></input>
+                </div>
+
+                <!-- 기존 비밀번호 -->
+                <div class = "infor-box">
+                    <label style = "padding: 10px 20px; font-size: 20px; font-weight: 500; width: 150px;">기존
+                                                                                                          비밀번호</label>
+                    <input type = "password" placeholder = "기존 비밀번호 입력해주세요" maxlength="30" name="oldPassword"
+                           style = "height: 50px; box-shadow: 0 2px 6px 0 rgba(68, 68, 68, 0.08); border: 1px solid #dadada; border-radius: 5px; line-height: 50px ; padding-left: 15px; width: 600px ;"></input>
+                </div>
+                <!-- 새 비밀번호  -->
+                <div class = "infor-box">
+                    <label style = "padding: 10px 20px; font-size: 20px; font-weight: 500; width: 150px;">새 비밀번호 </label>
+                    <input type = "password" placeholder = "변경하실 비밀번호 입력해주세요" maxlength="30" name="password"
+                           style = "height: 50px; box-shadow: 0 2px 6px 0 rgba(68, 68, 68, 0.08); border: 1px solid #dadada; border-radius: 5px; line-height: 50px ; padding-left: 15px; width: 600px ;"></input>
+                </div>
+
+                <!-- 새 비밀번호 확인 -->
+                <div class = "infor-box">
+                    <label style = "padding: 10px 20px; font-size: 20px; font-weight: 500; width: 150px;">새 비밀번호
+                                                                                                          확인</label>
+                    <input type = "password" placeholder = "변경하실 비밀번호 입력해주세요" maxlength="30" name="passwordConfirm"
+                           style = "height: 50px; box-shadow: 0 2px 6px 0 rgba(68, 68, 68, 0.08); border: 1px solid #dadada; border-radius: 5px; line-height: 50px ; padding-left: 15px; width: 600px ;"></input>
+                </div>
+
+                <div style = "display: flex">
+                    <button style = "width: 100%; height: 50px; box-shadow: 0 2px 6px 0 rgba(68, 68, 68, 0.08); border: 1px solid #dadada; border-radius: 10px; background-color: #fff; cursor: pointer; margin-top: 30px;">
+                        <span>회원정보수정</span>
+                    </button>
+                </div>
+        </form>
+    </div>
+
+    <script>
+        const modifyForm = document['modify-form'];
+
+        let submitModifyFormDone = false;
+        function submitModifyForm(form){
+            if( submitModifyFormDone ) return;
+
+            form.oldPassword.value = form.oldPassword.value.trim();
+
+            if( form.oldPassword.value.length == 0 ){
+                form.oldPassword.focus();
+                toastWarning('기존 비밀번호를 입력해주세요');
+                return;
+            }
+
+            if( form.oldPassword.value.length < 4 ){
+                form.oldPassword.focus();
+                toastWarning('기존 비밀번호를 4자 이상 입력해주세요');
+                return;
+            }
+
+            form.password.value = form.password.value.trim();
+
+            if( form.password.value.length == 0 ){
+                form.password.focus();
+                toastWarning('새 비밀번호를 입력해주세요');
+                return;
+            }
+
+            if( form.password.value.length < 4 ){
+                form.password.focus();
+                toastWarning('새 비밀번호를 4자 이상 입력해주세요');
+                return;
+            }
+
+            form.passwordConfirm.value = form.passwordConfirm.value.trim();
+
+            if( form.passwordConfirm.value.length == 0 ){
+                form.password.focus();
+                toastWarning('새 비밀번호를 확인 입력해주세요');
+                return;
+            }
+
+            if( form.passwordConfirm.value != form.password.value ){
+                form.password.focus();
+                toastWarning('새 비밀번호를 확인이 일치하지 않습니다');
+                return;
+            }
+
+            form.nickname.value = form.nickname.value.trim();
+
+            if( form.nickname.value.length == 0 ){
+                form.nickname.focus();
+                toastWarning('별명 입력해주세요');
+                return;
+            }
+
+            if( form.nickname.value < 4 ){
+                form.nickname.focus();
+                toastWarning('별명을 4자 이상 입력해주세요');
+                return;
+            }
+
+            form.submit();
+            submitModifyFormDone = true;
+
+        }
+    </script>
+
+</div>
+
+</body>
+</html>

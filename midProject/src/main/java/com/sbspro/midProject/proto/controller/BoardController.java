@@ -16,7 +16,7 @@ public class BoardController {
     private final BoardService boardService;
 
     @GetMapping("/reply_board")
-    public String board(Model model){
+    public String board(Model model) {
         List<Board> boardList = this.boardService.getList();
         model.addAttribute("boardList", boardList);
         return "board/reply_board";

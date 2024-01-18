@@ -10,8 +10,8 @@ import org.springframework.scheduling.annotation.EnableAsync;
 @EnableAsync
 public class MidProjectApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(MidProjectApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(MidProjectApplication.class, args);
+    }
 
 }

@@ -71,7 +71,6 @@ button {
   height: 6rem;
   margin: auto;
   border-radius: 50%;
-  box-shadow: 0 0 0 1.5px rgba(59, 130, 246, 1);
   outline: 2px solid rgba(0, 0, 0, 0.05);
   outline-offset: 2px;
   position: relative; /* 부모 요소에 대해 상대적으로 배치 */

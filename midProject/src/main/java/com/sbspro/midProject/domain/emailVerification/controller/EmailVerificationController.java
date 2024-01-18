@@ -16,7 +16,7 @@ public class EmailVerificationController {
     private final Rq rq;
 
     @GetMapping("/verify")
-    public String verify(long memberId, String code){
+    public String verify(long memberId, String code) {
         RsData verifyEmailRs = emailVerificationService.verify(memberId, code);
 
         // 각 상황별 이동해야 하는  URL
@@ -25,10 +25,10 @@ public class EmailVerificationController {
         String afterSuccessUrl = "/";
 
         // 인증실패 상황
-        if(verifyEmailRs.isFail()) return rq.redirect(afterFailUrl, verifyEmailRs);
+        if (verifyEmailRs.isFail()) return rq.redirect(afterFailUrl, verifyEmailRs);
 
         // 인증성공했지만 로그아웃 상황
-        if(rq.isLogout()) return rq.redirect(afterSuccessButLogoutUrl, verifyEmailRs);
+        if (rq.isLogout()) return rq.redirect(afterSuccessButLogoutUrl, verifyEmailRs);
 
         // 인증성공했고 로그인한 상황
         return rq.redirect(afterFailUrl, verifyEmailRs);

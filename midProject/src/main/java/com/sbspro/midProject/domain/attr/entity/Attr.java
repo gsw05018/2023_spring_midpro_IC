@@ -28,7 +28,7 @@ import static lombok.AccessLevel.PROTECTED;
 @NoArgsConstructor(access = PROTECTED)
 @SuperBuilder
 @ToString(callSuper = true)
-public class Attr  extends BaseEntity {
+public class Attr extends BaseEntity {
     private String relTypeCode;
     private long relId;
     private String typeCode;

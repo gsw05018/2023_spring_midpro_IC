@@ -10,25 +10,25 @@ public class RsData<T> { // API 응답을 위한 일반적인 포맷을 제공�
     private String msg; // API 응답 메시지
     private T data; // API 응답 데이터, 제네릭 타입
 
-    public boolean isSuccess() {
-        return resultCode.startsWith("S-"); // resultCode가 S-로 시작하면 성공으로 간주
-    }
-    // 성공 여부를 반환하는 메서드
-
-    public boolean isFail() {
-        return  !isSuccess(); // 성공이 아니면 실패로 간주
-    }
-    // 실패 여부를 반환하는 메서드
-    
     public static <T> RsData<T> of(String resultCode, String msg, T data) {
         return new RsData<>(resultCode, msg, data);
         // RsData 객체를 생성하여 반환
-    } 
-    // RsData 객체를 생성하는 정적 메서드
+    }
+    // 성공 여부를 반환하는 메서드
 
     public static <T> RsData<T> of(String resultCode, String msg) {
         return of(resultCode, msg, null);
         // data 필드를 null로 설정하여 RsData 객체 생성
+    }
+    // 실패 여부를 반환하는 메서드
+
+    public boolean isSuccess() {
+        return resultCode.startsWith("S-"); // resultCode가 S-로 시작하면 성공으로 간주
+    }
+    // RsData 객체를 생성하는 정적 메서드
+
+    public boolean isFail() {
+        return !isSuccess(); // 성공이 아니면 실패로 간주
     }
     // RsData 객체를 생성하는 정적 메서드, data가 없는 경우
 

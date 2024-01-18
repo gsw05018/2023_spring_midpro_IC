@@ -19,25 +19,25 @@ public class AttrService {
     private final AttrRepository attrRepository;
 
     //  조회
-     public String get(String varName, String defaultValue){
-         Attr attr = findAttr(varName);
+    public String get(String varName, String defaultValue) {
+        Attr attr = findAttr(varName);
 
-         if (attr == null){
-             return defaultValue;
-         }
+        if (attr == null) {
+            return defaultValue;
+        }
 
-         if (attr.getExpireDate() != null && attr.getExpireDate().compareTo(LocalDateTime.now() ) < 0){
-             return defaultValue;
-         }
+        if (attr.getExpireDate() != null && attr.getExpireDate().compareTo(LocalDateTime.now()) < 0) {
+            return defaultValue;
+        }
 
-         return attr.getVal();
-     }
+        return attr.getVal();
+    }
 
-    private Attr findAttr(String relTypeCode, Long relId, String typeCode, String type2Code){
+    private Attr findAttr(String relTypeCode, Long relId, String typeCode, String type2Code) {
         return attrRepository.findByRelTypeCodeAndRelIdAndTypeCodeAndType2Code(relTypeCode, relId, typeCode, type2Code).orElse(null);
     }
 
-    private Attr findAttr(String varName){
+    private Attr findAttr(String varName) {
         String[] varNameBits = varName.split("__");
         String relTypeCode = varNameBits[0];
         long relId = Integer.parseInt(varNameBits[1]);
@@ -69,11 +69,11 @@ public class AttrService {
         } else return value.equals("1");
     }
 
-    public LocalDateTime getAsLocalDateTime(String varName, LocalDateTime defaultValue){
+    public LocalDateTime getAsLocalDateTime(String varName, LocalDateTime defaultValue) {
 
         String value = get(varName, "");
 
-        if(value.isBlank()){
+        if (value.isBlank()) {
             return defaultValue;
         }
 
@@ -83,12 +83,12 @@ public class AttrService {
     // 명령
 
     @Transactional
-    public void set(String varName, String value){
+    public void set(String varName, String value) {
         set(varName, value, null);
     }
 
     @Transactional
-    public void set(String varName, String value, LocalDateTime expireDate){
+    public void set(String varName, String value, LocalDateTime expireDate) {
         String[] varNameBits = varName.split("__");
         String relTypeCode = varNameBits[0];
         long relId = Long.parseLong(varNameBits[1]);
@@ -99,36 +99,36 @@ public class AttrService {
     }
 
     @Transactional
-    public void set(String varName, long value){
+    public void set(String varName, long value) {
         set(varName, String.valueOf(value));
     }
 
     @Transactional
-    public void set(String varName, long value, LocalDateTime expireDate){
+    public void set(String varName, long value, LocalDateTime expireDate) {
         set(varName, String.valueOf(value), expireDate);
     }
 
     @Transactional
-    public void set(String varName, boolean value){
+    public void set(String varName, boolean value) {
         set(varName, String.valueOf(value));
     }
 
     @Transactional
-    public void set(String varName, boolean value, LocalDateTime expireDate){
+    public void set(String varName, boolean value, LocalDateTime expireDate) {
         set(varName, String.valueOf(value), expireDate);
     }
 
     @Transactional
-    public void set(String relTypeCode, Long relId, String typeCode, String type2Code, LocalDateTime value, LocalDateTime expireDate){
+    public void set(String relTypeCode, Long relId, String typeCode, String type2Code, LocalDateTime value, LocalDateTime expireDate) {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss.SSSSSS");
         set(relTypeCode, relId, typeCode, type2Code, value.format(formatter), expireDate);
     }
 
     @Transactional
-    public void set(String relTypeCode, Long relId, String typeCode, String type2Code, String value, LocalDateTime expireDate){
+    public void set(String relTypeCode, Long relId, String typeCode, String type2Code, String value, LocalDateTime expireDate) {
         Attr attr = findAttr(relTypeCode, relId, typeCode, type2Code);
 
-        if(attr == null){
+        if (attr == null) {
             attr = Attr
                     .builder()
                     .relTypeCode(relTypeCode)

@@ -2,20 +2,20 @@
 
 <head>
     <title>아이디 찾기</title>
-    <link rel = "stylesheet" href = "/login.css">
+    <link href = "/login.css" rel = "stylesheet">
 </head>
 
 <body>
-<div layout:fragment="content" class = "input-login-box">
+<div class = "input-login-box" layout:fragment = "content">
     <a href = "/"><h1>뭐하지 또? 또가지 뭐!</h1></a>
     <div class = "login-top-box">
-        <form method="POST" onsubmit="submitFindUsernameForm(this); return false;"
+        <form method = "POST" onsubmit = "submitFindUsernameForm(this); return false;"
               th:action>
             <div class = "form-box">
                 <div class = "id-icon-box icon-box">
-                    <i class="name fa-solid fa-envelope"></i>
-                    <input type = "email" placeholder = "이메일을 입력해주세요" class = "id-box" id = "email" name = "email"
-                           autofocus maxlength = "80">
+                    <i class = "name fa-solid fa-envelope"></i>
+                    <input autofocus class = "id-box" id = "email" maxlength = "80" name = "email"
+                           placeholder = "이메일을 입력해주세요" type = "email">
                 </div>
                 <button class = "submit">아이디 찾기</button>
             </div>

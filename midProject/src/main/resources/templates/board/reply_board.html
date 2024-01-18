@@ -1,48 +1,50 @@
-<html layout:decorate="~{/common/layout}">
+<html layout:decorate = "~{/common/layout}">
 
 <head>
     <!--  테일윈드 cdn  -->
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@latest/dist/tailwind.min.css" rel="stylesheet"
-          type="text/css"/>
+    <link href = "https://cdn.jsdelivr.net/npm/tailwindcss@latest/dist/tailwind.min.css" rel = "stylesheet"
+          type = "text/css"/>
 
     <!--  데이지 UI cdn  -->
-    <link href="https://cdn.jsdelivr.net/npm/daisyui@4.0.4/dist/full.min.css" rel="stylesheet" type="text/css"/>
+    <link href = "https://cdn.jsdelivr.net/npm/daisyui@4.0.4/dist/full.min.css" rel = "stylesheet" type = "text/css"/>
 
 </head>
 
 <body>
 
-<div layout:fragment="content" class="m-12">
-    <div class="m-auto container ">
-        <div class="join join-vertical  w-full">
-            <div class="collapse collapse-arrow  join-item border border-base-300"  th:each="board : ${boardList}">
+<div class = "m-12" layout:fragment = "content">
+    <div class = "m-auto container ">
+        <div class = "join join-vertical  w-full">
+            <div class = "collapse collapse-arrow  join-item border border-base-300" th:each = "board : ${boardList}">
 
-                <input type="radio" name="my-accordion-4" checked="checked"/>
-                <div class="collapse-title text-xl font-medium flex justify-between w-full" >
-                    <div th:text="${board.id}" class=" w-2/12"></div>
-                    <div th:text="${board.title}" class="w-full"></div>
-                    <div th:text="${#temporals.format(board.createDate, 'yy-MM-dd')}" class="text-center w-2/12"></div>
-                    <div class="  w-1/12">추천수
-                        <span th:text="|${#lists.size(board.answerList)}|"></span>
+                <input checked = "checked" name = "my-accordion-4" type = "radio"/>
+                <div class = "collapse-title text-xl font-medium flex justify-between w-full">
+                    <div class = " w-2/12" th:text = "${board.id}"></div>
+                    <div class = "w-full" th:text = "${board.title}"></div>
+                    <div class = "text-center w-2/12"
+                         th:text = "${#temporals.format(board.createDate, 'yy-MM-dd')}"></div>
+                    <div class = "  w-1/12">추천수
+                        <span th:text = "|${#lists.size(board.answerList)}|"></span>
                     </div>
-                    <div class=" w-1/12">조회수</div>
+                    <div class = " w-1/12">조회수</div>
                 </div>
-                <div class="collapse-content " >
-                        <table class="h-full w-full ">
-                            <tr >
-                                 <td class="w-12">내용</td>
-                                <td th:text="${board.content}" class="p-4"></td>
-                            </tr>
+                <div class = "collapse-content ">
+                    <table class = "h-full w-full ">
+                        <tr>
+                            <td class = "w-12">내용</td>
+                            <td class = "p-4" th:text = "${board.content}"></td>
+                        </tr>
 
-                            <ul>
-                                <li th:each="answer : ${board.answerList}" th:text="${answer.content}"></li>
-                            </ul>
+                        <ul>
+                            <li th:each = "answer : ${board.answerList}" th:text = "${answer.content}"></li>
+                        </ul>
 
-                            <form th:action="@{|/answer/create/${board.id}|}" method="post" >
-                                <textarea name="content" id="content" rows="15" class="border border-red-500"></textarea>
-                                <input type="submit" value="답변등록"></input>
-                            </form>
-                        </table>
+                        <form method = "post" th:action = "@{|/answer/create/${board.id}|}">
+                            <textarea class = "border border-red-500" id = "content" name = "content"
+                                      rows = "15"></textarea>
+                            <input type = "submit" value = "답변등록"></input>
+                        </form>
+                    </table>
                 </div>
             </div>
         </div>

@@ -21,11 +21,11 @@ import java.util.concurrent.CompletableFuture;
 @Transactional(readOnly = true)
 public class EmailService {
 
+    private final SendEmailLogRepository emailLogRepository;
+    private final JavaMailSender mailSender;
     @Autowired
     @Lazy
     private EmailService self;
-    private final SendEmailLogRepository emailLogRepository;
-    private final JavaMailSender mailSender;
 
     // 명령
     @Async
@@ -63,17 +63,17 @@ public class EmailService {
         });
     }
 
-    private boolean isTestEmail(String email){
+    private boolean isTestEmail(String email) {
         return email.endsWith("@test.com");
     }
 
     @Transactional
-    private void setCompleted(Long id, RsData rs){
+    private void setCompleted(Long id, RsData rs) {
         SendEmailLog sendEmailLog = emailLogRepository.findById(id).orElseThrow();
         sendEmailLog.setCompleted(rs);
     }
 
-    private SendEmailLog saveSendEmailLog(String to, String subject, String body){
+    private SendEmailLog saveSendEmailLog(String to, String subject, String body) {
         SendEmailLog sendEmailLog = SendEmailLog
                 .builder()
                 .email(to)

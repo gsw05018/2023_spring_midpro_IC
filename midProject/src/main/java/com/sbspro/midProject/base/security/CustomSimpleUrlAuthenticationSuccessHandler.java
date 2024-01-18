@@ -34,7 +34,7 @@ public class CustomSimpleUrlAuthenticationSuccessHandler extends SimpleUrlAuthen
 
         clearAuthenticationAttributes(request);
         // 인증 과정에서 사용된 임시 속성들을 Session에서 제거
-        
+
         String targetUrl = savedRequest != null ? savedRequest.getRedirectUrl() : getDefaultTargetUrl();
         // 이동할 목적지 URL 결정
         // 이전에 저장된 요청이 있으면 그 요청의 redirect URL 사용하고 없으면 기본 목적지 URL 사용

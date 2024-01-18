@@ -10,7 +10,7 @@ public class HomeController {
 
 
     @GetMapping("/")
-    public String root(){
+    public String root() {
         return "home/main";
     }
 

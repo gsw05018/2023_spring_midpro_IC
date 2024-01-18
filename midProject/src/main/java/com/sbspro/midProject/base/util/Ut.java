@@ -1,6 +1,7 @@
 package com.sbspro.midProject.base.util;
 
 
+import java.io.File;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.text.SimpleDateFormat;
@@ -54,7 +55,15 @@ public class Ut {
 
             return "etc";
         }
+
+        public static void remove(String filePath){
+            File file = new File(filePath);
+            if(file.exists()){
+                file.delete();
+            }
+        }
     }
+
 
     public static class url {
 
@@ -112,17 +121,17 @@ public class Ut {
 
     }
 
-    public static class str{
-        public static boolean hasLength(String string){
+    public static class str {
+        public static boolean hasLength(String string) {
             return string != null && string.length() > 0;
         }
 
-        public static String tempPassword(int i){
+        public static String tempPassword(int i) {
             String passwordSet = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefgijklmnopqrstuvwxyz0123456789!!@#$%^&*()";
             StringBuilder password = new StringBuilder();
 
-            for(int x = 0; x < i; x++){
-                int random = (int)(Math.random() * passwordSet.length());
+            for (int x = 0; x < i; x++) {
+                int random = (int) (Math.random() * passwordSet.length());
                 password.append(passwordSet.charAt(random));
             }
             return password.toString();

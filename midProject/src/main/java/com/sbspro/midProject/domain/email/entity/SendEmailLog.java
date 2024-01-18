@@ -27,11 +27,11 @@ public class SendEmailLog extends BaseEntity {
     private LocalDateTime sendEndData;
     private LocalDateTime failDate;
 
-    public void setCompleted(RsData rs){
+    public void setCompleted(RsData rs) {
         this.resultCode = rs.getResultCode();
         this.message = rs.getMsg();
 
-        if(rs.isSuccess()) this.sendEndData = LocalDateTime.now();
+        if (rs.isSuccess()) this.sendEndData = LocalDateTime.now();
         else this.failDate = LocalDateTime.now();
     }
 

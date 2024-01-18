@@ -29,21 +29,21 @@ public class MemberController {
 
     @GetMapping("/login")
     @PreAuthorize("isAnonymous()")
-    public String showLogin(){
+    public String showLogin() {
         return "usr/member/login";
     }
 
     @GetMapping("/join")
     @PreAuthorize("isAnonymous()")
-    public String showJoin(){
+    public String showJoin() {
         return "usr/member/join";
     }
 
     @PostMapping("/join")
     @PreAuthorize("isAnonymous()")
-    public String join(@Valid JoinForm joinForm){
+    public String join(@Valid JoinForm joinForm) {
 
-        RsData<Member> joinRs =  memberService.join(
+        RsData<Member> joinRs = memberService.join(
                 joinForm.getUsername(),
                 joinForm.getPassword(),
                 joinForm.getNickname(),
@@ -58,7 +58,7 @@ public class MemberController {
     @GetMapping("/checkUsernameDup")
     @ResponseBody
     @PreAuthorize("isAnonymous()")
-    public RsData<String> checkUsernameDup(String username){
+    public RsData<String> checkUsernameDup(String username) {
         return memberService.checkUsernameDup(username);
 
     }
@@ -66,12 +66,12 @@ public class MemberController {
     @GetMapping("/checkEmailDup")
     @ResponseBody
     @PreAuthorize("isAnonymous()")
-    public RsData<String> checkEmailDup(String email){
+    public RsData<String> checkEmailDup(String email) {
         return memberService.checkEmailDup(email);
     }
 
-    public boolean assertCurrentMemberVerified(){
-        if(!memberService.isEmailVerified(rq.getMember()))
+    public boolean assertCurrentMemberVerified() {
+        if (!memberService.isEmailVerified(rq.getMember()))
             throw new EmailNotVerifiedAccessDeniedException("이메일 인증 후 이용해주세요");
         return true;
     }
@@ -85,7 +85,7 @@ public class MemberController {
 
     @PreAuthorize("isAnonymous()")
     @GetMapping("/findUsername")
-    public String showFindUsername(){
+    public String showFindUsername() {
         return "usr/member/findUsername";
     }
 
@@ -104,13 +104,13 @@ public class MemberController {
 
     @PreAuthorize("isAnonymous()")
     @GetMapping("/findPassword")
-    public String showFindPassword(){
+    public String showFindPassword() {
         return "usr/member/findPassword";
     }
 
     @PreAuthorize("isAnonymous()")
     @PostMapping("/findPassword")
-    public String findPassword(String username, String email){
+    public String findPassword(String username, String email) {
         return
                 memberService.findByUsernameAndEmail(username, email)
                         .map(member -> {
@@ -124,14 +124,32 @@ public class MemberController {
 
     @PreAuthorize("isAuthenticated()")
     @GetMapping("/mypage")
-    public String showMe(){
+    public String showMe() {
         return "usr/member/me";
+    }
+
+    @PreAuthorize("isAuthenticated()")
+    @GetMapping("/modify")
+    public String showModify(){
+        return "usr/member/mypage_modify";
+    }
+
+    @PreAuthorize("isAuthenticated()")
+    @PostMapping("/modify")
+    public String modify(@Valid ModifyForm modifyForm){
+        RsData<Member> modifyRs  = memberService.modify(
+                rq.getMember().getId(),
+                modifyForm.getPassword(),
+                modifyForm.getNickname(),
+                modifyForm.getProfileImg()
+        );
+        return rq.redirectOrBack("/usr/member/me", modifyRs);
     }
 
     @AllArgsConstructor
     @Getter
     @ToString
-    public static class JoinForm{
+    public static class JoinForm {
 
         @NotBlank
         private String username;
@@ -148,4 +166,13 @@ public class MemberController {
         private MultipartFile profileImg;
     }
 
+    @Getter
+    @AllArgsConstructor
+    @ToString
+    public static class ModifyForm{
+        @NotBlank
+        private String nickname;
+        private String password;
+        private MultipartFile profileImg;
+    }
 }

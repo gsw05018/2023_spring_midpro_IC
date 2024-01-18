@@ -2,7 +2,7 @@
 
 <head>
     <!-- CSS 불러오기 -->
-    <link rel = "stylesheet" type = "text/css " href = "/mypage.css">
+    <link href = "/mypage.css" rel = "stylesheet" type = "text/css ">
     <style>
         .infor-box{
             margin-bottom: 10px ;
@@ -34,19 +34,18 @@
         <!--     이미지    -->
         <div class = "avatar">
             <div class = "img-box">
-                <img th:src="${@rq.profileImgUrl}" alt = "프로필 이미지">
-                <label for = "profileImageInput" class = "change-profile-button"><span>변경</span></label>
-                <input type = "file" id = "profileImageInput" style = "display: none;">
+                <img alt = "프로필 이미지" th:src = "${@rq.profileImgUrl}">
             </div>
         </div>
 
         <!--   사용자이름  -->
-        <h2 th:text="${@rq.member.nickname}"></h2>
-        <h4 style = "margin-top: 10px " th:text="${@rq.member.email}"></h4>
+        <h2 th:text = "${@rq.member.nickname}"></h2>
 
         <!--    메뉴   -->
-        <ul >
-            <li><a href = "#">정보 수정</a></li>
+        <ul>
+            <li><a href = "/usr/member/mypage">내 정보</a></li>
+            <li><a href = "/usr/member/modify">정보 수정</a></li>
+            <li><a href = "/usr/member/withdrawal">회원 탈퇴</a></li>
         </ul>
 
     </div>
@@ -54,36 +53,29 @@
     <div class = "ch-section">
         <!--   정보수정 폼   -->
         <div class = "join-box">
-            <h2 style = "text-align: center; margin-bottom: 50px; font-size: 35px;">회원 정보 수정</h2>
+            <h2 style = "text-align: center; margin-bottom: 50px; font-size: 35px;">내 정보</h2>
             <form id = "userProfileForm">
                 <div class = "infor-box ">
-                    <!-- 닉네임 입력 -->
+                    <!-- 닉네임 -->
                     <label for = "newNickname"
-                           style = "padding: 10px 20px; font-size: 20px; font-weight: 500; width: 150px;">닉네임</label>
-                    <input type = "text" id = "newNickname" name = "newNickname" maxlength = "50"
-                           placeholder = "변경하실 닉네임을 입력해주세요"
-                           style = " height: 50px; box-shadow: 0 2px 6px 0 rgba(68, 68, 68, 0.08); border: 1px solid #dadada; border-radius: 5px; padding-left: 15px;">
+                           style = "padding: 10px 20px; font-size: 20px; font-weight: 500; width: 150px;">아이디</label>
+                    <div id = "newNickname" th:text = "${@rq.member.username}"
+                         style = " height: 50px; box-shadow: 0 2px 6px 0 rgba(68, 68, 68, 0.08); border: 1px solid #dadada; border-radius: 5px; line-height: 50px ; padding-left: 15px; width: 600px ;"></div>
                 </div>
-                <p id = "nicknameError" style = "color: red;"></p>
 
-                <!-- 이메일 입력 -->
+                <!-- 이메일 -->
                 <div class = "infor-box">
-                    <label for = "newEmail"
-                           style = "padding: 10px 20px; font-size: 20px; font-weight: 500; width: 150px;">이메일</label>
-                    <input type = "text" id = "newEmail" name = "newEmail" placeholder = "변경하실 이메일을 입력해주세요"
-                           style = "height: 50px; box-shadow: 0 2px 6px 0 rgba(68, 68, 68, 0.08); border: 1px solid #dadada; border-radius: 5px; padding-left: 15px;">
+                    <label style = "padding: 10px 20px; font-size: 20px; font-weight: 500; width: 150px;">이메일</label>
+                    <div th:text="${@rq.member.email}"
+                           style = " height: 50px; box-shadow: 0 2px 6px 0 rgba(68, 68, 68, 0.08); border: 1px solid #dadada; border-radius: 5px; line-height: 50px ; padding-left: 15px; width: 600px ;"
+                          ></div>
                 </div>
-                <p id = "emailError" style = "color: red;"></p>
 
-                <div style = "display: flex">
-                    <button type = "button" id = "updateProfileButton"
-                            style = "margin-right: 20px; width: 100%; height: 50px; box-shadow: 0 2px 6px 0 rgba(68, 68, 68, 0.08); border: 1px solid #dadada; border-radius: 10px; background-color: #fff; cursor: pointer; margin-top: 30px;">
-                        수정하기
-                    </button>
-                    <button type = "button" onclick = "window.location.href='/user/mypage'"
-                            style = "width: 100%; height: 50px; box-shadow: 0 2px 6px 0 rgba(68, 68, 68, 0.08); border: 1px solid #dadada; border-radius: 10px; background-color: #fff; cursor: pointer; margin-top: 30px;">
-                        취소
-                    </button>
+                <!-- 가입날짜 -->
+                <div class = "infor-box">
+                    <label style = "padding: 10px 20px; font-size: 20px; font-weight: 500; width: 150px;">가입일</label>
+                    <div th:text="${#temporals.format(@rq.member.createDate, 'yyyy-MM-dd')}"
+                         style = "height: 50px; box-shadow: 0 2px 6px 0 rgba(68, 68, 68, 0.08); border: 1px solid #dadada; border-radius: 5px; line-height: 50px ; padding-left: 15px; width: 600px ;"></div>
                 </div>
             </form>
         </div>
