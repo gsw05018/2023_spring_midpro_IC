@@ -70,13 +70,6 @@
                            style = " height: 50px; box-shadow: 0 2px 6px 0 rgba(68, 68, 68, 0.08); border: 1px solid #dadada; border-radius: 5px; line-height: 50px ; padding-left: 15px; width: 600px ;"></input>
                 </div>
 
-                <!-- 기존 비밀번호 -->
-                <div class = "infor-box">
-                    <label style = "padding: 10px 20px; font-size: 20px; font-weight: 500; width: 150px;">기존
-                                                                                                          비밀번호</label>
-                    <input type = "password" placeholder = "기존 비밀번호 입력해주세요" maxlength="30" name="oldPassword"
-                           style = "height: 50px; box-shadow: 0 2px 6px 0 rgba(68, 68, 68, 0.08); border: 1px solid #dadada; border-radius: 5px; line-height: 50px ; padding-left: 15px; width: 600px ;"></input>
-                </div>
                 <!-- 새 비밀번호  -->
                 <div class = "infor-box">
                     <label style = "padding: 10px 20px; font-size: 20px; font-weight: 500; width: 150px;">새 비밀번호 </label>
@@ -106,20 +99,6 @@
         let submitModifyFormDone = false;
         function submitModifyForm(form){
             if( submitModifyFormDone ) return;
-
-            form.oldPassword.value = form.oldPassword.value.trim();
-
-            if( form.oldPassword.value.length == 0 ){
-                form.oldPassword.focus();
-                toastWarning('기존 비밀번호를 입력해주세요');
-                return;
-            }
-
-            if( form.oldPassword.value.length < 4 ){
-                form.oldPassword.focus();
-                toastWarning('기존 비밀번호를 4자 이상 입력해주세요');
-                return;
-            }
 
             form.password.value = form.password.value.trim();
 

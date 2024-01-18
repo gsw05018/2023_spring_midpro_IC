@@ -1,36 +1,36 @@
 
 `
-java:S6208!"CMerge the previous cases into this one using comma-separated label.(±¼Ì»8íˆáÑ1
+java:S6208#"CMerge the previous cases into this one using comma-separated label.(±¼Ì»8ò˜¦âÑ1
 `
-java:S6208%"CMerge the previous cases into this one using comma-separated label.(ÛñìÙ8íˆáÑ1
+java:S6208'"CMerge the previous cases into this one using comma-separated label.(ÛñìÙ8ó˜¦âÑ1
 e
-java:S62082"CMerge the previous cases into this one using comma-separated label.(ÙŸ¢Úøÿÿÿÿ8íˆáÑ1
-n	java:S101"MRename this class name to match the regular expression '^[A-Z][a-zA-Z0-9]*$'.(Ö¬ºêùÿÿÿÿ8îˆáÑ1
-n	java:S101"MRename this class name to match the regular expression '^[A-Z][a-zA-Z0-9]*$'.(Ô¥Û£øÿÿÿÿ8îˆáÑ1
-i	java:S101D"MRename this class name to match the regular expression '^[A-Z][a-zA-Z0-9]*$'.(…Ò“Â8îˆáÑ1
-i	java:S101}"MRename this class name to match the regular expression '^[A-Z][a-zA-Z0-9]*$'.(¾ŞÔš8îˆáÑ1
-o	java:S101"MRename this class name to match the regular expression '^[A-Z][a-zA-Z0-9]*$'.(„²õÚúÿÿÿÿ8îˆáÑ1
-u	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(ÈÔÇ98ïˆáÑ1
+java:S62084"CMerge the previous cases into this one using comma-separated label.(ÙŸ¢Úøÿÿÿÿ8ó˜¦âÑ1
+n	java:S101"MRename this class name to match the regular expression '^[A-Z][a-zA-Z0-9]*$'.(Ö¬ºêùÿÿÿÿ8ó˜¦âÑ1
+n	java:S101"MRename this class name to match the regular expression '^[A-Z][a-zA-Z0-9]*$'.(Ô¥Û£øÿÿÿÿ8ó˜¦âÑ1
+i	java:S101F"MRename this class name to match the regular expression '^[A-Z][a-zA-Z0-9]*$'.(…Ò“Â8ô˜¦âÑ1
+j	java:S101‡"MRename this class name to match the regular expression '^[A-Z][a-zA-Z0-9]*$'.(¾ŞÔš8ô˜¦âÑ1
+o	java:S101"MRename this class name to match the regular expression '^[A-Z][a-zA-Z0-9]*$'.(„²õÚúÿÿÿÿ8ô˜¦âÑ1
+u	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(ÈÔÇ98ô˜¦âÑ1
 W
-java:S1118":Add a private constructor to hide the implicit public one.(öÎØ„8úˆáÑ1
+java:S1118":Add a private constructor to hide the implicit public one.(öÎØ„8ÿ˜¦âÑ1
 \
-java:S1118":Add a private constructor to hide the implicit public one.(Ö¬ºêùÿÿÿÿ8úˆáÑ1
+java:S1118":Add a private constructor to hide the implicit public one.(Ö¬ºêùÿÿÿÿ8ˆ™¦âÑ1
 \
-java:S1118":Add a private constructor to hide the implicit public one.(Ô¥Û£øÿÿÿÿ8üˆáÑ1
-C	java:S131""Add a default case to this switch.(´¶€Ñüÿÿÿÿ8şˆáÑ1
-C	java:S1310""Add a default case to this switch.(´¶€Ñüÿÿÿÿ8şˆáÑ1
-\	java:S899>";Do something with the "boolean" value returned by "delete".(²Œ­ûÿÿÿÿ8€‰áÑ1
+java:S1118":Add a private constructor to hide the implicit public one.(Ô¥Û£øÿÿÿÿ8‹™¦âÑ1
+C	java:S131""Add a default case to this switch.(´¶€Ñüÿÿÿÿ8™¦âÑ1
+C	java:S1312""Add a default case to this switch.(´¶€Ñüÿÿÿÿ8™¦âÑ1
+\	java:S899@";Do something with the "boolean" value returned by "delete".(²Œ­ûÿÿÿÿ8™¦âÑ1
 p
-java:S4042>"NUse "java.nio.file.Files#delete" here for better messages on error conditions.(²Œ­ûÿÿÿÿ8€‰áÑ1
+java:S4042@"NUse "java.nio.file.Files#delete" here for better messages on error conditions.(²Œ­ûÿÿÿÿ8™¦âÑ1
 W
-java:S1118D":Add a private constructor to hide the implicit public one.(…Ò“Â8‰áÑ1
+java:S1118F":Add a private constructor to hide the implicit public one.(…Ò“Â8™¦âÑ1
 b
-java:S4635g"EReplace "indexOf" with the overload that accepts an offset parameter.(™¨ï8‚‰áÑ1
-W
-java:S1118}":Add a private constructor to hide the implicit public one.(¾ŞÔš8ƒ‰áÑ1
+java:S4635i"EReplace "indexOf" with the overload that accepts an offset parameter.(™¨ï8™¦âÑ1
+X
+java:S1118‡":Add a private constructor to hide the implicit public one.(¾ŞÔš8’™¦âÑ1
 L
-java:S2140‡")Use "java.util.Random.nextInt()" instead.(ÄÊíüÿÿÿÿ8„‰áÑ1
+java:S2140‘")Use "java.util.Random.nextInt()" instead.(ÄÊíüÿÿÿÿ8“™¦âÑ1
 ]
-java:S1118":Add a private constructor to hide the implicit public one.(„²õÚúÿÿÿÿ8…‰áÑ1
+java:S1118":Add a private constructor to hide the implicit public one.(„²õÚúÿÿÿÿ8“™¦âÑ1
 f
-java:S5361“"HReplace this call to "replaceAll()" by a call to the "replace()" method.(Ê¦ìı8…‰áÑ1
+java:S5361¡"HReplace this call to "replaceAll()" by a call to the "replace()" method.(Ê¦ìı8”™¦âÑ1

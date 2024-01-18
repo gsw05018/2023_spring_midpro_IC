@@ -208,7 +208,7 @@ public class Rq {
 
     // 특정 URL로 redirect하고 메시지 전달
     public String redirect(String url, String msg) {
-        if(!Ut.str.hasLength(msg)) return "redirect:" + url;
+        if(Ut.str.isBlank(msg)) return "redirect:" + url;
         return "redirect:" + Ut.url.modifyQueryParam(url, "msg", Ut.url.encodeWithTtl(msg));
     }
 
@@ -225,4 +225,17 @@ public class Rq {
                 .flatMap(memberService::findProfileImgUrl) // 프로필 이미지 URL  찾음
                 .orElse("https://placehold.co/30x30?text=UU"); // URL이 없으면 기본 이미지 URL 반환
     }
+
+    public String getRefererUrl(String defaultValue){
+        String referer = req.getHeader("referer");
+
+        if(Ut.str.isBlank(referer)) return defaultValue;
+
+        return referer;
+    }
+
+    public String getRefererUrlPath(String defaultValue){
+        return Ut.url.getPath(getRefererUrl(defaultValue), defaultValue);
+    }
+
 }
