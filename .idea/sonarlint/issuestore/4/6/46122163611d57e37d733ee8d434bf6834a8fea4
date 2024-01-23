@@ -1,0 +1,11 @@
+
+V
+java:S1874"9Remove this use of "authorizeRequests"; it is deprecated.(Ûä¶Ä8¬á–´Ó1
+T
+java:S1611."2Remove the parentheses around the "csrf" parameter(²ñ¡Éýÿÿÿÿ8¯á–´Ó1
+Q
+java:S16112"5Remove the parentheses around the "headers" parameter(þ…¾U8¯á–´Ó1
+S
+java:S16116"7Remove the parentheses around the "formLogin" parameter(‹µ’"8¯á–´Ó1
+V
+java:S1611<"4Remove the parentheses around the "logout" parameter(†…Š—þÿÿÿÿ8°á–´Ó1

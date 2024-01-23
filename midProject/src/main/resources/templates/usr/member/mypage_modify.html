@@ -52,44 +52,47 @@
 
     <div class = "ch-section">
         <!--   정보수정 폼   -->
-        <form enctype="multipart/form-data" method="POST" name="modify-form" class = "join-box"
-        onsubmit="submitModifyForm(this); return false;" th:action>
+        <form class = "join-box" enctype = "multipart/form-data" method = "POST" name = "modify-form"
+              onsubmit = "submitModifyForm(this); return false;" th:action>
             <h2 style = "text-align: center; margin-bottom: 50px; font-size: 35px;">내 정보 수정</h2>
-                <div class = "infor-box ">
-                    <!-- 이미지 -->
-                    <label style = "padding: 10px 20px; font-size: 20px; font-weight: 500; width: 150px;">프로필
-                                                                                                          이미지</label>
-                    <input type = "file" accept="image/jpeg, image/png, image/gif" name="profileImg"
-                           style = " height: 50px; box-shadow: 0 2px 6px 0 rgba(68, 68, 68, 0.08); border: 1px solid #dadada; border-radius: 5px; line-height: 50px ; padding-left: 15px; width: 600px ;"></input>
-                </div>
+            <div class = "infor-box ">
+                <!-- 이미지 -->
+                <label style = "padding: 10px 20px; font-size: 20px; font-weight: 500; width: 150px;">프로필 이미지</label>
+                <input accept = "image/jpeg, image/png, image/gif" name = "profileImg"
+                       style = " height: 50px; box-shadow: 0 2px 6px 0 rgba(68, 68, 68, 0.08); border: 1px solid #dadada; border-radius: 5px; line-height: 50px ; padding-left: 15px; width: 600px ;"
+                       type = "file"></input>
+            </div>
 
-                <!-- 별명 -->
-                <div class = "infor-box">
-                    <label style = "padding: 10px 20px; font-size: 20px; font-weight: 500; width: 150px;">별명</label>
-                    <input type = "text" placeholder = "변경하실 별명 입력해주세요" maxlength="30" name="nickname" th:valeu="${@rq.member.nickname}"
-                           style = " height: 50px; box-shadow: 0 2px 6px 0 rgba(68, 68, 68, 0.08); border: 1px solid #dadada; border-radius: 5px; line-height: 50px ; padding-left: 15px; width: 600px ;"></input>
-                </div>
+            <!-- 별명 -->
+            <div class = "infor-box">
+                <label style = "padding: 10px 20px; font-size: 20px; font-weight: 500; width: 150px;">별명</label>
+                <input maxlength = "30" name = "nickname" placeholder = "변경하실 별명 입력해주세요"
+                       style = " height: 50px; box-shadow: 0 2px 6px 0 rgba(68, 68, 68, 0.08); border: 1px solid #dadada; border-radius: 5px; line-height: 50px ; padding-left: 15px; width: 600px ;"
+                       th:valeu = "${@rq.member.nickname}"
+                       type = "text"></input>
+            </div>
 
-                <!-- 새 비밀번호  -->
-                <div class = "infor-box">
-                    <label style = "padding: 10px 20px; font-size: 20px; font-weight: 500; width: 150px;">새 비밀번호 </label>
-                    <input type = "password" placeholder = "변경하실 비밀번호 입력해주세요" maxlength="30" name="password"
-                           style = "height: 50px; box-shadow: 0 2px 6px 0 rgba(68, 68, 68, 0.08); border: 1px solid #dadada; border-radius: 5px; line-height: 50px ; padding-left: 15px; width: 600px ;"></input>
-                </div>
+            <!-- 새 비밀번호  -->
+            <div class = "infor-box">
+                <label style = "padding: 10px 20px; font-size: 20px; font-weight: 500; width: 150px;">새 비밀번호 </label>
+                <input maxlength = "30" name = "password" placeholder = "변경하실 비밀번호 입력해주세요"
+                       style = "height: 50px; box-shadow: 0 2px 6px 0 rgba(68, 68, 68, 0.08); border: 1px solid #dadada; border-radius: 5px; line-height: 50px ; padding-left: 15px; width: 600px ;"
+                       type = "password"></input>
+            </div>
 
-                <!-- 새 비밀번호 확인 -->
-                <div class = "infor-box">
-                    <label style = "padding: 10px 20px; font-size: 20px; font-weight: 500; width: 150px;">새 비밀번호
-                                                                                                          확인</label>
-                    <input type = "password" placeholder = "변경하실 비밀번호 입력해주세요" maxlength="30" name="passwordConfirm"
-                           style = "height: 50px; box-shadow: 0 2px 6px 0 rgba(68, 68, 68, 0.08); border: 1px solid #dadada; border-radius: 5px; line-height: 50px ; padding-left: 15px; width: 600px ;"></input>
-                </div>
+            <!-- 새 비밀번호 확인 -->
+            <div class = "infor-box">
+                <label style = "padding: 10px 20px; font-size: 20px; font-weight: 500; width: 150px;">새 비밀번호 확인</label>
+                <input maxlength = "30" name = "passwordConfirm" placeholder = "변경하실 비밀번호 입력해주세요"
+                       style = "height: 50px; box-shadow: 0 2px 6px 0 rgba(68, 68, 68, 0.08); border: 1px solid #dadada; border-radius: 5px; line-height: 50px ; padding-left: 15px; width: 600px ;"
+                       type = "password"></input>
+            </div>
 
-                <div style = "display: flex">
-                    <button style = "width: 100%; height: 50px; box-shadow: 0 2px 6px 0 rgba(68, 68, 68, 0.08); border: 1px solid #dadada; border-radius: 10px; background-color: #fff; cursor: pointer; margin-top: 30px;">
-                        <span>회원정보수정</span>
-                    </button>
-                </div>
+            <div style = "display: flex">
+                <button style = "width: 100%; height: 50px; box-shadow: 0 2px 6px 0 rgba(68, 68, 68, 0.08); border: 1px solid #dadada; border-radius: 10px; background-color: #fff; cursor: pointer; margin-top: 30px;">
+                    <span>회원정보수정</span>
+                </button>
+            </div>
         </form>
     </div>
 

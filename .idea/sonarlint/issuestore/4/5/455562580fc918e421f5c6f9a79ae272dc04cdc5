@@ -1,8 +1,5 @@
 
-v	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(œ‰©ô8ÑŞ˜åÑ1
+‹
+java:S1598"èThis file "MemberController.java" should be located in "com\sbspro\midproject\member\controller" directory, not in "C:\Users\gsw05\IdeaProjects\2023_spring_midpro_IC\midProject\src\main\java\com\sbspro\midProject\member\controller".(¢£ş¸ıÿÿÿÿ8³±Ó1
 ‡
-java:S6833"eReplace the "@Controller" annotation by "@RestController" and remove all "@ResponseBody" annotations.(íœ¡ñùÿÿÿÿ8ÛŞ˜åÑ1
-R
-java:S1611"4Remove the parentheses around the "rsData" parameter(ŸÇĞî8ãŞ˜åÑ1
-R
-java:S1611›"4Remove the parentheses around the "rsData" parameter(ŸÇĞî8äŞ˜åÑ1
+java:S6833"eReplace the "@Controller" annotation by "@RestController" and remove all "@ResponseBody" annotations.(íœ¡ñùÿÿÿÿ8²ç¥±Ó1

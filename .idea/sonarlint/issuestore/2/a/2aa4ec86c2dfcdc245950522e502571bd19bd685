@@ -1,0 +1,13 @@
+
+L
+java:S3740n"/Provide the parametrized type for this generic.(¤Ù­8ºüÓ³Ó1
+M
+java:S3740"/Provide the parametrized type for this generic.(¤Ù­8»üÓ³Ó1
+d
+java:S2184Ã"FCast one of the operands of this multiplication operation to a "long".(›¥½°8½üÓ³Ó1
+s
+java:S3655±"PCall "Optional#isPresent()" or "!Optional#isEmpty()" before accessing the value.(¤Í»ıÿÿÿÿ8ÎüÓ³Ó1
+s
+java:S6809‹"UCall transactional methods via an injected dependency instead of directly via 'this'.(³û¶ì8ØüÓ³Ó1
+I
+java:S1452È"&Remove usage of generic wildcard type.(ÔÏø§ûÿÿÿÿ8ÛüÓ³Ó1

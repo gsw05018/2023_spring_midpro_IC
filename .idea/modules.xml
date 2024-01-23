@@ -2,6 +2,12 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/com.sbs.midProject.iml" filepath="$PROJECT_DIR$/.idea/modules/com.sbs.midProject.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/com.sbs.midProject.main.iml" filepath="$PROJECT_DIR$/.idea/modules/com.sbs.midProject.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/com.sbs.midProject.test.iml" filepath="$PROJECT_DIR$/.idea/modules/com.sbs.midProject.test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/com.sbspro.midProject.iml" filepath="$PROJECT_DIR$/.idea/modules/com.sbspro.midProject.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/com.sbspro.midProject.main.iml" filepath="$PROJECT_DIR$/.idea/modules/com.sbspro.midProject.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/com.sbspro.midProject.test.iml" filepath="$PROJECT_DIR$/.idea/modules/com.sbspro.midProject.test.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/midProject.iml" filepath="$PROJECT_DIR$/.idea/midProject.iml" />
     </modules>
   </component>

@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang = "ko"
-      th:with = "UtThy=${T(com.sbspro.midProject.base.util.Ut.thy)}"
+      th:with = "UtThy=${T(com.sbspro.midproject.base.util.Ut.thy)}"
 >
 <head>
     <!-- Required meta tags -->
@@ -17,7 +17,8 @@
     <!-- 폰트어썸 -->
     <link crossorigin = "anonymous"
           href = "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
-          integrity = "sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==" referrerpolicy = "no-referrer" rel = "stylesheet"/>
+          integrity = "sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA=="
+          referrerpolicy = "no-referrer" rel = "stylesheet"/>
 
     <!-- nav CSS 파일 -->
     <link rel = "stylesheet" th:href = "@{/navbar.css}" type = "text/css">
@@ -79,6 +80,10 @@
             cursor: pointer;
             z-index: 999;
         }
+
+        .form-controller .label .label-text{
+            opacity : 0.8;
+        }
     </style>
 
 </head>
@@ -89,6 +94,10 @@
 
 <!-- 네비게이션바 -->
 <nav th:replace = "~{ home/navbar :: navbarFragment}"></nav>
+
+<div class = "min-h-screen flex flex-col">
+    <header layout:fragment = "header"></header>
+</div>
 
 <!-- 기본 템플릿 안에 삽입될 내용 Start -->
 <th:block layout:fragment = "content"></th:block>
@@ -118,47 +127,47 @@
 </script>
 
 <script>
-    // URL 에서 msg 파라미터의 값을 가져오는 함수
-    function getMsgFromURL(){
-        const url =  new URL(window.location.href);
+    // URL에서 msg 파라미터의 값을 가져오는 함수
+    function getMsgFromURL() {
+        const url = new URL(window.location.href);
         return url.searchParams.get('msg');
     }
 
-    function getFailMsgFromURL(){
+    function getFailMsgFromURL() {
         const url = new URL(window.location.href);
         return url.searchParams.get('failMsg');
     }
 
-    const msg  = getMsgFromURL();
+    const msg = getMsgFromURL();
 
-    // msg 파라미터의 값이 있으면 toatr로 알림을 표시
-    if(msg ){
-        toastNotice(decodeURIComponent(msg ));
+    // msg 파라미터의 값이 있으면 toastr로 알림을 표시
+    if (msg) {
+        toastNotice(decodeURIComponent(msg));
     }
 
-    const failMsg  = getFailMsgFromURL();
+    const failMsg = getFailMsgFromURL();
 
-    // msg  파라미터의 값이 있으면 toastr로 알림을 표시
-    if(failMsg){
+    // msg 파라미터의 값이 있으면 toastr로 알림을 표시
+    if (failMsg) {
         toastWarning(decodeURIComponent(failMsg));
     }
 
-    // historyBack Msg
-    $(window).bind("paeshow", function(event){
-        let localStorageKeyAboutHistoryBackFailMsg = "historyBackFailMsg__" + location.href;
+    // history.back 에 의해서 돌아온 경우에 실행됨
+    $(window).bind("pageshow", function (event) {
+        let localStorageKeyAboutHistoryBackFailMsg = "historyBackFailMsg___" + location.href;
 
-        if(!localStorage.getItem(localStorageKeyAboutHistoryBackFailMsg)){
-            localStorageKeyAboutHistoryBackFailMsg = "historyBackFailMsg__null";
+        if (!localStorage.getItem(localStorageKeyAboutHistoryBackFailMsg)) {
+            localStorageKeyAboutHistoryBackFailMsg = "historyBackFailMsg___null";
         }
 
         const historyBackFailMsg = localStorage.getItem(localStorageKeyAboutHistoryBackFailMsg);
-        if(historyBackMsg){
-            toastWarning(historyBackMsg);
+        if (historyBackFailMsg) {
+            toastWarning(historyBackFailMsg);
             localStorage.removeItem(localStorageKeyAboutHistoryBackFailMsg);
         }
     });
-</script>
 
+</script>
 
 </body>
 </html>

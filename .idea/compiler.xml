@@ -8,10 +8,13 @@
         <processorPath useClasspath="false">
           <entry name="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.projectlombok/lombok/1.18.28/a2ff5da8bcd8b1b26f36b806ced63213362c6dcc/lombok-1.18.28.jar" />
         </processorPath>
-        <module name="com.sbs.midProject.main" />
+        <module name="2023_spring_midpro_IC.midProject.main" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="com.sbs.midProject" target="17" />
+      <module name="com.sbs.midProject.main" target="17" />
+      <module name="com.sbs.midProject.test" target="17" />
       <module name="com.sbspro.midProject" target="17" />
       <module name="com.sbspro.midProject.main" target="17" />
       <module name="com.sbspro.midProject.test" target="17" />
