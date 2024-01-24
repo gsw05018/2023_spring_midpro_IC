@@ -1,4 +1,4 @@
-package com.sbspro.midproject.base.entity;
+package com.sbspro.midproject.base.jpa.baseEntity;
 
 import jakarta.persistence.*;
 import lombok.*;

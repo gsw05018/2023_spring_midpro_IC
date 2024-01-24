@@ -2,7 +2,6 @@ package com.sbspro.midproject.base.util;
 
 
 import java.io.File;
-import java.io.UnsupportedEncodingException;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLEncoder;
@@ -161,6 +160,14 @@ public class Ut {
 
         public static boolean inputAttributeAutofocus(List<String> requestParameterValues) {
             return !str.hasLength(getFirstStrOrEmpty(requestParameterValues));
+        }
+
+        public static boolean isBlank(List<String> requestParameterValues) {
+            return !hasText(requestParameterValues);
+        }
+
+        public static boolean hasText(List<String> requestParameterValues) {
+            return str.hasLength(getFirstStrOrEmpty(requestParameterValues));
         }
 
         public static String value(List<String> requestParameterValues) {

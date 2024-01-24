@@ -1,6 +1,6 @@
 package com.sbspro.midproject.domain.attr.entity;
 
-import com.sbspro.midproject.base.entity.BaseEntity;
+import com.sbspro.midproject.base.jpa.baseEntity.BaseEntity;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Index;
 import jakarta.persistence.Table;

@@ -1,6 +1,6 @@
 package com.sbspro.midproject.domain.email.entity;
 
-import com.sbspro.midproject.base.entity.BaseEntity;
+import com.sbspro.midproject.base.jpa.baseEntity.BaseEntity;
 import com.sbspro.midproject.base.rsData.RsData;
 import jakarta.persistence.Entity;
 import lombok.*;

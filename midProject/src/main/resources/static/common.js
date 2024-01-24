@@ -172,3 +172,10 @@ $(document).ready(function () {
      setTimeout(callback);
  }
 
+ $(function () {
+     $('select[value]').each(function (index, el) {
+         const value = $(el).attr('value');
+         if ( value ) $(el).val(value);
+     });
+ });
+

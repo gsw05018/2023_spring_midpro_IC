@@ -1,6 +1,6 @@
 package com.sbspro.midproject.member.entity;
 
-import com.sbspro.midproject.base.entity.BaseEntity;
+import com.sbspro.midproject.base.jpa.baseEntity.BaseEntity;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import lombok.*;

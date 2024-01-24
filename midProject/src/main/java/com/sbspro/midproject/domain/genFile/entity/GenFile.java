@@ -1,7 +1,7 @@
 package com.sbspro.midproject.domain.genFile.entity;
 
 import com.sbspro.midproject.base.app.AppConfig;
-import com.sbspro.midproject.base.entity.BaseEntity;
+import com.sbspro.midproject.base.jpa.baseEntity.BaseEntity;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Index;
 import jakarta.persistence.Table;
