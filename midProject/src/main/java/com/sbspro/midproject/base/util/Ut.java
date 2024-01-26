@@ -66,7 +66,6 @@ public class Ut {
         }
     }
 
-
     public static class url {
 
         public static String encode(String message) {
@@ -110,7 +109,7 @@ public class Ut {
         }
 
         public static String encodeWithTtl(String s) {
-            if (!Ut.str.isBlank(s)) return "";
+            if (Ut.str.isBlank(s)) return "";
             return withTtl(encode(s));
         }
 
@@ -125,7 +124,6 @@ public class Ut {
                 return defaultValue;
             }
         }
-
     }
 
     public static class str {
@@ -133,22 +131,22 @@ public class Ut {
             return string != null && string.length() > 0;
         }
 
+        public static boolean isBlank(String string) {
+            return !hasLength(string);
+        }
+
         public static String tempPassword(int i) {
-            String passwordSet = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefgijklmnopqrstuvwxyz0123456789!!@#$%^&*()";
+            String passwordSet = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()";
             StringBuilder password = new StringBuilder();
 
             for (int x = 0; x < i; x++) {
                 int random = (int) (Math.random() * passwordSet.length());
                 password.append(passwordSet.charAt(random));
             }
+
             return password.toString();
         }
-
-        public static boolean isBlank(String string) {
-            return !hasLength(string);
-        }
     }
-
 
     public static class thy {
         private static String getFirstStrOrEmpty(List<String> requestParameterValues) {

@@ -51,8 +51,6 @@ smidProject/src/main/java/com/sbspro/midProject/domain/emailVerification/control
 mmidProject/src/main/java/com/sbspro/midProject/domain/emailVerification/service/EmailVerificationService.java,0\a\0a4c706ca34b5616995eecf7402dc27823c8f2f1
 †
 VmidProject/src/main/java/com/sbspro/midProject/member/repositroy/MemberRepository.java,1\a\1a5be2281aafd1f9d0b2eebc6554acd442b21656
-z
-JmidProject/src/main/java/com/sbspro/midProject/base/entity/BaseEntity.java,8\e\8e1f9fbe67087d187b6154a7b64decd03792c70b
 p
 @midProject/src/main/java/com/sbspro/midProject/base/util/Ut.java,4\8\48c1c34482581cd265e44ee6b614025f3e37b4c3
 y
@@ -71,8 +69,6 @@ PmidProject/src/main/java/com/sbspro/midproject/member/service/MemberService.jav
 VmidProject/src/main/java/com/sbspro/midproject/member/controller/MemberController.java,5\6\5638785ea1d4e0d772fc42f9e110668b80ecb2ed
 x
 HmidProject/src/main/java/com/sbspro/midproject/member/entity/Member.java,0\6\0604a81a33688deb56ec6ce4524b9b6786b6e016
-z
-JmidProject/src/main/java/com/sbspro/midproject/base/entity/BaseEntity.java,4\4\442c54c8bf9d58d69caa242133e09b58a8b55346
 n
 >midProject/src/main/java/com/sbspro/midproject/base/rq/Rq.java,3\3\33098912027803dc3459b4e5761273a2c8c33eda
 €
