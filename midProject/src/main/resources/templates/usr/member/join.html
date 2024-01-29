@@ -40,7 +40,10 @@
                            placeholder = "비밀번호를 다시 입력하세요" type = "password">
                     <p class = "p-text">영어, 특수문자, 숫자를 모두 포함시켜주세요</p>
                     <p class = "error-text" id = "passwordMatchError"
-                       style = "margin-bottom: 10px ; font-size: 15px ; font-weight: bold "></p>
+                       style = "display : none ; margin-left : 5px ; margin-bottom: 10px ; font-size: 15px ; font-weight: bold; color : #ff0000; ">
+                        비밀번호가
+                        일치하지
+                        않습니다 </p>
                 </div>
                 <div class = "join-icon-box">
                     <i class = "name fa-solid fa-envelope"></i>
@@ -150,6 +153,26 @@
         let lastCheckedUsername = ''; // 마지막으로 확인한 사용자 이름을 저장할 변수
         // username 중복 체크 끝
 
+    // password 2차 체크 시작
+   document.addEventListener('DOMContentLoaded', function(){
+        const passwordInput = document.getElementById('password');
+        const passwordCheckInput = document.getElementById('passwordCheck');
+        const passwordMatchError = document.getElementById('passwordMatchError');
+
+        function checkPasswordMatch() {
+            if (passwordInput.value === passwordCheckInput.value) {
+                passwordMatchError.style.display = 'none';
+            } else {
+                passwordMatchError.style.display = 'block';
+            }
+        }
+
+        passwordInput.addEventListener('input', checkPasswordMatch);
+        passwordCheckInput.addEventListener('input', checkPasswordMatch);
+    });
+    // password 2차 체크 끝
+
+
     // email 중복 체크 시작
     function checkEmailDup(form){
         form.email.value = form.email.value.trim();
@@ -211,6 +234,8 @@
 
     // joinForm 유효성 검사 시작
      let submitJoinFormDone = false;
+     const regex = /^(?=.*[a-zA-Z])(?=.*\d)(?=.*[^\da-zA-Z]).{10}$/
+
      function submitJoinForm(form) {
          if (submitJoinFormDone) return;
 
@@ -222,7 +247,7 @@
              return;
          }
 
-         if (form.username.value.length < 4) {
+         if (form.username.value.length < 5) {
              form.username.focus();
              toastWarning('아이디를 4자 이상 입력하세요');
              return;
@@ -235,9 +260,9 @@
              return;
          }
 
-           if (form.password.value.length < 4) {
+           if (form.password.value.length < 10 || !regex.test(form.password.value)) {
              form.password.focus();
-             toastWarning('비밀번호를 4자 이상 입력하세요');
+             toastWarning('비밀번호는 최소 10자 이상이며, 영문자 숫자, 특수문자를 각 1회 이상 포함하세요');
              return;
          }
 
@@ -261,9 +286,9 @@
              return;
          }
 
-          if (form.email.value.length < 4) {
+          if (form.email.value.length < 8) {
              form.email.focus();
-             toastWarning('이메일을 4자 이상 입력하세요');
+             toastWarning('이메일을 8자 이상 입력하세요');
              return;
          }
 
