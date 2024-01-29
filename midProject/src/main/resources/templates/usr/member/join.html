@@ -2,6 +2,8 @@
 
 <head>
     <link href = "/join.css" rel = "stylesheet">
+    <!--    <link href = "https://cdn.jsdelivr.net/npm/daisyui@3.7.7/dist/full.css" rel = "stylesheet" type = "text/css"/>-->
+    <!--    <script src = "https://cdn.tailwindcss.com"></script>-->
 </head>
 
 <body>
@@ -11,7 +13,8 @@
         <a href = "/"><p class = "logo-text">뭐하지 또? 또 가지 뭐!</p></a>
         <h1>회원가입</h1>
         <!-- 회원가입 폼 -->
-        <form enctype = "multipart/form-data" method = "POST" name = "join-form" onsubmit = "submitJoinForm(this); return false;"
+        <form enctype = "multipart/form-data" method = "POST" name = "join-form"
+              onsubmit = "submitJoinForm(this); return false;"
               th:action>
             <div class = "form-box">
                 <div class = "join-icon-box">
@@ -33,7 +36,7 @@
                 </div>
                 <div class = "join-icon-box">
                     <i class = "ps fa-solid fa-key"></i>
-                    <input class = "pass-box" id = "password2" maxlength = "30" name = "password2"
+                    <input class = "pass-box" id = "passwordCheck" maxlength = "30" name = "passwordCheck"
                            placeholder = "비밀번호를 다시 입력하세요" type = "password">
                     <p class = "p-text">영어, 특수문자, 숫자를 모두 포함시켜주세요</p>
                     <p class = "error-text" id = "passwordMatchError"
@@ -41,7 +44,8 @@
                 </div>
                 <div class = "join-icon-box">
                     <i class = "name fa-solid fa-envelope"></i>
-                    <input class = "niname-box" id = "email" maxlength = "30" name = "email" onchange = "$(this).keyup();"
+                    <input class = "niname-box" id = "email" maxlength = "30" name = "email"
+                           onchange = "$(this).keyup();"
                            onkeyup = "checkEmailDupDebounce();" onpaste = "setTimeoutZero(() => $(this).keyup());"
                            placeholder = "이메일을 입력하세요"
                            type = "email">
@@ -61,18 +65,19 @@
                     <input class = "bir-box" id = "birthdateInput" name = "birthdateInput" placeholder = "생년월일을 입력하세요"
                            type = "text">
                 </div>
-                <div class = "join-icon-box">
-                    <i class = "name fa-solid fa-tablet-screen-button"></i>
-                    <input accept = "image/jpeg, image/png, image/gif" class = "phone-box" id = "profileImg" name = "profileImg"
-                           placeholder = "프로필 이미지"
+                <div class = "join-icon-box preview-image">
+                    <div class = "file-box">
+                        <input class = "upload-name " disabled = "disabled" value = "파일선택">
+                        <label for = "profileImg">업로드</label>
+                    </div>
+                    <input accept = "image/jpeg, image/png, image/gif" class = "upload-hidden "
+                           id = "profileImg"
+                           name = "profileImg"
                            type = "file">
                 </div>
                 <p class = "text">
                     <input class = "agree-box" id = "privacyCheckbox" name = "privacyCheckbox" type = "checkbox"> 개인정보
-                                                                                                                  수집 및
-                                                                                                                  이용
-                                                                                                                  내용을
-                                                                                                                  확인하였으며,
+                                                                                                                  수집에
                                                                                                                   동의합니다.
                 </p>
                 <button class = "submit">회원가입하기</button>
@@ -82,7 +87,7 @@
     <script>
         // username 중복 체크 시작
         const joinForm = document['join-form'];
-        // join-form이라는 이름의 폼을 joinForm 변수에 할당
+        // join-form 이라는 이름의 폼을 joinForm 변수에 할당
 
         function checkUsernameDup(form) { // 사용자 이름 중복 검사 함수
                  form.username.value = form.username.value.trim();
@@ -93,7 +98,7 @@
                     return; // 함수 종료
                  }
 
-                 if ( form.username.value.length < 4 ) { // 사용자 이름 필드 길이가 4미만ㅇㅌ치면
+                 if ( form.username.value.length < 4 ) { // 사용자 이름 필드 길이가 4미만이면
                     `clearUsernameInputMsg`(); // 사용자 이름 관련 메시지 클리어
                     return; // 함수 종료
                  }
@@ -120,8 +125,8 @@
                      });
              }
 
-            const checkUsernameDupDebounce = _.debounce(() => checkUsernameDup(joinForm), 500);
-            // debounce함수로 중복검사를 5초 지연
+            const checkUsernameDupDebounce = _.debounce(() => checkUsernameDup(joinForm), 300);
+            // debounce 함수로 중복검사를 5초 지연
 
              function clearUsernameInputMsg(){ // 사용자 이름 입력 메시지 클리어 함수
                 $(joinForm.username).removeClass('input-accent input-error'); // css 클래스 제거
@@ -182,7 +187,7 @@
             });
     }
 
-    const checkEmailDupDebounce = _.debounce(() => checkEmailDup(joinForm), 500);
+    const checkEmailDupDebounce = _.debounce(() => checkEmailDup(joinForm), 300);
     // debounce 함수를 활용해 이메일 중복 필드 5초 지연
 
     function clearEmailInputMsg(){ // 이메일 입력 메시지 클리어 함수
@@ -236,15 +241,15 @@
              return;
          }
 
-         form.password2.value = form.password2.value.trim();
-         if (form.password2.value.length == 0) {
-             form.password2.focus();
+         form.passwordCheck.value = form.passwordCheck.value.trim();
+         if (form.passwordCheck.value.length == 0) {
+             form.passwordCheck.focus();
              toastWarning('비밀번호를 입력하세요');
              return;
          }
 
-         if(form.password.value != form.password2.value){
-            form.password2.focus();
+         if(form.password.value != form.passwordCheck.value){
+            form.passwordCheck.focus();
             toastWarning('비밀번호가 확인이 일치하지 않습니다');
             return;
          }
@@ -345,6 +350,48 @@
             });
         });
     </script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function(){
+            const imgInput = document.getElementById('profileImg');
+            const fileNameInput = document.querySelector('.upload-name');
+
+            imgInput.addEventListener('change', function(){
+                const parent = this.closest('.preview-image');
+                const selectedFile =this.files[0];
+
+                const existingDisplay = parent.querySelector('.upload-display');
+                if (existingDisplay){
+                    parent.removeChild(existingDisplay);
+                }
+
+                if (selectedFile){
+                    fileNameInput.value = selectedFile.name;
+                }
+
+                if (selectedFile && selectedFile.type.match('image.*')){
+                    const reader = new FileReader();
+
+                    reader.onload = function(e){
+                        const src = e.target.result;
+                        const displayDiv = document.createElement('div');
+                        displayDiv.className = 'upload-display';
+
+                        const img = document.createElement('img');
+                        img.src = src;
+                        img.className = 'upload-thumb-wrap';
+
+                        displayDiv.appendChild(img);
+                        parent.insertBefore(displayDiv, parent.firstChild);
+                    };
+
+                    reader.readAsDataURL(selectedFile);
+                }
+
+            })
+        })
+    </script>
+
 </div>
 </body>
 </html>

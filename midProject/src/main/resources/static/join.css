@@ -156,16 +156,7 @@ form > .form-box .name-box {
   border: 1px solid #dadada;
   border-radius: 10px;
 }
-form > .form-box .phone-box {
-  width: 49%;
-  height: 50px;
-  padding: 0 40px;
-  box-sizing: border-box;
-  margin-bottom: 10px;
-  box-shadow: 0 2px 6px 0 rgba(68, 68, 68, 0.08);
-  border: 1px solid #dadada;
-  border-radius: 10px;
-}
+
 form > .form-box .niname-box {
   width: 100%;
   height: 50px;
@@ -176,6 +167,7 @@ form > .form-box .niname-box {
   border: 1px solid #dadada;
   border-radius: 10px;
 }
+
 form > .form-box .bir-box {
   width: 100%;
   height: 50px;
@@ -186,6 +178,13 @@ form > .form-box .bir-box {
   border: 1px solid #dadada;
   border-radius: 10px;
 }
+
+form > .form-box .file-box {
+  display : flex ;
+  width: 100%;
+  height: 50px;
+}
+
 form > .form-box .content-box {
   width: 100%;
   height: 200px;
@@ -198,17 +197,6 @@ form > .form-box .content-box {
 }
 
 form > .form-box select {
-  width: 100%;
-  height: 50px;
-  padding: 0 40px;
-  box-sizing: border-box;
-  margin-bottom: 10px;
-  box-shadow: 0 2px 6px 0 rgba(68, 68, 68, 0.08);
-  border: 1px solid #dadada;
-  border-radius: 10px;
-}
-
-form > .form-box .phone-box {
   width: 100%;
   height: 50px;
   padding: 0 40px;
@@ -245,9 +233,90 @@ form > .form-box > .submit:hover {
 /* 경고 메시지 스타일 */
 .alert-danger {
   background-color: #f8d7da; /* 붉은색 경고 배경 */
-  color: #721c24; /* 진한 붉은색 글자색 */
   border: 1px solid #f5c6cb; /* 붉은색 테두리 */
+  color: #721c24; /* 진한 붉은색 글자색 */
   border-radius: 5px;
   padding: 10px;
   margin-top: 10px;
+}
+
+.input-accent{
+    color : #66BB6A ;
+}
+
+.text-green-400{
+    color : #66BB6A ;
+}
+
+.input-error{
+   color : #e61919 ;
+}
+
+.text-red-400{
+    color : #e61919 ;
+}
+
+/** file input custom  **/
+.join-icon-box input[type="file"] {
+  position : absolute;
+  overflow: hidden;
+  clip:rect(0,0,0,0);
+  border: 0;
+}
+
+.join-icon-box .file-box label {
+  margin-left : 10px ;
+  padding : 15px 20px  ;
+  weight : 100%  ;
+  cursor: pointer;
+  border: 1px solid #dadada;
+  border-radius: 10px;
+  background-color: #fff;
+  font-size: 14px;
+}
+
+.join-icon-box .file-box label:hover{
+  border: 1px solid #3b91ff;
+  background-color: #f0f8ff;
+  color: black;
+  font-weight: bold;
+}
+
+/* named upload */
+.join-icon-box .file-box .upload-name {
+  flex-grow : 1 ;
+  weight : 100% ;
+  padding: .5em .75em;
+  font-size: inherit;
+  font-family: inherit;
+  box-shadow: 0 2px 6px 0 rgba(68, 68, 68, 0.08);
+  border: 1px solid #dadada;
+  border-radius: 10px;
+}
+
+/* imaged preview */
+@media(min-width: 768px) {
+  .join-icon-box .upload-display {
+    display: block;
+    margin-right: 5px;
+    margin-bottom: 0;
+  }
+}
+
+.join-icon-box .upload-thumb-wrap {
+  display: block;
+  width: 100%;
+  height : 200px  ;
+  padding: 2px;
+  vertical-align: middle;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  margin-bottom: 20px;
+  background-color: #fff;
+}
+
+.join-icon-box .upload-display img {
+  display: block;
+  width: 100% ;
+  height: 100% ;
 }

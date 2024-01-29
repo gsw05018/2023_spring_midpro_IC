@@ -217,4 +217,5 @@ public class MemberService {
                 .flatMap(this::findProfileImgUrl)
                 .orElse("https://placehold.co/30x30?text=UU");
     }
+
 }
