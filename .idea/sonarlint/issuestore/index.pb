@@ -99,3 +99,9 @@ FmidProject/src/main/java/com/sbspro/midproject/base/jpa/JpaConfig.java,7\b\7b0
 ZmidProject/src/main/java/com/sbspro/midproject/member/repositroy/MemberRepositoryImpl.java,8\6\86682052a99d4fad24f7c5d03317c1c0e183d275
 p
 @midProject/src/main/java/com/sbspro/midproject/base/util/Ut.java,a\c\acdfee8935bc19871df0bad587bd946af659fd12
+y
+ImidProject/src/main/java/com/sbspro/midproject/base/initData/NotProd.java,d\0\d0e5493cc58a712f0648b80888269d03bc20f827
+y
+ImidProject/src/main/java/com/sbspro/midproject/MidProjectApplication.java,2\d\2dc164f1536fe0cea79d96d9d74de3058df6715b
+ù
+mmidProject/src/main/java/com/sbspro/midproject/base/security/CustomSimpleUrlAuthenticationSuccessHandler.java,1\5\15cbb7d6aee50a7c805b6890ee49cec5ba2b633f

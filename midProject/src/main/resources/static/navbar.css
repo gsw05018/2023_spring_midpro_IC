@@ -26,7 +26,7 @@ input {
 }
 
 /* 상단 bar */
-.wrap-box > .top-bar-box {
+.wrap-box > .top-navbar {
   width: 1920px;
   height: 80px;
   margin: 0 auto;
@@ -43,22 +43,22 @@ input {
 }
 
 /* login, logo 정렬 */
-.wrap-box > .top-bar-box > .logo-box,
-.wrap-box > .top-bar-box > .login-box {
+.wrap-box > .top-navbar > .logo-box,
+.wrap-box > .top-navbar > .menuMenu-box {
   flex-grow: 1;
 }
 
 /* 로고  */
-.wrap-box > .top-bar-box > .logo-box {
+.wrap-box > .top-navbar > .logo-box {
   position: relative;
 }
 
-.wrap-box > .top-bar-box > .logo-box > li {
+.wrap-box > .top-navbar > .logo-box > li {
   width: 100px;
   height: 80px;
 }
 
-.wrap-box > .top-bar-box > .logo-box a > img {
+.wrap-box > .top-navbar > .logo-box a > img {
   width: 100%;
   height: 100%;
   position: absolute;
@@ -66,7 +66,7 @@ input {
 }
 
 /* login  */
-.wrap-box > .top-bar-box > .login-box {
+.wrap-box > .top-navbar > .menuMenu-box {
   display: flex;
   width: 250px;
   font-size: 30px;
@@ -75,56 +75,59 @@ input {
   position: relative;
 }
 
-.wrap-box > .top-bar-box > .login-box div {
+.wrap-box > .top-navbar > .menuMenu-box div {
   position: absolute;
   left: 0;
   bottom: 20px;
 }
 
-.wrap-box > .top-bar-box > .login-box > li  i {
+.wrap-box > .top-navbar > .menuMenu-box > li  i {
   position: absolute;
   right: 60px;
   bottom: 30px;
 
 }
 
-.wrap-box > .top-bar-box > .login-box li  .profile_box {
+.wrap-box > .top-navbar > .menuMenu-box li  .profile_box {
   position: absolute;
   right: 60px;
   bottom: 20px;
 }
 
 
-.wrap-box > .top-bar-box > .login-box div > .se-icon {
+.wrap-box > .top-navbar > .menuMenu-box div > .se-icon {
   position: absolute;
   bottom: 10px;
   right: 0px;
 }
 
-.wrap-box > .top-bar-box > .login-box div > input {
+.wrap-box > .top-navbar > .menuMenu-box div > .fat-in {
   width: 280px;
   height: 50px;
   border: none;
   border-bottom: 1px solid;
+  background-color: white ;
+  font-size : 15px ;
 }
 
-.wrap-box > .top-bar-box > .login-box > .lo-box .toggle-menu {
+.wrap-box > .top-navbar > .menuMenu-box > .lo-box .toggle-menu {
   position: absolute;
   top: 60px;
   left: 280px;
   transition: 0.5s;
   height: 0;
   overflow: hidden;
+  color : black;
 }
 
-.wrap-box > .top-bar-box > .login-box > .lo-box .toggle-menu.active {
+.wrap-box > .top-navbar > .menuMenu-box > .lo-box .toggle-menu.active {
   top: 60px;
   left: 280px;
   height: 120px;
   offset: 1;
 }
 
-.wrap-box > .top-bar-box > .login-box > li .toggle-menu > ul {
+.wrap-box > .top-navbar > .menuMenu-box > li .toggle-menu > ul {
   width: 100px;
   border-radius: 10px;
   box-shadow: 0 2px 6px 0 rgba(68, 68, 68, 0.08);
@@ -132,7 +135,7 @@ input {
   background-color: #fff;
 }
 
-.wrap-box > .top-bar-box > .login-box > li .toggle-menu li {
+.wrap-box > .top-navbar > .menuMenu-box > li .toggle-menu li {
   font-size: 15px;
   font-weight: bold;
   height: 50px;
@@ -140,18 +143,18 @@ input {
   text-align: center;
 }
 
-.wrap-box > .top-bar-box > .login-box > li {
+.wrap-box > .top-navbar > .menuMenu-box > li {
   margin: 0 20px;
 }
 
 /*  메뉴 커스텀 (1차메뉴) */
-.wrap-box > .top-bar-box > .menu-box {
+.wrap-box > .top-navbar > .menu-box {
   flex-grow: 5;
   display: flex;
   justify-content: space-between;
 }
 
-.wrap-box .top-bar-box > .menu-box > li {
+.wrap-box .top-navbar > .menu-box > li {
   width: 100%;
   height: 100%;
   display: flex;
@@ -162,16 +165,16 @@ input {
   color: #666;
 }
 
-.wrap-box > .top-bar-box > .menu-box > li > a {
+.wrap-box > .top-navbar > .menu-box > li > a {
   position: relative;
 }
 
-.wrap-box > .top-bar-box > .menu-box > li > a:hover {
+.wrap-box > .top-navbar > .menu-box > li > a:hover {
   color: #333;
   text-decoration: underline;
 }
 
-.wrap-box > .top-bar-box > .menu-box > li > .a-1::after {
+.wrap-box > .top-navbar > .menu-box > li > .a-1::after {
   content: "";
   display: inline-block;
   width: 5px;
@@ -183,7 +186,7 @@ input {
   top: 0px;
 }
 
-.wrap-box > .top-bar-box > .menu-box > li > a:hover::after {
+.wrap-box > .top-navbar > .menu-box > li > a:hover::after {
   content: "";
   display: inline-block;
   width: 5px;
@@ -196,7 +199,7 @@ input {
 }
 
 /* 2차 메뉴*/
-.wrap-box > .top-bar-box > .menu-box > li > .nav-2-menu {
+.wrap-box > .top-navbar > .menu-box > li > .nav-2-menu {
   position: absolute;
   left: 0;
   width: 100%;
@@ -207,12 +210,12 @@ input {
   overflow: hidden;
 }
 
-.wrap-box > .top-bar-box > .menu-box:hover > li > .nav-2-menu {
+.wrap-box > .top-navbar > .menu-box:hover > li > .nav-2-menu {
   height: 190px;
 /*  2차 메뉴 높이 수정할 때 사용*/
 }
 
-.wrap-box > .top-bar-box > .menu-box .menu-1 {
+.wrap-box > .top-navbar > .menu-box .menu-1 {
   position: absolute;
   left: 375px;
   width: 100px;
@@ -221,7 +224,7 @@ input {
   padding: 10px 0;
 }
 
-.wrap-box > .top-bar-box > .menu-box .menu-2 {
+.wrap-box > .top-navbar > .menu-box .menu-2 {
   width: 100px;
   height: 100%;
   position: absolute;
@@ -230,7 +233,7 @@ input {
   padding: 10px 0;
 }
 
-.wrap-box > .top-bar-box > .menu-box .menu-3 {
+.wrap-box > .top-navbar > .menu-box .menu-3 {
   position: absolute;
   width: 100px;
   height: 100%;
@@ -239,12 +242,12 @@ input {
   padding: 10px 0;
 }
 
-.wrap-box > .top-bar-box > .menu-box ul > li {
+.wrap-box > .top-navbar > .menu-box ul > li {
   padding: 20px 0;
   font-size: 15px;
 }
 
-.wrap-box > .top-bar-box > .menu-box > li > .nav-2-menu > ul > li:hover {
+.wrap-box > .top-navbar > .menu-box > li > .nav-2-menu > ul > li:hover {
   font-weight: bold;
   text-decoration: underline;
   color: #333;

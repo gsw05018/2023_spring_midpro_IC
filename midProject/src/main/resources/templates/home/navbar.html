@@ -1,16 +1,13 @@
 <html layout:decorate = "~{layout}">
 <head>
     <link href = "/login.css" rel = "stylesheet">
-
-    <!-- SweetAlert 2 스크립트 -->
-    <script src = "https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
-<body>
 
-<nav class = "navbar navbar-expand-lg navbar-light bg-light border-bottom" th:fragment = "navbarFragment">
+<body>
+<nav th:fragment = "navbarFragment">
     <div class = "wrap-box">
         <!-- 상단바 -->
-        <div class = "top-bar-box ">
+        <div class = "top-navbar ">
             <ul class = "logo-box ">
                 <li><a href = "/"> <img alt = "" src = "https://cdn.jsdelivr.net/gh/gsw05018/test-img/a.svg"></a></li>
             </ul>
@@ -40,29 +37,30 @@
                 </li>
             </ul>
 
-            <ul class = "login-box ">
-                <li><a href = "#">
-                    <div class = "se-box">
-                        <input id = "seach-text" name = "seach-text" placeholder = "어디로, 어떤 축제를 가실 예정인가요?"
-                               type = "text">
-                        <i class = "fa-solid fa-magnifying-glass se-icon "></i>
+            <ul class = "menuMenu-box ">
+                <li>
+                    <div class = "seachMenu-box">
+                        <input class = "fat-in " placeholder = "어떤 축제를 가실 예정인가요?" type = "text">
+                        <i class = "fa-solid fa-magnifying-glass se-icon " style = "color :black;"></i>
                     </div>
-                </a>
                 </li>
                 <li class = "lo-box" style = " cursor : pointer;">
-                    <i class = "fa-solid fa-circle-user btn-i" th:if = "${@rq.logout}"></i>
-                    <a class = "profile_box" href = "#" th:if = "${@rq.login}">
-                        <img alt = "프로필 이미지" style = "object-fit: cover; width : 35px  ; height: 35px ; border-radius: 9999px;"
+                    <i class = "menu fa-solid fa-circle-user btn-i" th:if = "${@rq.logout}"></i>
+                    <a class = "menu profile_box" href = "#" th:if = "${@rq.login}">
+                        <img alt = "프로필 이미지"
+                             style = "object-fit: cover; width : 35px  ; height: 35px ; border-radius: 9999px;"
                              th:src = "${@rq.profileImgUrl}">
                     </a>
                     <div class = "toggle-menu">
                         <ul sec:authorize = "isAnonymous()">
-                            <li th:if = "${@rq.logout}"><a class = "nav-link" href = "/usr/member/login">로그인</a></li>
-                            <li th:if = "${@rq.logout}"><a class = "nav-link" href = "/usr/member/join">회원가입</a></li>
+                            <li th:if = "${@rq.logout}"><a class = "navbar-link" href = "/usr/member/login">로그인</a></li>
+                            <li th:if = "${@rq.logout}"><a class = "navbar-link" href = "/usr/member/join">회원가입</a></li>
                         </ul>
                         <ul sec:authorize = "isAuthenticated()">
-                            <li th:if = "${@rq.login}"><a class = "nav-link" href = "/usr/member/mypage">마이페이지</a></li>
-                            <li th:if = "${@rq.login}"><a class = "nav-link" href = "/usr/member/logout">로그아웃</a></li>
+                            <li th:if = "${@rq.login}"><a class = "navbar-link" href = "/usr/member/mypage">마이페이지</a>
+                            </li>
+                            <li th:if = "${@rq.login}"><a class = "navbar-link" href = "/usr/member/logout">로그아웃</a>
+                            </li>
                         </ul>
                     </div>
                 </li>
@@ -72,7 +70,7 @@
 
     <script>
         $(document).ready(function () {
-            $(document).on("click", ".wrap-box > .top-bar-box > .login-box > .lo-box i", function () {
+            $(document).on("click", ".wrap-box > .top-navbar .lo-box .menu", function () {
                 $(this).siblings(".toggle-menu").toggleClass("active");
             });
         });

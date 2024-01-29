@@ -7,20 +7,6 @@
   font-style: normal;
 }
 
-/* 라이브러리 */
-* {
-  margin: 0;
-  padding: 0;
-}
-a {
-  color: inherit;
-  text-decoration: none;
-}
-ul,
-li {
-  list-style: none;
-}
-
 /* 마이페이지 */
 input,
 button {
@@ -83,26 +69,6 @@ button {
   border-radius: 50%;
 }
 
-/* 프로필 사진 변경 버튼 */
-.my-wrap > .id-section .change-profile-button {
-  position: absolute;
-  bottom: -10px;
-  right: -10px;
-  background-color: #3b91ff;
-  color: white;
-  border: none;
-  border-radius: 50%;
-  width: 40px;
-  height: 40px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  font-size: 15px;
-}
-
-
-
 .my-wrap > .id-section h2 {
   text-align: center;
   font-weight: 600;
@@ -151,7 +117,7 @@ button {
   margin: 0 auto;
 }
 
-.join-box form .join-icon-box {
+.join-box form .infor-box {
   position: relative;
 }
 
@@ -205,35 +171,7 @@ button {
   font-size: 20px;
 }
 
-.join-box form table .table-box button {
-  width: 100%;
-  height: 100%;
-  box-shadow: 0 2px 6px 0 rgba(68, 68, 68, 0.08);
-  border: 1px solid #dadada;
-  border-radius: 10px;
-  background-color: #fff;
-  cursor: pointer;
-}
-
-.join-box form table .table-box button:hover {
-  border: 2px solid #3b91ff;
-  background-color: #f0f8ff;
-  color: black;
-  font-weight: bold;
-}
-
-.join-box form .join-icon-box .phone {
-  position: absolute;
-  top: 15px;
-  left: 15px;
-}
-
-
-form > .form-box .submit:nth-child(1){
-  margin-right: 20px ;
-}
-
-form > .form-box .submit {
+.join-box .infor-box .submit {
   width: 100%;
   height: 50px;
   box-shadow: 0 2px 6px 0 rgba(68, 68, 68, 0.08);
@@ -243,76 +181,46 @@ form > .form-box .submit {
   cursor: pointer;
 }
 
-form > .form-box > .submit:hover {
-  border: 2px solid #3b91ff;
-  background-color: #f0f8ff;
-  color: black;
-  font-weight: bold;
-}
-
-/* 비밀번호 팝업 변경창 */
-.modal {
-  /*   display: none; */
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 500px;
-  height: 350px;
-  background-color: rgba(0, 0, 0, 0.5);
-  justify-content: center;
-  align-items: center;
-}
-
-.modal-content {
-  background-color: #fff;
-  height: 100%;
-  padding: 20px;
-  border-radius: 5px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-}
-
-.modal .modal-content button:hover {
+.join-box .infor-box .submit:hover {
   border: 1px solid #3b91ff;
   background-color: #f0f8ff;
   color: black;
   font-weight: bold;
-  z-index: 999;
 }
-/* 비밀번호 팝업 변경창 끝 */
 
-/* 프로모션 on off */
-.btn {
-  width: 100%;
-  height: 100%;
-  background-color: #f50c53;
-  color: white;
-  text-align: center;
-  line-height: 25px;
+/** file input custom  **/
+.infor-box input[type="file"] {
+  position : absolute;
+  overflow: hidden;
+  clip:rect(0,0,0,0);
+  border: 0;
+}
+
+.infor-box .file-box label {
+  margin-left : 5px ;
+  padding : 15px 20px  ;
+  weight : 100% ;
   cursor: pointer;
-  border-radius: 50px;
+  border: 1px solid #dadada;
+  border-radius: 5px;
+  background-color: #fff;
+  font-size: 14px;
 }
 
-/* 초기 Off 상태의 스타일 */
-#toggleBtn {
-  background-color: #ff0000; /* 빨간색 배경 */
-  color: #fff; /* 흰색 텍스트 */
+.infor-box .file-box label:hover{
+  border: 1px solid #3b91ff;
+  background-color: #f0f8ff;
+  color: black;
+  font-weight: bold;
 }
 
-/* On 상태의 스타일 */
-#toggleBtn.on {
-  background-color: #00ff00; /* 초록색 배경 (ON 상태) */
-  color: #000; /* 검정색 텍스트 (ON 상태) */
-}
-/* 팝업 스타일 */
-#notificationBar {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  background-color: #ffcc00; /* 노란색 배경 */
-  padding: 10px;
-  text-align: center;
-  display: none; /* 초기에는 숨겨진 상태 */
-  z-index: 2;
+/* named upload */
+.infor-box .file-box .upload-name {
+  box-shadow: 0 2px 6px 0 rgba(68, 68, 68, 0.08);
+  border: 1px solid #dadada;
+  border-radius: 5px;
+  line-height: 50px ;
+  padding-left: 15px;
+  background-color : white;
+  width: 500px ;
 }

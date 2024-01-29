@@ -40,7 +40,7 @@ public class CustomSimpleUrlAuthenticationSuccessHandler extends SimpleUrlAuthen
         // 이전에 저장된 요청이 있으면 그 요청의 redirect URL 사용하고 없으면 기본 목적지 URL 사용
         // targetUrl을 목저지 URL로 사용됨
 
-        targetUrl = Ut.url.modifyQueryParam(targetUrl, "msg", Ut.url.encodeWithTtl("환영합니다."));
+        targetUrl = Ut.url.modifyQueryParam(targetUrl, "msg", Ut.url.encodeWithTtl("뭐 하지 또? 또 가지 뭐! 페이  지에 오신걸 환영합니다."));
         // 목적지 URL에 메시지를 쿼리 파라미터로 추가
 
         getRedirectStrategy().sendRedirect(request, response, targetUrl);

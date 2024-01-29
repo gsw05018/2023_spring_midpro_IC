@@ -17,7 +17,8 @@
                     <i class = "fa-regular fa-user"></i>
                     <input autofocus class = "id-box" id = "username" maxlength = "30" name = "username"
                            placeholder = "아이디를 입력하세요"
-                           th:autofocus = "${UtThy.inputAttributeAutofocus(param.lastUsername)}" th:value = "${UtThy.value(param.lastUsername)}"
+                           th:autofocus = "${UtThy.inputAttributeAutofocus(param.lastUsername)}"
+                           th:value = "${UtThy.value(param.lastUsername)}"
                            type = "text">
                 </div>
                 <div class = "pass-icon-box icon-box">
@@ -39,6 +40,8 @@
 
     <script>
         let submitLoginFormDone = false;
+        const regex = /^(?=.*[a-zA-Z])(?=.*\d)(?=.*[^\da-zA-Z]).{8,}$/;
+
         function submitLoginForm(form){
             if(submitLoginFormDone) return;
 
@@ -49,9 +52,9 @@
              return;
          }
 
-         if (form.username.value.length < 4) {
+         if (form.username.value.length < 6) {
              form.username.focus();
-             toastWarning('아이디를 4자 이상 입력하세요');
+             toastWarning('아이디를 6자 이상 입력하세요');
              return;
          }
 
@@ -62,9 +65,9 @@
              return;
          }
 
-           if (form.password.value.length < 4) {
+        if (form.password.value.length < 8 || !regex.test(form.password.value)) {
              form.password.focus();
-             toastWarning('비밀번호를 4자 이상 입력하세요');
+             toastWarning('비밀번호를 최소 8자 이상이며, 영어, 특수문자, 숫자가 최소 1회씩 포함하세요');
              return;
          }
              form.submit();

@@ -74,6 +74,7 @@ public class MemberService {
     // 명령
     @Transactional
     public RsData<Member> join(String username, String password, String nickname, String email, MultipartFile profileImg) {
+
         if (findByUsername(username).isPresent())
             return RsData.of("F-1", "%s(은)는 사용중인 아이디 입니다.".formatted(username));
 
@@ -95,7 +96,7 @@ public class MemberService {
         sendJoinCompleteEmail(member);
         sendEmailVerificationEmail(member);
 
-        return RsData.of("S-1", "회원가입이 완료되었습니다.", member);
+        return RsData.of("S-1", "%s님 어서오세요. 이메일 인증 후 이용해주시기 바랍니다.".formatted(username));
     }
 
     private void saveProfileImg(Member member, MultipartFile profileImg) {
@@ -174,11 +175,11 @@ public class MemberService {
 
     @Transactional
     public RsData<Member> modify(long memberId, String password, String nickname, MultipartFile profileImg) {
+
         Member member = findById(memberId).get();
 
         if (password != null) member.setPassword(passwordEncoder.encode(password));
         if (nickname != null) member.setNickname(nickname);
-
         if (profileImg != null) saveProfileImg(member, profileImg);
 
         return RsData.of("S-1", "회원정보가 수정되었습니다.", member);

@@ -63,11 +63,6 @@
                     <input class = "niname-box" id = "nickname" name = "nickname" placeholder = "닉네임을 입력하세요"
                            type = "text">
                 </div>
-                <div class = "join-icon-box">
-                    <i class = "name fa-solid fa-heart"></i>
-                    <input class = "bir-box" id = "birthdateInput" name = "birthdateInput" placeholder = "생년월일을 입력하세요"
-                           type = "text">
-                </div>
                 <div class = "join-icon-box preview-image">
                     <div class = "file-box">
                         <input class = "upload-name " disabled = "disabled" value = "파일선택">
@@ -147,7 +142,6 @@
                 $(joinForm.username).next().text(msg);
                 // 다음 요소에 메시지 표시
              }
-
 
         let validUsername = ''; // 유효한 사용자 이름을 저장할 변수
         let lastCheckedUsername = ''; // 마지막으로 확인한 사용자 이름을 저장할 변수
@@ -234,7 +228,8 @@
 
     // joinForm 유효성 검사 시작
      let submitJoinFormDone = false;
-     const regex = /^(?=.*[a-zA-Z])(?=.*\d)(?=.*[^\da-zA-Z]).{10}$/
+     const regex = /^(?=.*[a-zA-Z])(?=.*\d)(?=.*[^\da-zA-Z]).{8,}$/;
+
 
      function submitJoinForm(form) {
          if (submitJoinFormDone) return;
@@ -249,22 +244,24 @@
 
          if (form.username.value.length < 5) {
              form.username.focus();
-             toastWarning('아이디를 4자 이상 입력하세요');
+             toastWarning('아이디를 5자 이상 입력하세요');
              return;
          }
 
          form.password.value = form.password.value.trim();
+
          if (form.password.value.length == 0) {
              form.password.focus();
              toastWarning('비밀번호를 입력하세요');
              return;
          }
 
-           if (form.password.value.length < 10 || !regex.test(form.password.value)) {
+         if (form.password.value.length < 8 || !regex.test(form.password.value)) {
              form.password.focus();
-             toastWarning('비밀번호는 최소 10자 이상이며, 영문자 숫자, 특수문자를 각 1회 이상 포함하세요');
+             toastWarning('비밀번호를 최소 8자 이상이며, 영어, 특수문자, 숫자가 최소 1회씩 포함하세요');
              return;
          }
+
 
          form.passwordCheck.value = form.passwordCheck.value.trim();
          if (form.passwordCheck.value.length == 0) {
@@ -312,13 +309,6 @@
              return;ul;
          }
 
-         form.birthdateInput.value = form.birthdateInput.value.trim();
-         if (form.birthdateInput.value.length == 0) {
-             form.birthdateInput.focus();
-             toastWarning('생일을 입력하세요');
-             return;
-         }
-
          let privacyCheckbox = document.getElementById("privacyCheckbox");
 
          if (!privacyCheckbox.checked) {
@@ -342,38 +332,6 @@
          submitJoinFormDone = true;
      }
     // joinForm 유효성 검사 끝
-    </script>
-
-    <!-- 생년월일 캘린더 스크립트 -->
-    <script>
-        $(document).ready(function() {
-            $('#birthdateInput').on('input', function() {
-                // 입력값에서 숫자만 추출
-                const input = $(this).val().replace(/\D/g, '');
-
-                // 숫자를 형식에 맞게 변경
-                if (input.length >= 8) {
-                    const year = input.slice(0, 4);
-                    const month = input.slice(4, 6);
-                    const day = input.slice(6, 8);
-
-                    // 입력된 월이 1에서 12 사이에 있는지 확인
-                    if (parseInt(month) >= 1 && parseInt(month) <= 12) {
-                        // 입력된 일이 1에서 31 사이에 있는지 확인
-                        if (parseInt(day) >= 1 && parseInt(day) <= 31) {
-                            const formattedDate = `${year}-${month}-${day}`;
-                            $(this).val(formattedDate);
-                        } else {
-                            alert('올바른 일(01-31)을 입력하세요.');
-                            $(this).val('');
-                        }
-                    } else {
-                        alert('올바른 월(01-12)을 입력하세요.');
-                        $(this).val('');
-                    }
-                }
-            });
-        });
     </script>
 
     <script>

@@ -59,24 +59,26 @@
                     <!-- 닉네임 -->
                     <label for = "newNickname"
                            style = "padding: 10px 20px; font-size: 20px; font-weight: 500; width: 150px;">아이디</label>
-                    <div id = "newNickname" th:text = "${@rq.member.username}"
-                         style = " height: 50px; box-shadow: 0 2px 6px 0 rgba(68, 68, 68, 0.08); border: 1px solid #dadada; border-radius: 5px; line-height: 50px ; padding-left: 15px; width: 600px ;"></div>
+                    <div id = "newNickname"
+                         style = " height: 50px; box-shadow: 0 2px 6px 0 rgba(68, 68, 68, 0.08); border: 1px solid #dadada; border-radius: 5px; line-height: 50px ; padding-left: 15px; width: 600px ;"
+                         th:text = "${@rq.member.username}"></div>
                 </div>
 
                 <!-- 이메일 -->
                 <div class = "infor-box">
                     <label style = "padding: 10px 20px; font-size: 20px; font-weight: 500; width: 150px;">이메일</label>
-                    <div th:text="${@rq.member.email}"
-                           style = " height: 50px; box-shadow: 0 2px 6px 0 rgba(68, 68, 68, 0.08); border: 1px solid #dadada; border-radius: 5px; line-height: 50px ; padding-left: 15px; width: 600px ;"
-                          ></div>
+                    <div style = " height: 50px; box-shadow: 0 2px 6px 0 rgba(68, 68, 68, 0.08); border: 1px solid #dadada; border-radius: 5px; line-height: 50px ; padding-left: 15px; width: 600px ;"
+                         th:text = "${@rq.member.email}"
+                    ></div>
                 </div>
 
                 <!-- 가입날짜 -->
                 <div class = "infor-box">
                     <label style = "padding: 10px 20px; font-size: 20px; font-weight: 500; width: 150px;">가입일</label>
-                    <div th:text="${#temporals.format(@rq.member.createDate, 'yyyy-MM-dd')}"
-                         style = "height: 50px; box-shadow: 0 2px 6px 0 rgba(68, 68, 68, 0.08); border: 1px solid #dadada; border-radius: 5px; line-height: 50px ; padding-left: 15px; width: 600px ;"></div>
+                    <div style = "height: 50px; box-shadow: 0 2px 6px 0 rgba(68, 68, 68, 0.08); border: 1px solid #dadada; border-radius: 5px; line-height: 50px ; padding-left: 15px; width: 600px ;"
+                         th:text = "${#temporals.format(@rq.member.createDate, 'yyyy-MM-dd')}"></div>
                 </div>
+
             </form>
         </div>
     </div>

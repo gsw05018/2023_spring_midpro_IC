@@ -55,13 +55,22 @@
         <form class = "join-box" enctype = "multipart/form-data" method = "POST" name = "modify-form"
               onsubmit = "submitModifyForm(this); return false;" th:action>
             <h2 style = "text-align: center; margin-bottom: 50px; font-size: 35px;">내 정보 수정</h2>
-            <div class = "infor-box ">
+            <div class = "infor-box preview-image">
+
                 <!-- 이미지 -->
-                <label style = "padding: 10px 20px; font-size: 20px; font-weight: 500; width: 150px;">프로필 이미지</label>
-                <input accept = "image/jpeg, image/png, image/gif" name = "profileImg"
-                       style = " height: 50px; box-shadow: 0 2px 6px 0 rgba(68, 68, 68, 0.08); border: 1px solid #dadada; border-radius: 5px; line-height: 50px ; padding-left: 15px; width: 600px ;"
-                       type = "file"></input>
+                <label style = "padding: 10px 20px; font-size: 20px; font-weight: 500; width: 150px;">프로필
+                                                                                                      이미지</label>
+                <div class = "file-box">
+                    <input class = "upload-name " disabled = "disabled" value = "파일선택">
+                    <label for = "profileImg">업로드</label>
+                </div>
+                <input accept = "image/jpeg, image/png, image/gif" class = "upload-hidden "
+                       id = "profileImg"
+                       name = "profileImg"
+                       type = "file">
+
             </div>
+
 
             <!-- 별명 -->
             <div class = "infor-box">
@@ -88,8 +97,8 @@
                        type = "password"></input>
             </div>
 
-            <div style = "display: flex">
-                <button style = "width: 100%; height: 50px; box-shadow: 0 2px 6px 0 rgba(68, 68, 68, 0.08); border: 1px solid #dadada; border-radius: 10px; background-color: #fff; cursor: pointer; margin-top: 30px;">
+            <div class = "infor-box" style = "display: flex">
+                <button class = "submit">
                     <span>회원정보수정</span>
                 </button>
             </div>
@@ -149,6 +158,22 @@
             submitModifyFormDone = true;
 
         }
+    </script>
+
+    <!--  파일이름 보이게 하기  -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function(){
+            const imgInput = document.getElementById('profileImg');
+            const fileNameInput = document.querySelector('.upload-name');
+
+            imgInput.addEventListener('change', function(){
+                const selectedFile = this.files[0];
+
+                if (selectedFile) {
+                    fileNameInput.value = selectedFile.name;
+                }
+            });
+        });
     </script>
 
 </div>
