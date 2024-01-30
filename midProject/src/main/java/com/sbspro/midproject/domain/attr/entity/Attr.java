@@ -33,6 +33,6 @@ public class Attr extends BaseEntity {
     private long relId;
     private String typeCode;
     private String type2Code;
-    private String val;
-    private LocalDateTime expireDate;
+    private String val; // 속성의 실제 값
+    private LocalDateTime expireDate; // 속성의 만료 날짜와 시간
 }
