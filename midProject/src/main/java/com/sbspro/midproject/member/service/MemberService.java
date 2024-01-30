@@ -216,7 +216,7 @@ public class MemberService {
     public String getProfileImgUrl(Member member) {
         return Optional.ofNullable(member)
                 .flatMap(this::findProfileImgUrl)
-                .orElse("https://placehold.co/30x30?text=UU");
+                .orElse("/image/default_profileImg.png");
     }
 
 }

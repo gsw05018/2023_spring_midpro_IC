@@ -22,12 +22,12 @@ public class NotProd {
                 memberService.setEmailVerified(member1);
             }
 
-            Member member2 = memberService.join("user15428", "@@user1234", "nickname1", "user1@test.com", null).getData();
+            Member member2 = memberService.join("user5428", "@@user1234", "nickname1", "user1@test.com", null).getData();
             if (member2 != null) {
                 memberService.setEmailVerified(member2);
             }
 
-            Member member3 = memberService.join("user25428", "@@user1234", "nickname2", "user2@test.com", null).getData();
+            Member member3 = memberService.join("user5428", "@@user1234", "nickname2", "user2@test.com", null).getData();
             if (member3 != null) {
                 memberService.setEmailVerified(member3);
             }

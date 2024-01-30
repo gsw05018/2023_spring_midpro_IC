@@ -45,7 +45,11 @@
                     </div>
                 </li>
                 <li class = "lo-box" style = " cursor : pointer;">
-                    <i class = "menu fa-solid fa-circle-user btn-i" th:if = "${@rq.logout}"></i>
+                    <a class = " menu profile_box" th:if = "${@rq.logout}">
+                        <img alt = "프로필 이미지"
+                             style = "object-fit: cover; width : 35px  ; height: 35px ; border-radius: 9999px;"
+                             th:src = "${@rq.profileImgUrl}">
+                    </a>
                     <a class = "menu profile_box" href = "#" th:if = "${@rq.login}">
                         <img alt = "프로필 이미지"
                              style = "object-fit: cover; width : 35px  ; height: 35px ; border-radius: 9999px;"
