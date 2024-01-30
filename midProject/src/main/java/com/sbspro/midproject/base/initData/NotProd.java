@@ -17,7 +17,7 @@ public class NotProd {
         // ApplicationRunner 인터페이스를 구현하는 람다 표현식 반환
         // Application 시작 시 실행될 로직 정의
         return args -> {
-            Member member1 = memberService.join("admin5428", "@@admin1234", "admin", "admin@test.com", null).getData();
+            Member member1 = memberService.join("admin5428", "@@admin1234", "admin5428", "admin@test.com", null).getData();
             if (member1 != null) {
                 memberService.setEmailVerified(member1);
             }

@@ -31,7 +31,7 @@ public class Member extends BaseEntity {
     private String email;
 
     public boolean isAdmin() {
-        return "admin".equals(username);
+        return "admin5428".equals(username);
     }
 
     public List<? extends GrantedAuthority> getGrantedAuthorities() {
@@ -40,7 +40,7 @@ public class Member extends BaseEntity {
         grantedAuthorities.add(new SimpleGrantedAuthority("member"));
 
         if (isAdmin()) {
-            grantedAuthorities.add(new SimpleGrantedAuthority("admin"));
+            grantedAuthorities.add(new SimpleGrantedAuthority("admin5428"));
         }
 
         return grantedAuthorities;

@@ -123,7 +123,7 @@ input {
 .wrap-box > .top-navbar > .menuMenu-box > .lo-box .toggle-menu.active {
   top: 60px;
   left: 280px;
-  height: 120px;
+  height: 250px;
   offset: 1;
 }
 

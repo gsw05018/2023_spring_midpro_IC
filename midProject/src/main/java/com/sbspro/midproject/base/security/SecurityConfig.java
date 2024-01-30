@@ -36,7 +36,7 @@ public class SecurityConfig {
                                 .requestMatchers(
                                         new AntPathRequestMatcher("/adm/**")
                                 )
-                                .hasAuthority("admin")
+                                .hasAuthority("admin5428")
                                 .anyRequest().permitAll()
                 )
                 .exceptionHandling(
