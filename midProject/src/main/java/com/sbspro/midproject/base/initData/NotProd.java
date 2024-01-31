@@ -7,6 +7,8 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
 
+import java.util.stream.IntStream;
+
 @Configuration // 스프링의 구성 클래스임을 나타내는 어노테이션
 @Profile("!prod") //  "prod" 프로파일이 아닐 경우에만 이 구성이 활성화되도록 지정
 // 프로파일이 아닌 환경이란 ? 개발 또는 테스트 환경
@@ -31,6 +33,8 @@ public class NotProd {
             if (member3 != null) {
                 memberService.setEmailVerified(member3);
             }
+
+            IntStream.rangeClosed(4, 50).forEach(i -> memberService.join("testUser" + i, "@@user1234", "user" + i, "user" + i + "@ttest.com", null));
         };
     }
 }

@@ -6,85 +6,90 @@
 
 <body class = "mt-28 ">
 
-<div class = "mb-20  flex-1 flex items-center justify-center" layout:fragment = "content">
+<div class = "flex-1 flex items-center justify-center" layout:fragment = "content">
     <div class = "container w-full px-4">
         <h1 class = "mb-4">
             <i class = "fa-solid fa-users"></i>
             회원목록
-        </h1>
-
-        <div class = "flex gap-2 items-center">
             <div>
-                <span class = "label-txt">Total</span>
+                <span class = "label-txt">검색된 결과 개수</span>
                 <span th:text = "${memberPage.totalElements}"></span>
             </div>
-            <div class = "flex-grow"></div>
-            <button class = "btn btn-outline btn-info" onclick = "searchFormModal.showModal()">
-                <i class = "fa-solid fa-magnifying-glass"></i>
-                검색
-                <span th:if = "${UtThy.hasText(param.kw)}" th:text = "|`${param.kw}`|"></span>
-            </button>
-            <a class = "btn btn-outline" href = "/adm/member/list" th:if = "${UtThy.hasText(param.kw)}">
-                <i class = "fa-solid fa-xmark"></i>
-                검색조건 지우기
-            </a>
-        </div>
-
-        <dialog class = "modal " id = "searchFormModal">
-            <div class = "modal-box bg-sky-50">
-                <form method = "dialog">
-                    <button class = "btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
-                </form>
-
-                <form class = "bg-base rounded flex flex-col gap-6" onsubmit = "submitSearchForm(this); return false;">
-
-                    <div class = "form-control">
-                        <label class = "label">
-                            <span class = "label-text">검색필터</span>
-                        </label>
-
-                        <select class = "select select-info w-full bg-white" name = "kwType"
-                                th:value = "${param.kwType}">
-                            <option value = "all">전체</option>
-                            <option value = "username">아이디</option>
-                            <option value = "email">이메일</option>
-                            <option value = "nickname">별명</option>
-                        </select>
-                    </div>
-
-                    <div class = "form-control">
-                        <label class = "label">
-                            <span class = "label-text">검색어</span>
-                        </label>
-
-                        <input class = "input input-bordered input-info w-full bg-white"
-                               name = "kw"
-                               placeholder = "검색어"
-                               th:value = "${param.kw}"
-                               type = "text"
-                        >
-                    </div>
-
-                    <div>
-                        <button class = "btn btn-outline btn-info w-full gap-1">
-                            <i class = "fa-solid fa-magnifying-glass"></i>
-                            <span>검색</span>
-                        </button>
-                    </div>
-
-                </form>
-            </div>
-
-            <form class = "modal-backdrop" method = "dialog">
-                <button>close</button>
-            </form>
-        </dialog>
+        </h1>
 
         <div>
-            <ul class = " grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-[20px]">
+            <div class = "flex top-[64px] shadow-sm -mx-4 px-4 py-4 flex-wrap gap-2 items-center">
+                <div class = "flex-grow"></div>
+                <div class = "flex flex-wrap gap-2">
+                    <button class = "btn btn-outline btn-info" onclick = "searchFormModal.showModal()">
+                        <i class = "fa-solid fa-magnifying-glass"></i>
+                        검색어
+                        <span th:if = "${UtThy.hasText(param.kw)}">`<span class = "normal-case"
+                                                                          th:text = "${param.kw}"></span>`</span>
+                    </button>
+                    <a class = "btn btn-outline" href = "/adm/member/list" th:if = "${UtThy.hasText(param.kw)}">
+                        <i class = "fa-solid fa-xmark"></i>
+                        검색조건 지우기
+                    </a>
+                </div>
+            </div>
+
+            <dialog class = "modal" id = "searchFormModal">
+                <div class = "modal-box bg-sky-50">
+                    <form method = "dialog">
+                        <button class = "btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
+                    </form>
+
+                    <form class = "bg-base rounded flex flex-col gap-6"
+                          onsubmit = "submitSearchForm(this); return false;">
+
+                        <div class = "form-control">
+                            <label class = "label">
+                                <span class = "label-text">검색필터</span>
+                            </label>
+
+                            <select class = "select select-info w-full bg-white" name = "kwType"
+                                    th:value = "${param.kwType}">
+                                <option value = "all">전체</option>
+                                <option value = "username">아이디</option>
+                                <option value = "email">이메일</option>
+                                <option value = "nickname">별명</option>
+                            </select>
+                        </div>
+
+                        <div class = "form-control">
+                            <label class = "label">
+                                <span class = "label-text">검색어</span>
+                            </label>
+
+                            <input class = "input input-bordered input-info w-full  bg-white"
+                                   name = "kw"
+                                   placeholder = "검색어"
+                                   th:value = "${param.kw}"
+                                   type = "search"
+                            >
+                        </div>
+
+                        <div>
+                            <button class = "btn btn-outline btn-info w-full gap-1">
+                                <i class = "fa-solid fa-magnifying-glass"></i>
+                                <span>검색</span>
+                            </button>
+                        </div>
+
+                    </form>
+                </div>
+
+                <form class = "modal-backdrop" method = "dialog">
+                    <button>close</button>
+                </form>
+            </dialog>
+
+            <ul class = "grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-[20px]">
                 <li class = "group" th:each = "member : ${memberPage.content}">
-                    <div class = "card bg-base-100 dark:bg-base-200 shadow-xl">
-                        <div class = "card-body bg-white">
+                    <div class = "card bg-sky-50 shadow-xl">
+                        <div class = "card-body">
+
                             <div class = "detail flex flex-col gap-3">
                                 <div class = "form-control">
                                     <div class = "flex justify-center">
@@ -92,33 +97,38 @@
                                              th:src = "${@memberService.getProfileImgUrl(member)}">
                                     </div>
                                 </div>
+
                                 <div class = "form-control">
-                                    <label class = "label">
-                                        <span class = "label-text">회원번호</span>
+                                    <label class = "text-lg text-black">
+                                        <span>회원번호</span>
                                     </label>
                                     <div th:text = "${member.id}"></div>
                                 </div>
+
                                 <div class = "form-control">
-                                    <label class = "label">
-                                        <span class = "label-text">가입일</span>
+                                    <label class = "text-lg text-black">
+                                        <span>가입일</span>
                                     </label>
                                     <div th:text = "${#temporals.format(member.createDate, 'yy.MM.dd')}"></div>
                                 </div>
+
                                 <div class = "form-control">
-                                    <label class = "label">
-                                        <span class = "label-text">아이디</span>
+                                    <label class = "text-lg text-black">
+                                        <span>아이디</span>
                                     </label>
                                     <div th:text = "${member.username}"></div>
                                 </div>
+
                                 <div class = "form-control">
-                                    <label class = "label">
-                                        <span class = "label-text">별명</span>
+                                    <label class = "text-lg text-black">
+                                        <span>별명</span>
                                     </label>
                                     <div th:text = "${member.nickname}"></div>
                                 </div>
+
                                 <div class = "form-control">
-                                    <label class = "label">
-                                        <span class = "label-text">EMAIL</span>
+                                    <label class = "text-lg text-black">
+                                        <span>EMAIL</span>
                                     </label>
                                     <div th:text = "${member.email}"></div>
                                 </div>
@@ -127,10 +137,54 @@
                     </div>
                 </li>
             </ul>
+
+            <div class = "mt-4  mb-4 flex justify-center"
+                 th:if = "${!memberPage.isEmpty()}"
+                 th:with = "queryStrBase = '?kwType=' + ${param.kwType != null ? param.kwType : ''} + '&kw=' + ${param.kw != null ? param.kw : ''} + '&'">
+                <!-- memberPage 객체가 비어 있을 때만 나오게 함 -->
+                <!-- with문을 사용하여 변수 선언  -->
+                <div class = "join">
+                    <a class = "join-item btn"
+                       th:classappend = "${memberPage.number + 1 - 1 <= 1} ? 'btn-disabled'"
+                       th:href = "@{|${queryStrBase}page=1|}">
+                        «
+                    </a>
+                    <!-- 첫 번째 페이지로 이동하는 링크 -->
+                    <!-- 만약 현재 페이지가 첫 페이지일 경우 'btn-disabled'추가하여 비화성화 -->
+
+                    <a class = "join-item btn btn-disabled text-2xl "
+                       th:if = "${memberPage.number + 1 - 1 > 1}">...</a>
+                    <!-- 현재 페이지가 첫 페이지보다 큰 경우, 더 앞이ㅡ 페이지들이 존재하는 경우 ... 표시 -->
+
+                    <a class = "join-item btn btn-ghost "
+                       th:classappend = "${page == memberPage.number + 1} ? 'btn-active'"
+                       th:each = "page: ${#numbers.sequence(1, memberPage.totalPages)}"
+                       th:href = "@{|${queryStrBase}page=${page}|}"
+                       th:if = "${page >= memberPage.number + 1 - 1 and page <= memberPage.number + 2 + 2}"
+                       th:text = "${page}">
+                    </a>
+                    <!-- 각 페이지 번호에 대한 링크를 동적으로 생성 -->
+                    <!-- th:each를 사용하여 1페이지부터 총 페이지 수까지 반복 -->
+                    <!-- if문을 사용하여 현재 페이지의 앞뒤 페이지만 표시 -->
+
+
+                    <a class = "join-item btn btn-disabled text-2xl "
+                       th:if = "${memberPage.number + 1 + 1 < memberPage.totalPages}">...</a>
+                    <!-- 현재 페이지 다음에 더 많은 페이지가 있는 경우 ...표시 -->
+
+                    <a class = "join-item btn"
+                       th:classappend = "${memberPage.number + 1 + 1 >= memberPage.totalPages} ? 'btn-disabled'"
+                       th:href = "@{|${queryStrBase}page=${memberPage.totalPages}|}">
+                        »
+                    </a>
+                    <!-- 마지막 페이지로 가능 링크 -->
+                    <!-- 마지막 페이지가 없을 경우 btn-disabled 추가하여 링크 비활성화 -->
+
+                </div>
+            </div>
         </div>
     </div>
 </div>
 
 </body>
-
 </html>

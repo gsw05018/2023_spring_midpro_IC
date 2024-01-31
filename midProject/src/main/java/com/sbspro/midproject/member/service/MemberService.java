@@ -212,8 +212,8 @@ public class MemberService {
 
         Member member = findById(memberId).get();
 
-        if (password != null) member.setPassword(passwordEncoder.encode(password));
-        if (nickname != null) member.setNickname(nickname);
+        if (Ut.str.hasLength(password)) member.setPassword(passwordEncoder.encode(password));
+        if (Ut.str.hasLength(nickname)) member.setNickname(nickname);
         if (profileImg != null) saveProfileImg(member, profileImg);
 
         return RsData.of("S-1", "회원정보가 수정되었습니다.", member);
@@ -251,8 +251,8 @@ public class MemberService {
     // 제공된 인증 코드가 유효한지 확인하는 기능을 수행
     // attrService.get을 사용하여 저장된 인증 코드를 조회하고, 입력된 코드와 비교
 
-    public Page<Member> findAll(String kwType, String kw, Pageable pageable) {
-        return memberRepository.dslFindAll(kwType, kw, pageable);
+    public Page<Member> findByKw(String kwType, String kw, Pageable pageable) {
+        return memberRepository.findByKw(kwType, kw, pageable);
     }
     // 키워드 유형, 키워드 , 페이지 정보를 기반으로 회원 조회
     // 페이지네이션과 함꼐 반환
@@ -264,5 +264,6 @@ public class MemberService {
     }
     // 프로필 이미지 URL 반환
     // 이미지가 없을경우 기본 이미지 URL 반환
+
 
 }
