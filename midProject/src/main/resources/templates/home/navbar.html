@@ -62,9 +62,6 @@
                         </ul>
                         <ul sec:authorize = "isAuthenticated()">
                             <li th:if = "${@rq.admin}"><a class = "navbar-link"
-                                                          href = "/adm/home/main">관리자 홈</a>
-                            </li>
-                            <li th:if = "${@rq.admin}"><a class = "navbar-link"
                                                           href = "/adm/member/list">회원 목록</a>
                             </li>
                             <li th:if = "${@rq.login}"><a class = "navbar-link" href = "/usr/member/mypage">마이페이지</a>

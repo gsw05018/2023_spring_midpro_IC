@@ -4,9 +4,9 @@
     <title>회원목록</title>
 </head>
 
-<body>
+<body class = "mt-28 ">
 
-<div class = "flex-1 flex items-center justify-center" layout:fragment = "content">
+<div class = "mb-20  flex-1 flex items-center justify-center" layout:fragment = "content">
     <div class = "container w-full px-4">
         <h1 class = "mb-4">
             <i class = "fa-solid fa-users"></i>
@@ -19,7 +19,7 @@
                 <span th:text = "${memberPage.totalElements}"></span>
             </div>
             <div class = "flex-grow"></div>
-            <button class = "btn btn-primary" onclick = "searchFormModal.showModal()">
+            <button class = "btn btn-outline btn-info" onclick = "searchFormModal.showModal()">
                 <i class = "fa-solid fa-magnifying-glass"></i>
                 검색
                 <span th:if = "${UtThy.hasText(param.kw)}" th:text = "|`${param.kw}`|"></span>
@@ -30,8 +30,8 @@
             </a>
         </div>
 
-        <dialog class = "modal" id = "searchFormModal">
-            <div class = "modal-box">
+        <dialog class = "modal " id = "searchFormModal">
+            <div class = "modal-box bg-sky-50">
                 <form method = "dialog">
                     <button class = "btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
                 </form>
@@ -43,7 +43,8 @@
                             <span class = "label-text">검색필터</span>
                         </label>
 
-                        <select class = "select select-bordered" name = "kwType" th:value = "${param.kwType}">
+                        <select class = "select select-info w-full bg-white" name = "kwType"
+                                th:value = "${param.kwType}">
                             <option value = "all">전체</option>
                             <option value = "username">아이디</option>
                             <option value = "email">이메일</option>
@@ -56,7 +57,7 @@
                             <span class = "label-text">검색어</span>
                         </label>
 
-                        <input class = "input input-bordered ws-full"
+                        <input class = "input input-bordered input-info w-full bg-white"
                                name = "kw"
                                placeholder = "검색어"
                                th:value = "${param.kw}"
@@ -65,7 +66,7 @@
                     </div>
 
                     <div>
-                        <button class = "btn btn-block btn-primary gap-1">
+                        <button class = "btn btn-outline btn-info w-full gap-1">
                             <i class = "fa-solid fa-magnifying-glass"></i>
                             <span>검색</span>
                         </button>
@@ -80,12 +81,10 @@
         </dialog>
 
         <div>
-
-            <ul class = "grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-[20px]">
+            <ul class = " grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-[20px]">
                 <li class = "group" th:each = "member : ${memberPage.content}">
                     <div class = "card bg-base-100 dark:bg-base-200 shadow-xl">
-                        <div class = "card-body">
-
+                        <div class = "card-body bg-white">
                             <div class = "detail flex flex-col gap-3">
                                 <div class = "form-control">
                                     <div class = "flex justify-center">
@@ -93,35 +92,30 @@
                                              th:src = "${@memberService.getProfileImgUrl(member)}">
                                     </div>
                                 </div>
-
                                 <div class = "form-control">
                                     <label class = "label">
                                         <span class = "label-text">회원번호</span>
                                     </label>
                                     <div th:text = "${member.id}"></div>
                                 </div>
-
                                 <div class = "form-control">
                                     <label class = "label">
                                         <span class = "label-text">가입일</span>
                                     </label>
                                     <div th:text = "${#temporals.format(member.createDate, 'yy.MM.dd')}"></div>
                                 </div>
-
                                 <div class = "form-control">
                                     <label class = "label">
                                         <span class = "label-text">아이디</span>
                                     </label>
                                     <div th:text = "${member.username}"></div>
                                 </div>
-
                                 <div class = "form-control">
                                     <label class = "label">
                                         <span class = "label-text">별명</span>
                                     </label>
                                     <div th:text = "${member.nickname}"></div>
                                 </div>
-
                                 <div class = "form-control">
                                     <label class = "label">
                                         <span class = "label-text">EMAIL</span>
