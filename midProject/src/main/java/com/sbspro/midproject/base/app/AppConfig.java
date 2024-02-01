@@ -7,6 +7,9 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration // AppConfig 클래스가 설정 클래스임을 나타냄, 스프링 빈 정의를 포함한다고 스프링에 알림
 public class AppConfig {
+    @Getter
+    public static String tempDirPath;
+
     @Getter // Lombok 라이브러리 어노테이션으로 자동으로 getter 생성
     public static String genFileDirPath; // 정적 변수, 파일 생성 위치 저장하는데 사용
 
@@ -27,6 +30,11 @@ public class AppConfig {
         AppConfig.siteName = siteName;
     }
     // siteName 값을 설정하는 method
+
+    @Value("${custom.tempDirPath}")
+    public void setTempDirPath(String tempDirPath) {
+        AppConfig.tempDirPath = tempDirPath;
+    }
 
     @Value("${custom.site.baseUrl}") // application.yml에서 설정된 값을 주입
     public void setSiteBaseUrl(String siteBaseUrl) {

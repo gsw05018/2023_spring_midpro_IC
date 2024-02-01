@@ -25,6 +25,8 @@ public class CustomUserDetailsService implements UserDetailsService {
 
         // orElseThrow : Optional 클래스에 정의된 method로 값이 존재하지 않을 경우 예외 발생
 
+        if (member.isSocialMember()) throw new UsernameNotFoundException("social login user");
+
         return new User(member.getUsername(), member.getPassword(), member.getGrantedAuthorities());
         // Spring Security의 'UserDetails' 인터페이스를 구현하는 'User' 객체 생성
         // 'User' 객체는 사용자의 이름, 비밀번호, 그리고 권한 포함

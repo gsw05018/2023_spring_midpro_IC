@@ -27,9 +27,22 @@ spring:
     username: root  # 데이터베이스 연결 사용자 이름
     password: # 데이터베이스 사용자 비밀번호
   security:
-    user:
-      name: user
-      password: 1234
+    oauth2:
+      client:
+        registration:
+          kakao:
+            clientId:
+            client-secret:
+            scope: profile_nickname, profile_image
+            client-name: kakao
+            authorization-grant-type: authorization_code
+            redirect-uri: http://localhost:8090/login/oauth2/code/kakao
+        provider:
+          kakao:
+            authorization-uri: https://kauth.kakao.com/oauth/authorize
+            token-uri: https://kauth.kakao.com/oauth/token
+            user-info-uri: https://kapi.kakao.com/v2/user/me
+            user-name-attribute: id
   jpa:
     hibernate:
       ddl-auto: create
@@ -46,8 +59,15 @@ logging:
     org.hibernate.orm.jdbc.extract: TRACE
     org.springframework.transaction.interceptor: TRACE
 custom:
+  tempDirPath: c:/temp/demo5/temp
   site:
     name: 뭐 하지? 또 가지 뭐!
     baseUrl: "http://localhost:8090"
   genFile:
     dirPath: c:/temp/demo5
+  security:
+    oauth2:
+      client:
+        registration:
+          kakao:
+            devUserOauthId: 3058152288

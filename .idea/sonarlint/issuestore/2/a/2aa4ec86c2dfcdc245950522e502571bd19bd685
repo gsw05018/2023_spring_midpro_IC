@@ -1,13 +1,17 @@
 
-L
-java:S3740~"/Provide the parametrized type for this generic.(¤Ù­8ÖïÇñÕ1
 M
-java:S3740¿"/Provide the parametrized type for this generic.(¤Ù­8ÖïÇñÕ1
+java:S3740‹"/Provide the parametrized type for this generic.(¤Ù­8ÒçåÿÕ1
+M
+java:S3740Í"/Provide the parametrized type for this generic.(¤Ù­8ÒçåÿÕ1
 d
-java:S2184ë"FCast one of the operands of this multiplication operation to a "long".(›¥½°8ÙïÇñÕ1
+java:S2184ù"FCast one of the operands of this multiplication operation to a "long".(›¥½°8ãçåÿÕ1
 s
-java:S3655Õ"PCall "Optional#isPresent()" or "!Optional#isEmpty()" before accessing the value.(¤Í»ıÿÿÿÿ8ìïÇñÕ1
+java:S3655ã"PCall "Optional#isPresent()" or "!Optional#isEmpty()" before accessing the value.(¤Í»ıÿÿÿÿ8“èåÿÕ1
+r
+java:S6809v"UCall transactional methods via an injected dependency instead of directly via 'this'.(¥±…ˆ8£èåÿÕ1
 s
-java:S6809¢"UCall transactional methods via an injected dependency instead of directly via 'this'.(³û¶ì8ûïÇñÕ1
+java:S6809¯"UCall transactional methods via an injected dependency instead of directly via 'this'.(³û¶ì8²èåÿÕ1
 I
-java:S1452ó"&Remove usage of generic wildcard type.(ÔÏø§ûÿÿÿÿ8‚ğÇñÕ1
+java:S1452"&Remove usage of generic wildcard type.(ÔÏø§ûÿÿÿÿ8´èåÿÕ1
+x
+java:S6809¢"UCall transactional methods via an injected dependency instead of directly via 'this'.(…ğÆÜşÿÿÿÿ8´èåÿÕ1

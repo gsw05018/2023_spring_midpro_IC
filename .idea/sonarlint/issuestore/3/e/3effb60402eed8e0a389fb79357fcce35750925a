@@ -1,13 +1,17 @@
 
-O
-java:S1444"4Make this "public static genFileDirPath" field final(Ä—³ÿÿÿÿÿ
-I
-java:S1444".Make this "public static siteName" field final(¼†Ùúúÿÿÿÿ
-G
-java:S1444"1Make this "public static siteBaseUrl" field final(óÂşô
-Q
-java:S2696"6Make the enclosing method "static" or remove this set.(ı‡ºúÿÿÿÿ
-Q
-java:S2696"6Make the enclosing method "static" or remove this set.(Ö¬üÿÿÿÿ
-L
-java:S2696!"6Make the enclosing method "static" or remove this set.(””×Ù
+S
+java:S1444"1Make this "public static tempDirPath" field final(®§‹µûÿÿÿÿ8ÜóšõÕ1
+V
+java:S1444"4Make this "public static genFileDirPath" field final(Ä—³ÿÿÿÿÿ8ÜóšõÕ1
+P
+java:S1444".Make this "public static siteName" field final(¼†Ùúúÿÿÿÿ8ÜóšõÕ1
+N
+java:S1444"1Make this "public static siteBaseUrl" field final(óÂşô8İóšõÕ1
+X
+java:S2696"6Make the enclosing method "static" or remove this set.(ı‡ºúÿÿÿÿ8áóšõÕ1
+X
+java:S2696"6Make the enclosing method "static" or remove this set.(Ö¬üÿÿÿÿ8áóšõÕ1
+X
+java:S2696$"6Make the enclosing method "static" or remove this set.(ÆûºÇüÿÿÿÿ8Ò³õÕ1
+S
+java:S2696)"6Make the enclosing method "static" or remove this set.(””×Ù8áóšõÕ1

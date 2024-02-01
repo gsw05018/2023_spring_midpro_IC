@@ -86,7 +86,7 @@
             </dialog>
 
             <ul class = "grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-[20px]">
-                <li class = "group" th:each = "member : ${memberPage.content}">
+                <li th:each = "member : ${memberPage.content}">
                     <div class = "card bg-sky-50 shadow-xl">
                         <div class = "card-body">
 
@@ -130,7 +130,7 @@
                                     <label class = "text-lg text-black">
                                         <span>EMAIL</span>
                                     </label>
-                                    <div th:text = "${member.email}"></div>
+                                    <div th:text = "${member.emailForPrint}"></div>
                                 </div>
                             </div>
                         </div>

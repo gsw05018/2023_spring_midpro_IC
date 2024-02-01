@@ -19,6 +19,7 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 // spring security 활성화 및 보안구성 제공함
 @EnableMethodSecurity
 public class SecurityConfig {
+
     @Bean
         // Spring Bean으로 SecurityFilterChain 객체를 등록
     SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
@@ -56,7 +57,10 @@ public class SecurityConfig {
                         .successHandler(new CustomSimpleUrlAuthenticationSuccessHandler()) // 인증 성공 핸들러 설정
                         .failureHandler(new CustomSimpleUrlAuthenticationFailureHandler()) // 인증 싶패 핸들러 설정
                 )
-
+                .oauth2Login(
+                        oauth2Login -> oauth2Login
+                                .loginPage("/usr/member/login") // 사용자 정의 로그인 페이지 URL 설정
+                )
                 .logout((logout) -> logout // 로그아웃 구성을 위한 설정
                         .logoutRequestMatcher(new AntPathRequestMatcher("/usr/member/logout")) // 로그아웃 URL 설정
                         .logoutSuccessUrl("/") // 로그아웃 성공 시 redirect URL 설정
