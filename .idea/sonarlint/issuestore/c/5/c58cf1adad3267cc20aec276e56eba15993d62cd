@@ -1,0 +1,19 @@
+
+c
+java:S1192,"FDefine a constant instead of duplicating this literal "board" 4 times.(Šòı¿8§­Ç¤Ö1
+s
+java:S3655"PCall "Optional#isPresent()" or "!Optional#isEmpty()" before accessing the value.(±´Ÿˆüÿÿÿÿ8°­Ç¤Ö1
+r
+java:S3655Z"PCall "Optional#isPresent()" or "!Optional#isEmpty()" before accessing the value.(ç­Õ²ùÿÿÿÿ8…¨©¥Ö1
+r
+java:S3655f"PCall "Optional#isPresent()" or "!Optional#isEmpty()" before accessing the value.(ç­Õ²ùÿÿÿÿ8…¨©¥Ö1
+r
+java:S3655="PCall "Optional#isPresent()" or "!Optional#isEmpty()" before accessing the value.(±´Ÿˆüÿÿÿÿ8…¨©¥Ö1
+r
+java:S3655Y"PCall "Optional#isPresent()" or "!Optional#isEmpty()" before accessing the value.(±´Ÿˆüÿÿÿÿ8…¨©¥Ö1
+s
+java:S3655"PCall "Optional#isPresent()" or "!Optional#isEmpty()" before accessing the value.(ç­Õ²ùÿÿÿÿ8…¨©¥Ö1
+r
+java:S3655*"PCall "Optional#isPresent()" or "!Optional#isEmpty()" before accessing the value.(±´Ÿˆüÿÿÿÿ8…¨©¥Ö1
+r
+java:S3655e"PCall "Optional#isPresent()" or "!Optional#isEmpty()" before accessing the value.(±´Ÿˆüÿÿÿÿ8…¨©¥Ö1

@@ -27,7 +27,7 @@
                         <span th:if = "${UtThy.hasText(param.kw)}">`<span class = "normal-case"
                                                                           th:text = "${param.kw}"></span>`</span>
                     </button>
-                    <a class = "btn btn-outline" href = "/adm/member/list" th:if = "${UtThy.hasText(param.kw)}">
+                    <a class = "btn btn-outline" th:href = ${@rq.currentUrlPath} th:if = "${UtThy.hasText(param.kw)}">
                         <i class = "fa-solid fa-xmark"></i>
                         검색조건 지우기
                     </a>
@@ -90,8 +90,8 @@
                     <div class = "card bg-sky-50 shadow-xl">
                         <div class = "card-body">
 
-                            <div class = "detail flex flex-col gap-3">
-                                <div class = "form-control">
+                            <div class = "detail grid grid-cols-[repeat(auto-fit, minmax(150px, 1fr))] gap-3">
+                                <div class = "form-control col-span-full">
                                     <div class = "flex justify-center">
                                         <img class = "w-40 h-40 rounded-full"
                                              th:src = "${@memberService.getProfileImgUrl(member)}">
@@ -138,50 +138,12 @@
                 </li>
             </ul>
 
-            <div class = "mt-4  mb-4 flex justify-center"
-                 th:if = "${!memberPage.isEmpty()}"
+            <div class = "mt-4"
+                 th:if = "${memberPage.totalPages > 1}"
                  th:with = "queryStrBase = '?kwType=' + ${param.kwType != null ? param.kwType : ''} + '&kw=' + ${param.kw != null ? param.kw : ''} + '&'">
-                <!-- memberPage 객체가 비어 있을 때만 나오게 함 -->
-                <!-- with문을 사용하여 변수 선언  -->
-                <div class = "join">
-                    <a class = "join-item btn"
-                       th:classappend = "${memberPage.number + 1 - 1 <= 1} ? 'btn-disabled'"
-                       th:href = "@{|${queryStrBase}page=1|}">
-                        «
-                    </a>
-                    <!-- 첫 번째 페이지로 이동하는 링크 -->
-                    <!-- 만약 현재 페이지가 첫 페이지일 경우 'btn-disabled'추가하여 비화성화 -->
-
-                    <a class = "join-item btn btn-disabled text-2xl "
-                       th:if = "${memberPage.number + 1 - 1 > 1}">...</a>
-                    <!-- 현재 페이지가 첫 페이지보다 큰 경우, 더 앞이ㅡ 페이지들이 존재하는 경우 ... 표시 -->
-
-                    <a class = "join-item btn btn-ghost "
-                       th:classappend = "${page == memberPage.number + 1} ? 'btn-active'"
-                       th:each = "page: ${#numbers.sequence(1, memberPage.totalPages)}"
-                       th:href = "@{|${queryStrBase}page=${page}|}"
-                       th:if = "${page >= memberPage.number + 1 - 1 and page <= memberPage.number + 2 + 2}"
-                       th:text = "${page}">
-                    </a>
-                    <!-- 각 페이지 번호에 대한 링크를 동적으로 생성 -->
-                    <!-- th:each를 사용하여 1페이지부터 총 페이지 수까지 반복 -->
-                    <!-- if문을 사용하여 현재 페이지의 앞뒤 페이지만 표시 -->
-
-
-                    <a class = "join-item btn btn-disabled text-2xl "
-                       th:if = "${memberPage.number + 1 + 1 < memberPage.totalPages}">...</a>
-                    <!-- 현재 페이지 다음에 더 많은 페이지가 있는 경우 ...표시 -->
-
-                    <a class = "join-item btn"
-                       th:classappend = "${memberPage.number + 1 + 1 >= memberPage.totalPages} ? 'btn-disabled'"
-                       th:href = "@{|${queryStrBase}page=${memberPage.totalPages}|}">
-                        »
-                    </a>
-                    <!-- 마지막 페이지로 가능 링크 -->
-                    <!-- 마지막 페이지가 없을 경우 btn-disabled 추가하여 링크 비활성화 -->
-
-                </div>
+                <div th:replace = "common/fragments :: pagination(${memberPage}, ${queryStrBase}, 1)"></div>
             </div>
+
         </div>
     </div>
 </div>

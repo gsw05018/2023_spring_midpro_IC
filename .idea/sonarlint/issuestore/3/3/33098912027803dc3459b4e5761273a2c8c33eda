@@ -1,15 +1,15 @@
 
-F
-java:S3740¸"/Provide the parametrized type for this generic.(ô§¦
-K
-java:S3740Ë"/Provide the parametrized type for this generic.(Ö¨Ô×ÿÿÿÿÿ
-E
-java:S3740Õ"/Provide the parametrized type for this generic.(ã„©
+M
+java:S3740¸"/Provide the parametrized type for this generic.(ô§¦8ï×•›Ö1
+R
+java:S3740Ë"/Provide the parametrized type for this generic.(Ö¨Ô×ÿÿÿÿÿ8ï×•›Ö1
+L
+java:S3740Õ"/Provide the parametrized type for this generic.(ã„©8ï×•›Ö1
 r
-java:S3655E"PCall "Optional#isPresent()" or "!Optional#isEmpty()" before accessing the value.( ®ŞĞûÿÿÿÿ8¢¤¿ÅÕ1
-]
-java:S6201&"BReplace this instanceof check and cast with 'instanceof User user'(¸êİ£ùÿÿÿÿ
-K
-java:S1144c"5Remove this unused private "getSessionAsLong" method.(‡¾ã
-K
-java:S1144‰"4Remove this unused private "getCookieAsLong" method.(Æ¨€ë
+java:S3655E"PCall "Optional#isPresent()" or "!Optional#isEmpty()" before accessing the value.( ®ŞĞûÿÿÿÿ8¡Ø•›Ö1
+d
+java:S6201&"BReplace this instanceof check and cast with 'instanceof User user'(¸êİ£ùÿÿÿÿ8©Ø•›Ö1
+R
+java:S1144c"5Remove this unused private "getSessionAsLong" method.(‡¾ã8ÍØ•›Ö1
+R
+java:S1144‰"4Remove this unused private "getCookieAsLong" method.(Æ¨€ë8ÍØ•›Ö1

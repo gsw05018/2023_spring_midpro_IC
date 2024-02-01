@@ -1,0 +1,75 @@
+<html layout:decorate = "~{/common/layout}">
+<head>
+    <title th:text = "|글 - ${article.subject}|"></title>
+    <link href = "https://cdn.jsdelivr.net/npm/daisyui@3.7.7/dist/full.css" rel = "stylesheet" type = "text/css"/>
+    <script src = "https://cdn.tailwindcss.com"></script>
+</head>
+
+
+<body class = "mt-40 mb-20">
+
+<div class = "flex-1 flex items-center justify-center" layout:fragment = "content">
+    <div class = "container w-full px-4">
+        <h1 class = "mb-4">
+            <i class = "fa-solid fa-pen"></i>
+            <span th:text = "|${board.name} 게시글|"></span>
+        </h1>
+
+        <div class = "card bg-base-100 shadow-xl">
+            <div class = "card-body">
+                <div class = "detail grid grid-cols-[repeat(auto-fit,minmax(100px,1fr))] gap-3">
+                    <div class = "form-control">
+                        <label class = "label">
+                            <span class = "label-text">게시물번호</span>
+                        </label>
+                        <div th:text = "${article.id}"></div>
+                    </div>
+
+                    <div class = "form-control">
+                        <label class = "label">
+                            <span class = "label-text">작성일</span>
+                        </label>
+                        <div th:text = "${#temporals.format(article.createDate, 'yy.MM.dd')}"></div>
+                    </div>
+
+                    <div class = "form-control">
+                        <label class = "label">
+                            <span class = "label-text">작성자</span>
+                        </label>
+                        <div th:text = "${article.author.nickname}"></div>
+                    </div>
+
+                    <div class = "form-control col-span-full">
+                        <label class = "label">
+                            <span class = "label-text">제목</span>
+                        </label>
+                        <div th:text = "${article.subject}"></div>
+                    </div>
+
+                    <div class = "form-control col-span-full">
+                        <label class = "label">
+                            <span class = "label-text">내용</span>
+                        </label>
+                        <div class = "whitespace-pre-line" th:text = "${article.body}"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class = "mt-6">
+                <div class = "text-center">
+                    <a class = "btn btn-link"
+                       th:if = "${@articleService.checkActorCanModify(@rq.member, article).success}">수정</a>
+                    <a class = "btn btn-link"
+                       methods = "post"
+                       onclick = "return confirm('정말로 삭제하시겠습니까?');"
+                       th:href = "|/usr/article/${board.code}/remove/${article.id}|" th:if = "${@articleService.checkActorCanDelete(@rq.member, article).success}">삭제</a>
+                    <a class = "btn btn-link" th:href = "|/usr/article/${board.code}/list|">목록</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>

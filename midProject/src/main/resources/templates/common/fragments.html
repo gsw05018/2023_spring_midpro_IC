@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+</head>
+
+<body>
+
+<th:block th:fragment = "pagination(itemPage, queryStrBase, pageArmSize)">
+    <div class = "flex justify-center mt-4  mb-4 "
+         th:if = "${!itemPage.isEmpty()}">
+        <div class = "join">
+            <a class = "join-item btn btn-outline btn-ghost"
+               th:classappend = "${itemPage.number + 1 == 1} ? 'btn-active'"
+               th:href = "@{|${queryStrBase}page=1|}"
+               th:text = "1"
+            >
+            </a>
+
+            <a
+                    class = "join-item btn btn-outline btn-ghost"
+                    th:href = "@{|${queryStrBase}page=${itemPage.number + 1 - pageArmSize - 1}|}"
+                    th:if = "${itemPage.number + 1 - pageArmSize > 2}"
+            >...</a>
+
+            <th:block th:if = "${2 <= itemPage.totalPages - 1}">
+                <a class = "join-item btn btn-ghost btn-outline"
+                   th:classappend = "${page == itemPage.number + 1} ? 'btn-active'"
+                   th:each = "page: ${#numbers.sequence(2, itemPage.totalPages - 1)}"
+                   th:href = "@{|${queryStrBase}page=${page}|}"
+                   th:if = "${page >= itemPage.number + 1 - pageArmSize and page <= itemPage.number + 1 + pageArmSize}"
+                   th:text = "${page}">
+                </a>
+            </th:block>
+
+            <a
+                    class = "join-item btn btn-outline btn-ghost"
+                    th:href = "@{|${queryStrBase}page=${itemPage.number + 1 + pageArmSize + 1}|}"
+                    th:if = "${itemPage.number + 1 + pageArmSize < itemPage.totalPages - 1}"
+            >...</a>
+
+            <a class = "join-item btn btn-outline btn-ghost"
+               th:classappend = "${itemPage.number + 1 == itemPage.totalPages} ? 'btn-active'"
+               th:href = "@{|${queryStrBase}page=${itemPage.totalPages}|}"
+               th:text = "${itemPage.totalPages}"
+            ></a>
+        </div>
+    </div>
+</th:block>
+</body>
+</html>

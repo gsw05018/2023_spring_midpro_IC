@@ -1,6 +1,6 @@
 
 f
-java:S1192"JDefine a constant instead of duplicating this literal "@user1234" 3 times.(á«8ï°‰ûÕ1
-v	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(ûÍ°8¼ï¹õÕ1
+java:S1192%"JDefine a constant instead of duplicating this literal "@user1234" 3 times.(á«8Ü§ÌÖ1
+v	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(ûÍ°8İ§ÌÖ1
 O
-java:S1481+"2Remove this unused "memberByKakao" local variable.(†ôå¢8Äï¹õÕ1
+java:S14811"2Remove this unused "memberByKakao" local variable.(†ôå¢8ë§ÌÖ1
