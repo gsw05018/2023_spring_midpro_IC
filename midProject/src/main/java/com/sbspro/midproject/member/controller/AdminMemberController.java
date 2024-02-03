@@ -33,7 +33,7 @@ public class AdminMemberController {
     ) {
         List<Sort.Order> sorts = new ArrayList<>();
         sorts.add(Sort.Order.asc("id"));
-        Pageable pageable = PageRequest.of(page - 1, 9, Sort.by(sorts));
+        Pageable pageable = PageRequest.of(page - 1, 10, Sort.by(sorts));
         Page<Member> memberPage = memberService.findByKw(kwType, kw, pageable);
         model.addAttribute("memberPage", memberPage);
 

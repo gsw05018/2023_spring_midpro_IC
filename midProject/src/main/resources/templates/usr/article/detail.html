@@ -9,63 +9,149 @@
 <body class = "mt-40 mb-20">
 
 <div class = "flex-1 flex items-center justify-center" layout:fragment = "content">
-    <div class = "container w-full px-4">
-        <h1 class = "mb-4">
-            <i class = "fa-solid fa-pen"></i>
-            <span th:text = "|${board.name} 게시글|"></span>
-        </h1>
+    <div class = "container w-full h-full p-3">
+        <div class="flex mb-1">
+            <h1 class = "w-full pl-56" >
+                <i class = "fa-solid fa-pen"></i>
+                <span class="ml-2" th:text = "|${article.id}번 ${board.name} 게시글|"></span>
+            </h1>
+            <div class=" pr-60 w-full flex justify-end">
+                <a class = "" th:href = "|/usr/article/${board.code}/list|">목록</a>
+            </div>
+        </div>
+        <div class="mt-8 mb-12 w-[1024px] h-full outline-double outline-3 outline-offset-2 rounded-md m-auto">
 
-        <div class = "card bg-base-100 shadow-xl">
-            <div class = "card-body">
-                <div class = "detail grid grid-cols-[repeat(auto-fit,minmax(100px,1fr))] gap-3">
-                    <div class = "form-control">
-                        <label class = "label">
-                            <span class = "label-text">게시물번호</span>
-                        </label>
-                        <div th:text = "${article.id}"></div>
-                    </div>
+            <!-- 프로필 이미지 닉네임  작성날짜 좋아요 싫어요 모달창 -->
+            <div class="w-full flex p-2 border-b border-slate-500">
 
-                    <div class = "form-control">
-                        <label class = "label">
-                            <span class = "label-text">작성일</span>
-                        </label>
-                        <div th:text = "${#temporals.format(article.createDate, 'yy.MM.dd')}"></div>
+                <!-- 프로필 이미지 -->
+                <div class="avatar ">
+                    <div class="w-12 h-12 round-full ring-primary ring-offset-base-100 ring-offset-2">
+                        <img alt = "프로필 이미지" th:src = "${@memberService.getProfileImgUrl(member)}" >
                     </div>
+                </div>
 
-                    <div class = "form-control">
-                        <label class = "label">
-                            <span class = "label-text">작성자</span>
-                        </label>
-                        <div th:text = "${article.author.nickname}"></div>
-                    </div>
+                <!-- 닉네임, 작성날짜 -->
+                <div class="ml-3 text-md">
+                    <p th:text="${article.author.username}"></p>
+                    <p th:text="${#temporals.format(article.createDate, 'yy.MM.dd')}"></p>
+                </div>
 
-                    <div class = "form-control col-span-full">
-                        <label class = "label">
-                            <span class = "label-text">제목</span>
-                        </label>
-                        <div th:text = "${article.subject}"></div>
+                <!-- 좋아요 싫어요 버튼-->
+                <div class="w-full flex justify-end mt-2">
+                    <div class="indicator mr-2">
+                        <button class="btn btn-sm btn-outline btn-error"><i class="fa-regular fa-face-smile-wink"></i> <span>99</span></button>
                     </div>
+                    <div class="indicator">
+                        <button class="btn btn-sm btn-outline"><i class="fa-regular fa-face-frown"></i> <span>99</span></button>
+                    </div>
+                </div>
 
-                    <div class = "form-control col-span-full">
-                        <label class = "label">
-                            <span class = "label-text">내용</span>
-                        </label>
-                        <div class = "whitespace-pre-line" th:text = "${article.body}"></div>
+                <!-- 댓글 모달창 -->
+                <button class="btn btn-sm btn-ghost btn-active ml-2 mt-2" onclick="my_modal_4.showModal()"><i class="fa-regular fa-comment"></i> 댓글 <span>20</span></button>
+                <dialog class="modal" id="my_modal_4">
+                    <div class="modal-box w-full max-w-6xl">
+                        <h3 class="font-bold text-lg">댓글 <span>30</span></h3>
+                        <!-- 댓글 등록 input -->
+                        <form action="" class="w-full">
+                            <div class="flex mt-4">
+                                <input autofocus class="border border-solid border-gray-300 p-3 text-sm w-full appearance-noe rounded-lg bg-slate-100 bg-clip-padding text-gray-700 placeholder:text-gray-500 " placeholder="댓글을 입력하세요" type="text" />
+                                <button class="ml-3 btn btn-ghost btn-active">등록</button>
+                            </div>
+                        </form>
+                        <!-- 댓글 content-->
+                        <div class="w-full h-full ">
+                            <div class="w-full flex p-3 mt-4">
+                                <!-- 프로필 이미지 -->
+                                <div class="avatar ">
+                                    <div class="w-12 h-12 round-full ring-primary ring-offset-base-100 ring-offset-2">
+                                        <img alt = "프로필 이미지" th:src = "${@memberService.getProfileImgUrl(member)}" >
+                                    </div>
+                                </div>
+                                <!-- 닉네임, 댓글 내용 -->
+                                <div class="ml-3">
+                                    <p class="text-md" th:text="${article.author.username}"></p>
+                                    <p class="text-sm "> dddd</p>
+                                </div>
+                                <!-- 작성 날짜 댓글 수정, 삭제 모달 창 div-->
+                                <div class=" w-full flex flex-col items-start">
+                                    <!-- 작성날짜 -->
+                                    <div class="w-full flex justify-end ">
+                                        <p th:text="${#temporals.format(article.createDate, 'yy.MM.dd')}"></p>
+                                    </div>
+                                    <!--  댓글 수정 삭제 모달 창 -->
+                                    <div class=" w-full flex justify-end ">
+                                        <button class="text-black" onclick="my_modal_6.showModal()"><i class="fa-solid fa-bars"></i></button>
+                                        <dialog class="modal" id="my_modal_6">
+                                            <div class="modal-box">
+                                                <form method="dialog">
+                                                    <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
+                                                </form>
+                                                <div>
+                                                    <div class = "text-center text-black">
+                                                        <a class = "btn btn-link"
+                                                           th:if = "${@articleService.checkActorCanModify(@rq.member, article).success}">수정</a>
+                                                        <a class = "btn btn-link"
+                                                           methods = "post"
+                                                           onclick = "return confirm('정말로 삭제하시겠습니까?');"
+                                                           th:href = "|/usr/article/${board.code}/remove/${article.id}|" th:if = "${@articleService.checkActorCanDelete(@rq.member, article).success}">삭제</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </dialog>
+                                    </div >
+                                </div>
+                            </div>
+                            <!-- 좋아요 싫어요 버튼-->
+                            <div class="w-full flex justify-start pl-[70px] ">
+                                <div class="indicator mr-2 ">
+                                    <button class="btn btn-sm btn-outline btn-error"><i class="fa-regular fa-face-smile-wink"></i> <span>99</span></button>
+                                </div>
+
+                                <div class="indicator">
+                                    <button class="btn btn-sm btn-outline"><i class="fa-regular fa-face-frown"></i> <span>99</span></button>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- 댓글 모달 닫기 버튼 -->
+                        <div class="modal-action">
+                            <form method="dialog">
+                                <button class="btn btn-ghost btn-active">Close</button>
+                            </form>
+                        </div>
                     </div>
+                </dialog>
+
+                <!-- 수정 삭제 모달창 -->
+                <div class="w-16 flex justify-end " th:if="${@rq.getLoginedMemberUsername == article.author.username}"  >
+                    <button class="btn btn-link text-black" onclick="my_modal_3.showModal()" ><i class="fa-solid fa-bars"></i></button>
+                    <dialog class="modal" id="my_modal_3">
+                        <div class="modal-box">
+                            <form method="dialog">
+                                <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
+                            </form>
+                                <div>
+                                    <div class = "text-center">
+                                        <a class = "btn btn-link"
+                                           th:if = "${@articleService.checkActorCanModify(@rq.member, article).success}">수정</a>
+                                        <a class = "btn btn-link"
+                                           methods = "post"
+                                           onclick = "return confirm('정말로 삭제하시겠습니까?');"
+                                           th:href = "|/usr/article/${board.code}/remove/${article.id}|" th:if = "${@articleService.checkActorCanDelete(@rq.member, article).success}">삭제</a>
+                                    </div>
+                                </div>
+                        </div>
+                    </dialog>
                 </div>
             </div>
 
-            <div class = "mt-6">
-                <div class = "text-center">
-                    <a class = "btn btn-link"
-                       th:if = "${@articleService.checkActorCanModify(@rq.member, article).success}">수정</a>
-                    <a class = "btn btn-link"
-                       methods = "post"
-                       onclick = "return confirm('정말로 삭제하시겠습니까?');"
-                       th:href = "|/usr/article/${board.code}/remove/${article.id}|" th:if = "${@articleService.checkActorCanDelete(@rq.member, article).success}">삭제</a>
-                    <a class = "btn btn-link" th:href = "|/usr/article/${board.code}/list|">목록</a>
-                </div>
+        <!--   게시글 본문 내용   -->
+            <div class="w-full h-full border-b border-slate-500">
+               <div class="overflow-auto h-96">
+                   <p class="break-words whitespace-normal p-8 " th:text="${article.body}"></p>
+               </div>
             </div>
+
         </div>
     </div>
 

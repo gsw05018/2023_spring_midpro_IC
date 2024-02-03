@@ -43,7 +43,7 @@ public class Rq {
     }
 
     // 로그인한 회원의 사용자 정보 반환
-    private String getLoginedMemberUsername() {
+    public String getLoginedMemberUsername() {
         if (isLogout()) return null;
 
         return user.getUsername();

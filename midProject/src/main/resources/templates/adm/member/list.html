@@ -8,26 +8,27 @@
 
 <div class = "flex-1 flex items-center justify-center" layout:fragment = "content">
     <div class = "container w-full px-4">
-        <h1 class = "mb-4">
-            <i class = "fa-solid fa-users"></i>
-            회원목록
-            <div>
-                <span class = "label-txt">검색된 결과 개수</span>
-                <span th:text = "${memberPage.totalElements}"></span>
-            </div>
-        </h1>
-
         <div>
             <div class = "flex top-[64px] shadow-sm -mx-4 px-4 py-4 flex-wrap gap-2 items-center">
+                <h1 class = "mb-4">
+                    <i class = "fa-solid fa-users"></i>
+                    회원목록
+                    <div>
+                        <span class = "label-txt">검색된 결과 개수</span>
+                        <span th:text = "${memberPage.totalElements}"></span>
+                    </div>
+                </h1>
                 <div class = "flex-grow"></div>
                 <div class = "flex flex-wrap gap-2">
-                    <button class = "btn btn-outline btn-info" onclick = "searchFormModal.showModal()">
+                    <button class = "btn btn-ghost" onclick = "searchFormModal.showModal()">
                         <i class = "fa-solid fa-magnifying-glass"></i>
                         검색어
-                        <span th:if = "${UtThy.hasText(param.kw)}">`<span class = "normal-case"
-                                                                          th:text = "${param.kw}"></span>`</span>
+                        <span th:if = "${UtThy.hasText(param.kw)}">"<span class = "normal-case"
+                                                                          th:text = "${param.kw}"></span>"</span>
                     </button>
-                    <a class = "btn btn-outline" th:href = ${@rq.currentUrlPath} th:if = "${UtThy.hasText(param.kw)}">
+
+                    <a class = "btn btn-outline" th:href = "${@rq.currentUrlPath}"
+                       th:if = "${UtThy.hasText(param.kw)}">
                         <i class = "fa-solid fa-xmark"></i>
                         검색조건 지우기
                     </a>
@@ -35,7 +36,7 @@
             </div>
 
             <dialog class = "modal" id = "searchFormModal">
-                <div class = "modal-box bg-sky-50">
+                <div class = "modal-box">
                     <form method = "dialog">
                         <button class = "btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
                     </form>
@@ -48,8 +49,7 @@
                                 <span class = "label-text">검색필터</span>
                             </label>
 
-                            <select class = "select select-info w-full bg-white" name = "kwType"
-                                    th:value = "${param.kwType}">
+                            <select class = "select select-bordered" name = "kwType" th:value = "${param.kwType}">
                                 <option value = "all">전체</option>
                                 <option value = "username">아이디</option>
                                 <option value = "email">이메일</option>
@@ -62,7 +62,7 @@
                                 <span class = "label-text">검색어</span>
                             </label>
 
-                            <input class = "input input-bordered input-info w-full  bg-white"
+                            <input class = "input input-bordered ws-full"
                                    name = "kw"
                                    placeholder = "검색어"
                                    th:value = "${param.kw}"
@@ -71,7 +71,7 @@
                         </div>
 
                         <div>
-                            <button class = "btn btn-outline btn-info w-full gap-1">
+                            <button class = "btn btn-outline w-full gap-1">
                                 <i class = "fa-solid fa-magnifying-glass"></i>
                                 <span>검색</span>
                             </button>
@@ -85,9 +85,9 @@
                 </form>
             </dialog>
 
-            <ul class = "grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-[20px]">
+            <ul class = "grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-[20px]">
                 <li th:each = "member : ${memberPage.content}">
-                    <div class = "card bg-sky-50 shadow-xl">
+                    <div class = "card bg-slate-50  shadow-xl">
                         <div class = "card-body">
 
                             <div class = "detail grid grid-cols-[repeat(auto-fit, minmax(150px, 1fr))] gap-3">
